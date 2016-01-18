@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">HelloPoject</string>
+    <string name="strA">AA</string>
+    <string name="hello">Hello</string>
+</resources>
