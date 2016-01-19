@@ -58,7 +58,7 @@ public class ImageTextView extends FrameLayout {
                 if(listener != null){
                     listener.onImageClick(ImageTextView.this, data); // 그냥 this 하면 init이기 때문에 명시적으로
                 }else{
-                    Log.v("ERROR", "listener is null");
+                    Log.v("MainActivity", "listener is null");
                 }
             }
 

@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         public void onImageClick(View v, ImageTextData data) {
             switch (v.getId()){
                 case R.id.view :
-                    Log.v(TAG, "view : "+ data.text);
+                    Log.v(TAG, "view : " + data.text);
                     break;
 
                 case R.id.view2 :
@@ -30,12 +30,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ImageTextView imageTextView = (ImageTextView)findViewById(R.id.view);
-        ImageTextData data = new ImageTextData(R.drawable.down, "wow");
+        ImageTextData data = new ImageTextData(R.drawable.down, "data");
         imageTextView.setData(data);
         imageTextView.setOnImageListener(handler);
 
         ImageTextView imageTextView2 = (ImageTextView)findViewById(R.id.view2);
-        ImageTextData data2 = new ImageTextData(R.drawable.down2, "oh~!");
+        ImageTextData data2 = new ImageTextData(R.drawable.down2, "data2");
         imageTextView.setData(data2);
         imageTextView.setOnImageListener(handler);
 
