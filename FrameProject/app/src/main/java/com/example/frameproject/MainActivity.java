@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -49,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
         tv.setText(company);
 
 
+        ProgressBar pb = (ProgressBar)findViewById(R.id.progressBar2);
+        pb.setProgress(80);
+        pb.setSecondaryProgress(90); // design에 속성에는 없다.
 
 
 //        setContentView(R.layout.activity_main);
