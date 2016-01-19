@@ -12,5 +12,34 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="Hello World!"
+        android:id="@+id/textView2" />
+
+    <com.example.compoundproject.ImageTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/view"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="52dp" />
+
+    <com.example.compoundproject.ImageTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/view2"
+        android:layout_marginTop="133dp"
+        android:layout_below="@+id/view"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <com.example.compoundproject.ImageTextView
+        xmlns:app = "http://schemas.android.com/apk/res-auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/view3"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        app:imgSrc="@drawable/down"
+        app:title1="새로운 제목"
+        />
 </RelativeLayout>
