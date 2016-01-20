@@ -24,9 +24,17 @@ public class NewActivity extends AppCompatActivity {
 
 
         // 직렬화 방법
-        MyItem item =  (MyItem)intent.getSerializableExtra("item"); // MyItem으로 캐스팅 해야함
-        if( item != null) {
-            et.setText(item.name + item.cnt);
+//        MyItem item =  (MyItem)intent.getSerializableExtra("item"); // MyItem으로 캐스팅 해야함
+//        if( item != null) {
+//            et.setText(item.name + item.cnt);
+//        }else{
+//            et.setText("No value");
+//        }
+
+        // parcer 방법
+        MyItem1 item1 = intent.getParcelableExtra("item1");
+        if( item1 != null) {
+            et.setText(item1.name + item1.cnt);
         }else{
             et.setText("No value");
         }

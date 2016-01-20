@@ -56,13 +56,21 @@ public class MainActivity extends AppCompatActivity {
     void doAction4(){ // 명시적 Intent
         Intent intent = new Intent(this, NewActivity.class);
         String name = et1.getText().toString(); // 에디트에 있는 값 가져오기
-//        intent.putExtra("name", name); // 그냥 방법
+
+        // 그냥 방법
+//        intent.putExtra("name", name);
 //        intent.putExtra("cnt", 123);
 
-        MyItem item = new MyItem();
-        item.name = name;
-        item.cnt = 22;
-        intent.putExtra("item",item); // 그냥 하면 에러 뜸 Item 클래스에서 Serializable implements 해야함. putExtra는 객체를 못 넘겨서
+        // 직렬화 방법
+//        MyItem item = new MyItem();
+//        item.name = name;
+//        item.cnt = 22;
+//        intent.putExtra("item",item); // 그냥 하면 에러 뜸 Item 클래스에서 Serializable implements 해야함. putExtra는 객체를 못 넘겨서
+
+        // parcer 방법
+        MyItem1 item1 = new MyItem1(name, 33);
+        intent.putExtra("item1", item1);
+
 
         startActivity(intent); // try catch 할것.
     }
