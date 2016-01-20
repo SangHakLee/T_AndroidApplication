@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); // 묵시적 inflate
         view = (ListView)findViewById(R.id.listView);
-
+        initData();// 이거 없어서 난 에러
         adapter = new MyAdapter(this, R.layout.item, data); // this가 context임,
         view.setAdapter(adapter);
     }
