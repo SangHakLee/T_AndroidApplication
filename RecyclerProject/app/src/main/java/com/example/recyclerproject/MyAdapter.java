@@ -42,7 +42,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{ //2. 
             img = (ImageView)itemView.findViewById(R.id.imageView);
             textView = (TextView)itemView.findViewById(R.id.textView);
             textView2 = (TextView)itemView.findViewById(R.id.textView2);
-            textView2 = (TextView)itemView.findViewById(R.id.textView2);
+            textView3 = (TextView)itemView.findViewById(R.id.textView3);
         }
     }
 

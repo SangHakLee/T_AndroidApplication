@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         initData();
         adapter = new MyAdapter(this, R.layout.item, data);
 
-        LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         view.setLayoutManager(manager);
 
         view.setAdapter(adapter);
