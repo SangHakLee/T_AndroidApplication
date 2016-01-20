@@ -28,6 +28,11 @@ public class MyAdapter extends BaseAdapter {
         this.data = data;
     }
 
+    public void addData(MyItem item){
+        data.add(item); // 이렇게 하면 UI가 변경되지 않는다.
+//        notifyDataSetChanged();
+    }
+
     @Override
     public int getCount() {
         return data.size(); // arrayList 키기 반환

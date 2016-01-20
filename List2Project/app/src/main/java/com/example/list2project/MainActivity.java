@@ -6,12 +6,37 @@ import android.view.View;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     ListView view;
     ArrayList<MyItem> data = new ArrayList<MyItem>(); // 데이터 관리 리스트
 
     MyAdapter adapter; // MyAdapter Class 먼저 생성해야함
+
+    View.OnClickListener handler = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.button :
+                    doAction1();
+                    break;
+
+//                case R.id.button :
+//                    doAction2();
+//                    break;
+            }
+        }
+    };
+
+    void doAction1(){
+        int num = new Random().nextInt(7);
+        MyItem item = new MyItem("9,999", R.drawable.icon01, 9999, "WoW");
+        data.add(item);
+
+        adapter.notifyDataSetChanged(); // MyAdapter의 addData()에사 하지 말고 여기서 한다. 관심사의 분리 
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +50,10 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new MyAdapter(this, R.layout.item, data); // this가 context임,
         view.setAdapter(adapter);
+
+
+
+        findViewById(R.id.button).setOnClickListener(handler);
     }
 
     void initData(){
