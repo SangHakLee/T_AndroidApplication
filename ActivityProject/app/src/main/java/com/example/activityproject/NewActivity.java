@@ -101,6 +101,45 @@ public class NewActivity extends AppCompatActivity {
         String name = intent.getStringExtra("name");
         int cnt = intent.getIntExtra("cnt", 100);
         et.setText(name + cnt);
+        et.append(MyApplication.title);
 
+        Log.v(TAG, "New OnCreate : savedInstanceState : " + savedInstanceState);
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.v(TAG, "New onDestroy");
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onStop() {
+        Log.v(TAG, "New onStop");
+        super.onStop();
+    }
+
+    @Override
+    protected void onPause() {
+        Log.v(TAG, "New onPause");
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        Log.v(TAG, "New onResume");
+        super.onResume();
+    }
+
+    @Override
+    protected void onStart() {
+        Log.v(TAG, "New onStart");
+        super.onStart();
+    }
+
+    @Override
+    protected void onRestart() {
+        Log.v(TAG, "New onRestart");
+        super.onRestart();
     }
 }

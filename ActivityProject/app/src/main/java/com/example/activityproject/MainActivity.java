@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
-    int[] resId = {R.id.button2, R.id.button3, R.id.button4, R.id.button5, R.id.button6, R.id.button8}; // 리소스 배열, 여기에 버튼들 배열을 넣는다.
+    int[] resId = {R.id.button2, R.id.button3, R.id.button4, R.id.button5, R.id.button6, R.id.button8, R.id.button11}; // 리소스 배열, 여기에 버튼들 배열을 넣는다.
     EditText et1, et2, et3;
     View.OnClickListener handler = new View.OnClickListener() {
         @Override
@@ -37,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.button8 :
                     doAction6();
+                    break;
+                case R.id.button11 :
+                    doAction7();
                     break;
 
             }
@@ -90,6 +93,8 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("name", name);
         intent.putExtra("cnt", 155);
 
+        MyApplication.title ="tacademy"; // MyApplication에 데이터를 넣는다. 공용으로 사용하기 위헤ㅐ
+
         startActivityForResult(intent, 100); // 2번째 인자 requestCode
     }
 
@@ -102,9 +107,23 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intent, 200); // 2번째 인자 requestCode
     }
 
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {    // 백그라운드 죽어도 멤버 변수 유지하기 위해서
+        outState.putInt("x", x); // 메모리 아웃을 대비해서 저장해둔다. 번들이 있을때까지만. 앱 종료되면 번들도 없어진다.
+        super.onSaveInstanceState(outState);
+    }
+
+    int x, y;
+    void doAction7(){
+        x++;
+        y++;
+        et1.setText(String.format("x : %d y : %d", x, y)); // 멤버 필드가 날아갈수도 있다.
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.v(TAG, requestCode+", "+resultCode+", "+data);
+        Log.v(TAG, requestCode + ", " + resultCode + ", " + data);
 
         // null point 가 뜰수도 있다 기기의 뒤로 버튼 누르면 그래서 switch 로 잡는다.
         switch(requestCode){
@@ -149,5 +168,49 @@ public class MainActivity extends AppCompatActivity {
         et1 = (EditText)findViewById(R.id.editText);
         et2 = (EditText)findViewById(R.id.editText3);
         et3 = (EditText)findViewById(R.id.editText4);
+
+        Log.v(TAG, "Main OnCreate : savedInstanceState : " + savedInstanceState);
+
+        if(savedInstanceState != null){ // 메모리 아웃됬다가 돌아온 경우임
+            x = savedInstanceState.getInt("x");
+        }
     }
+
+    @Override
+    protected void onDestroy() {
+        Log.v(TAG, "onDestroy");
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onStop() {
+        Log.v(TAG, "onStop");
+        super.onStop();
+    }
+
+    @Override
+    protected void onPause() {
+        Log.v(TAG, "onPause");
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        Log.v(TAG, "onResume");
+        super.onResume();
+    }
+
+    @Override
+    protected void onStart() {
+        Log.v(TAG, "onStart");
+        super.onStart();
+    }
+
+    @Override
+    protected void onRestart() {
+        Log.v(TAG, "onRestart");
+        super.onRestart();
+    }
+
+
 }

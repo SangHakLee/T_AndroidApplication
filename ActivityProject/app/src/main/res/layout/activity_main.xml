@@ -96,4 +96,14 @@
         android:layout_alignParentEnd="true"
         android:layout_toRightOf="@+id/button8"
         android:layout_toEndOf="@+id/button8" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+/-"
+        android:id="@+id/button11"
+        android:layout_below="@+id/editText4"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="65dp" />
 </RelativeLayout>
