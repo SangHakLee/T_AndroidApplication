@@ -2,16 +2,18 @@ package com.example.activityproject;
 
 import android.content.ComponentName;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
-    int[] resId = {R.id.button2, R.id.button3, R.id.button4, R.id.button5}; // 리소스 배열, 여기에 버튼들 배열을 넣는다.
-    EditText et1;
+    int[] resId = {R.id.button2, R.id.button3, R.id.button4, R.id.button5, R.id.button6, R.id.button8}; // 리소스 배열, 여기에 버튼들 배열을 넣는다.
+    EditText et1, et2, et3;
     View.OnClickListener handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -29,6 +31,12 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.button5 :
                     doAction4();
+                    break;
+                case R.id.button6 :
+                    doAction5();
+                    break;
+                case R.id.button8 :
+                    doAction6();
                     break;
 
             }
@@ -75,6 +83,60 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent); // try catch 할것.
     }
 
+
+    void doAction5(){ // 명시적 Intent
+        Intent intent = new Intent(this, NewActivity.class);
+        String name = et1.getText().toString();
+        intent.putExtra("name", name);
+        intent.putExtra("cnt", 155);
+
+        startActivityForResult(intent, 100); // 2번째 인자 requestCode
+    }
+
+    void doAction6(){ // 명시적 Intent
+        Intent intent = new Intent(this, New1Activity.class);
+        String name = et1.getText().toString();
+        intent.putExtra("name", name);
+        intent.putExtra("cnt", 155);
+
+        startActivityForResult(intent, 200); // 2번째 인자 requestCode
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.v(TAG, requestCode+", "+resultCode+", "+data);
+
+        // null point 가 뜰수도 있다 기기의 뒤로 버튼 누르면 그래서 switch 로 잡는다.
+        switch(requestCode){
+            case RESULT_OK:
+                String result = data.getStringExtra("result");
+                String tel = data.getStringExtra("tel");
+                switch (requestCode){
+                    case 100:
+                        et2.setText(String.format("result : %s , tel : %s", result, tel));
+                        break;
+
+                    case 200:
+                        et3.setText(String.format("result : %s , tel : %s", result, tel));
+                        break;
+                }
+
+                break;
+
+            case RESULT_CANCELED: // 뒤로가기 누르는 경우
+                Toast.makeText(this, "취소로 종료됨", Toast.LENGTH_SHORT).show();
+                break;
+
+            case 123 : // 앱 종료하는 내가 정의한 코드
+                setResult(123);
+                finish();
+                break;
+        }
+
+
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,5 +147,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         et1 = (EditText)findViewById(R.id.editText);
+        et2 = (EditText)findViewById(R.id.editText3);
+        et3 = (EditText)findViewById(R.id.editText4);
     }
 }
