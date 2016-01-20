@@ -35,5 +35,18 @@ public class MainActivity extends AppCompatActivity {
         data.add(new MyItem("2,000", R.drawable.icon04, 4000, "멀티탭3"));
         data.add(new MyItem("2,000", R.drawable.icon05, 5000, "멀티탭2"));
         data.add(new MyItem("2,000", R.drawable.icon06, 6000, "멀티탭1"));
+
+        data.add(new MyItem("2,000", R.drawable.icon01, 1000, "멀티탭1"));
+        data.add(new MyItem("2,000", R.drawable.icon02, 2000, "멀티탭2"));
+        data.add(new MyItem("2,000", R.drawable.icon03, 3000, "멀티탭3"));
+        data.add(new MyItem("2,000", R.drawable.icon04, 4000, "멀티탭4"));
+        data.add(new MyItem("2,000", R.drawable.icon05, 5000, "멀티탭5"));
+        data.add(new MyItem("2,000", R.drawable.icon06, 6000, "멀티탭6"));
+        data.add(new MyItem("2,000", R.drawable.icon01, 1000, "멀티탭6"));
+        data.add(new MyItem("2,000", R.drawable.icon02, 2000, "멀티탭5"));
+        data.add(new MyItem("2,000", R.drawable.icon03, 3000, "멀티탭4"));
+        data.add(new MyItem("2,000", R.drawable.icon04, 4000, "멀티탭3"));
+        data.add(new MyItem("2,000", R.drawable.icon05, 5000, "멀티탭2"));
+        data.add(new MyItem("2,000", R.drawable.icon06, 6000, "멀티탭1"));
     }
 }
