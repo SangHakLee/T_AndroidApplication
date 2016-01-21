@@ -21,9 +21,11 @@ public class FirstFragment extends Fragment {
 
     public FirstFragment() {
         // Required empty public constructor
-        Bundle bundle = getArguments(); // main에서 던진 bundle 받음
-        cnt = bundle.getInt("cnt");
-        name = bundle.getString("name");
+
+    // 여기서 했더니 nullpoint 뜸. onCreateView 로 이동
+//        Bundle bundle = getArguments(); // main에서 던진 bundle 받음
+//        cnt = bundle.getInt("cnt");
+//        name = bundle.getString("name");
     }
 
     @Override
@@ -62,6 +64,11 @@ public class FirstFragment extends Fragment {
         tv = (TextView)view.findViewById(R.id.showText);
         et = (EditText)view.findViewById(R.id.editText);
         view.findViewById(R.id.button).setOnClickListener(handler);
+
+        // 여기서도 번들을 해야한다. 맨처음 뜨는곳이 여기이기 때문에
+        Bundle bundle = getArguments(); // main에서 던진 bundle 받음
+        cnt = bundle.getInt("cnt");
+        name = bundle.getString("name");
 
         et.setText(name + cnt); // 번들로 받아와서 멤버에 할당한 변수들
 

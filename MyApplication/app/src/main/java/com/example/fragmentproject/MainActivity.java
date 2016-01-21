@@ -87,9 +87,16 @@ public class MainActivity extends AppCompatActivity {
 //        firstFragment = (FirstFragment)manager.findFragmentById(R.id.fragment); // 캐스팅 필요
 
         if(savedInstanceState == null){ // 불 필요 생성 안하게
-
+            cnt++;
+            Bundle bundle = new Bundle(); // 번들 한개 만듬
+            bundle.putInt("cnt", cnt);
+            bundle.putString("name", "android");
             // 동적 생성
             firstFragment = new FirstFragment();
+
+            firstFragment.setArguments(bundle); // 만든 번들을 넣어줌
+
+
             FragmentTransaction ft = manager.beginTransaction();
             ft.add(R.id.main, firstFragment); // 있는거 위에 올린다.
             ft.commit();
