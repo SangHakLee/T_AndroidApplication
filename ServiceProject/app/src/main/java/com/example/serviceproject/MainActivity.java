@@ -1,6 +1,9 @@
 package com.example.serviceproject;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,6 +13,14 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "Main";
 
     EditText et;
+
+
+    BroadcastReceiver receiver = new BroadcastReceiver() { // MyService의 쓰레드에서 보낸 거 받는 리시버
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            et.setText(intent.getIntExtra("cnt",0) + "");
+        }
+    };
 
     View.OnClickListener handler = new View.OnClickListener() {
         @Override
@@ -24,9 +35,11 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case R.id.button3:
+                    doAction3();
                     break;
 
                 case R.id.button4:
+                    doAction4();
                     break;
             }
         }
@@ -42,6 +55,16 @@ public class MainActivity extends AppCompatActivity {
     void doAction2(){
         Intent intent = new Intent(this, MyService.class);
         stopService(intent); // 종료 서비스
+    }
+
+    void doAction3(){
+        IntentFilter filter = new IntentFilter(); // 수신자
+        filter.addAction("com.example.serviceproject.intent.action.COUNT"); // MyService에서 보낸 이름으로 접근
+        registerReceiver(receiver, filter); // receiver 는 위에서 선언한 BroadcastReceiver et 값 바꾸는거
+    }
+
+    void doAction4(){
+        unregisterReceiver(receiver); // 리시버 해제
     }
 
     @Override

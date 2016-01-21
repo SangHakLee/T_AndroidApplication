@@ -15,8 +15,15 @@ public class MyService extends Service {
     // 서비스에서는 대부분 쓰레드가 만들어진다.
     class JobThread extends Thread{ // 쓰레드 생성
         public void run(){
+//            Intent intent = new Intent(); // 이렇게 하면 안됨. 매번 생성해야한다.
+            Intent intent = null;
             while( onAir ){
                 cnt ++;
+                if( cnt %3 == 0 ){ // 특정 조건이 맞는다면
+                    intent = new Intent("com.example.serviceproject.intent.action.COUNT"); // 매번 새로운 Intent 만들어야한다!!. 이름은 권장사항
+                    intent.putExtra("cnt", cnt); // Intent를 통해 cnt를 보낸다.
+                    sendBroadcast(intent);
+                }
                 Log.v(TAG, "cnt : " + cnt);
                 SystemClock.sleep(300); // java sleep 대체
             }

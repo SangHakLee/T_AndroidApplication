@@ -38,7 +38,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="수신하기"
         android:id="@+id/button3"
         android:layout_below="@+id/button2"
         android:layout_alignParentLeft="true"
@@ -47,7 +47,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="리시버 종료"
         android:id="@+id/button4"
         android:layout_below="@+id/button3"
         android:layout_alignParentLeft="true"
