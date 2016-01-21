@@ -15,8 +15,15 @@ public class FirstFragment extends Fragment {
 
     Context context;
 
+    // 번들에서 가져와서 값 대입 해주기위한 멤버 필드
+    int cnt;
+    String name;
+
     public FirstFragment() {
         // Required empty public constructor
+        Bundle bundle = getArguments(); // main에서 던진 bundle 받음
+        cnt = bundle.getInt("cnt");
+        name = bundle.getString("name");
     }
 
     @Override
@@ -55,6 +62,8 @@ public class FirstFragment extends Fragment {
         tv = (TextView)view.findViewById(R.id.showText);
         et = (EditText)view.findViewById(R.id.editText);
         view.findViewById(R.id.button).setOnClickListener(handler);
+
+        et.setText(name + cnt); // 번들로 받아와서 멤버에 할당한 변수들
 
         return view; // 부모를 넘기는게 아니라 내가 만든 fragment_first를 inflate 해서 넘긴다.
     }

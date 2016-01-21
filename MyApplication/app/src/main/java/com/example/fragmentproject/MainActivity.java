@@ -36,22 +36,34 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    int cnt = 0;
+
     void doAction1(){
         fragment = manager.findFragmentByTag("first");
 
         if(fragment == null){ // 불필요한 생성 막기
+            Log.v(TAG,"first");
+
+            cnt++;
+            Bundle bundle = new Bundle(); // 번들 한개 만듬
+            bundle.putInt("cnt", cnt);
+            bundle.putString("name", "android");
+
             firstFragment = new FirstFragment();
+
+            firstFragment.setArguments(bundle); // 만든 번들을 넣어줌
+
             ft = manager.beginTransaction();
             ft.replace(R.id.main, firstFragment, "first"); // main위에다 firstFragment로 대체한다. 3번째 인자는 변수명
             ft.commit();
         }
     }
 
+
     void doAction2(){
         fragment = manager.findFragmentByTag("second");
 
         if(fragment == null) {
-            Log.v(TAG,"first");
             secondFragment = new SecondFragment();
             ft = manager.beginTransaction();
             ft.replace(R.id.main, secondFragment, "second"); // main위에다 secondFragment 대체한다.
