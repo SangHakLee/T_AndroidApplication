@@ -8,10 +8,4 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <!--여러가지 묶어 놓은게 style-->
-    <style name="my_style">
-        <item name="android:textSize">20sp</item>
-        <item name="android:textColor">#a12741</item>
-    </style>
-
 </resources>
