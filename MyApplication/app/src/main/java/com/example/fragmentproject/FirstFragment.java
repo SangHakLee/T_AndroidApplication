@@ -79,9 +79,19 @@ public class FirstFragment extends Fragment {
 //        startService(intent); // Fragment에는 없다. 에러. Fragement는 액티비티가 없다.
     }
 
-    // 메인으로 접근하기
+
+    // 메인으로 접근하기 방법2
+    interface MyListener{ // 2.1 인터페이스 정의
+        void receiveMessage(String message);
+    };
+    MyListener listener;
+    public void setOnMyListener(MyListener listener){ // 2.2 리스너 생성
+        this.listener = listener;
+    }
+
     void doAction2(){
-        ((MainActivity)context).doChangeData(et.getText().toString()); // MainActivity로 캐스팅해서 넘어온 context에 접근하면 MainActivity에 접근할수 있다.
+        // 메인으로 접근하기 방법1. 책
+//        ((MainActivity)context).doChangeData(et.getText().toString()); // MainActivity로 캐스팅해서 넘어온 context에 접근하면 MainActivity에 접근할수 있다.
 
     }
 

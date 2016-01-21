@@ -101,8 +101,15 @@ public class MainActivity extends AppCompatActivity {
             firstFragment = new FirstFragment();
 
             firstFragment.setArguments(bundle); // 만든 번들을 넣어줌
-
 //            firstFragment.setData("test", cnt); // 번들 대신 방법
+
+            // 프레그먼트에서 메인으로 데이터 넘기기 방법2. doChangeData 하는거
+            firstFragment.setOnMyListener(new FirstFragment.MyListener() { // FirstFragment에서 setOnMyListener를 구현하고 여기서 사용한다.
+                @Override
+                public void receiveMessage(String data) {
+                    doChangeData(data);
+                }
+            });
 
 
             FragmentTransaction ft = manager.beginTransaction();
