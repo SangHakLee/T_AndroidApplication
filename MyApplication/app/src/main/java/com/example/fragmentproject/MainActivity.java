@@ -1,9 +1,11 @@
 package com.example.fragmentproject;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -12,10 +14,13 @@ public class MainActivity extends AppCompatActivity {
     FirstFragment firstFragment; // 프래그먼트에 접근하기 위해서 선언
     SecondFragment secondFragment; // 프래그먼트에 접근하기 위해서 선언
 
-    // 핸들러에 넣어주기 위해 멤버변수 밖으로 뺌
-    FragmentManager manager = getSupportFragmentManager(); // 어디것을 가져오는지 중요 FragmentManager은 두개가 있다. 우린 support.v4 사용
-    FragmentTransaction ft = manager.beginTransaction();
+    Fragment fragment;
 
+    // 핸들러에 넣어주기 위해 멤버변수 밖으로 뺌
+    FragmentManager manager; // 어디것을 가져오는지 중요 FragmentManager은 두개가 있다. 우린 support.v4 사용
+    FragmentTransaction ft;
+
+     private static final String TAG = "Main";
 
     View.OnClickListener handler = new View.OnClickListener() {
         @Override
@@ -32,17 +37,26 @@ public class MainActivity extends AppCompatActivity {
     };
 
     void doAction1(){
-        firstFragment = new FirstFragment();
-        FragmentTransaction ft = manager.beginTransaction();
-        ft.replace(R.id.main, firstFragment); // main위에다 firstFragment로 대체한다.
-        ft.commit();
+        fragment = manager.findFragmentByTag("first");
+
+        if(fragment == null){ // 불필요한 생성 막기
+            firstFragment = new FirstFragment();
+            ft = manager.beginTransaction();
+            ft.replace(R.id.main, firstFragment, "first"); // main위에다 firstFragment로 대체한다. 3번째 인자는 변수명
+            ft.commit();
+        }
     }
 
     void doAction2(){
-        secondFragment = new SecondFragment();
-        FragmentTransaction ft = manager.beginTransaction();
-        ft.replace(R.id.main, secondFragment); // main위에다 secondFragment 대체한다.
-        ft.commit();
+        fragment = manager.findFragmentByTag("second");
+
+        if(fragment == null) {
+            Log.v(TAG,"first");
+            secondFragment = new SecondFragment();
+            ft = manager.beginTransaction();
+            ft.replace(R.id.main, secondFragment, "second"); // main위에다 secondFragment 대체한다.
+            ft.commit();
+        }
     }
 
     @Override
