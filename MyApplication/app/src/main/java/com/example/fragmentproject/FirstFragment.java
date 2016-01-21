@@ -93,6 +93,10 @@ public class FirstFragment extends Fragment {
         // 메인으로 접근하기 방법1. 책
 //        ((MainActivity)context).doChangeData(et.getText().toString()); // MainActivity로 캐스팅해서 넘어온 context에 접근하면 MainActivity에 접근할수 있다.
 
+        //방법 2
+        if(listener != null){
+            listener.receiveMessage(et.getText().toString());
+        }
     }
 
     @Nullable

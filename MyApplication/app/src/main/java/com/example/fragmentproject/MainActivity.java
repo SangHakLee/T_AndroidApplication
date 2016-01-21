@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
 //            firstFragment.setData("test", cnt); // 번들 대신 방법
 
             // 프레그먼트에서 메인으로 데이터 넘기기 방법2. doChangeData 하는거
+            // 어떤 곳에서든 setOnMyListener를 재구현해서 쓴다. interface이기 때문에 
             firstFragment.setOnMyListener(new FirstFragment.MyListener() { // FirstFragment에서 setOnMyListener를 구현하고 여기서 사용한다.
                 @Override
                 public void receiveMessage(String data) {
