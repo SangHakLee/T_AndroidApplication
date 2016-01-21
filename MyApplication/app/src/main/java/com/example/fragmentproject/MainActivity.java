@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "Main";
+
     EditText et;
     FirstFragment firstFragment; // 프래그먼트에 접근하기 위해서 선언
     SecondFragment secondFragment; // 프래그먼트에 접근하기 위해서 선언
@@ -20,7 +22,11 @@ public class MainActivity extends AppCompatActivity {
     FragmentManager manager; // 어디것을 가져오는지 중요 FragmentManager은 두개가 있다. 우린 support.v4 사용
     FragmentTransaction ft;
 
-     private static final String TAG = "Main";
+    // 방법1. 플레그먼트에서 메인에 접근하기
+    public void doChangeData(String data){
+        et.setText(data);
+    }
+
 
     View.OnClickListener handler = new View.OnClickListener() {
         @Override
@@ -77,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 //        setContentView(R.layout.activity_main);
         setContentView(R.layout.activity_main1);
 
-        et = (EditText)findViewById(R.id.editText2);
+        et = (EditText)findViewById(R.id.editText3);
 
         findViewById(R.id.button2).setOnClickListener(handler);
         findViewById(R.id.button4).setOnClickListener(handler);
@@ -88,15 +94,15 @@ public class MainActivity extends AppCompatActivity {
 
         if(savedInstanceState == null){ // 불 필요 생성 안하게
             cnt++;
-//            Bundle bundle = new Bundle(); // 번들 한개 만듬
-//            bundle.putInt("cnt", cnt);
-//            bundle.putString("name", "android");
+            Bundle bundle = new Bundle(); // 번들 한개 만듬
+            bundle.putInt("cnt", cnt);
+            bundle.putString("name", "android");
             // 동적 생성
             firstFragment = new FirstFragment();
 
-//            firstFragment.setArguments(bundle); // 만든 번들을 넣어줌
+            firstFragment.setArguments(bundle); // 만든 번들을 넣어줌
 
-            firstFragment.setData("test", cnt); // 번들 대신 방법
+//            firstFragment.setData("test", cnt); // 번들 대신 방법
 
 
             FragmentTransaction ft = manager.beginTransaction();

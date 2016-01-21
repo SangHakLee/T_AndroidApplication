@@ -37,7 +37,7 @@ public class FirstFragment extends Fragment {
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(Context context) { // 이때 불른 activity가 붙는다.
         super.onAttach(context);
         this.context = context; // attach 될때 현재 context를 넣는다.
     }
@@ -60,7 +60,11 @@ public class FirstFragment extends Fragment {
 
                 case R.id.button6:
                     doAction1();
-                break;
+                    break;
+
+                case R.id.button7:
+                    doAction2();
+                    break;
             }
         }
     };
@@ -75,6 +79,12 @@ public class FirstFragment extends Fragment {
 //        startService(intent); // Fragment에는 없다. 에러. Fragement는 액티비티가 없다.
     }
 
+    // 메인으로 접근하기
+    void doAction2(){
+        ((MainActivity)context).doChangeData(et.getText().toString()); // MainActivity로 캐스팅해서 넘어온 context에 접근하면 MainActivity에 접근할수 있다.
+
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -86,12 +96,13 @@ public class FirstFragment extends Fragment {
         et = (EditText)view.findViewById(R.id.editText);
         view.findViewById(R.id.button).setOnClickListener(handler);
         view.findViewById(R.id.button6).setOnClickListener(handler);
+        view.findViewById(R.id.button7).setOnClickListener(handler);
 
 
         // 여기서도 번들을 해야한다. 맨처음 뜨는곳이 여기이기 때문에
-//        Bundle bundle = getArguments(); // main에서 던진 bundle 받음
-//        cnt = bundle.getInt("cnt");
-//        name = bundle.getString("name");
+        Bundle bundle = getArguments(); // main에서 던진 bundle 받음
+        cnt = bundle.getInt("cnt");
+        name = bundle.getString("name");
 
         et.setText(name + cnt); // 번들로 받아와서 멤버에 할당한 변수들
 

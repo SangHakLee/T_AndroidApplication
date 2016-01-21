@@ -29,7 +29,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="텍스트 변경"
         android:id="@+id/button"
         android:layout_alignBottom="@+id/editText"
         android:layout_alignParentRight="true"
@@ -42,5 +42,14 @@
         android:id="@+id/button6"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="메인 에딧 변경"
+        android:id="@+id/button7"
+        android:layout_below="@+id/button6"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="46dp" />
 
 </RelativeLayout>
