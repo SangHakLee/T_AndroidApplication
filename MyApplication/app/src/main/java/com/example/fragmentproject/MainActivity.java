@@ -88,13 +88,15 @@ public class MainActivity extends AppCompatActivity {
 
         if(savedInstanceState == null){ // 불 필요 생성 안하게
             cnt++;
-            Bundle bundle = new Bundle(); // 번들 한개 만듬
-            bundle.putInt("cnt", cnt);
-            bundle.putString("name", "android");
+//            Bundle bundle = new Bundle(); // 번들 한개 만듬
+//            bundle.putInt("cnt", cnt);
+//            bundle.putString("name", "android");
             // 동적 생성
             firstFragment = new FirstFragment();
 
-            firstFragment.setArguments(bundle); // 만든 번들을 넣어줌
+//            firstFragment.setArguments(bundle); // 만든 번들을 넣어줌
+
+            firstFragment.setData("test", cnt); // 번들 대신 방법
 
 
             FragmentTransaction ft = manager.beginTransaction();
