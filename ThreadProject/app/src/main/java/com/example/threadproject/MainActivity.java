@@ -39,9 +39,12 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case 200:
-                    et2.setText(msg.arg1+""); // 여기서 sendMessage로 받은 메시지를 받아온다.
+//                    et2.setText(msg.arg1+""); // 여기서 sendMessage로 받은 메시지를 받아온다.
+                    et2.setText(cnt+""); // sendEmptyMessage 로 받는 방법
+
                     break;
             }
+
         }
     };
 
@@ -54,14 +57,15 @@ public class MainActivity extends AppCompatActivity {
                 cnt++;
                 Log.v(TAG, "cnt2 : "+ cnt);
 
-                // 핸들러를 이용해서 메세지 보내기
-                msg = handler1.obtainMessage();
+                handler1.sendEmptyMessage(200); // 분기에 사용되는 200 넘김
 
-                msg.arg1 = cnt;
-                msg.what = 200; // 구분하기 위한 넘버링
-
-
-                handler1.sendMessage(msg); // handleMessage로 간다.
+//                // 핸들러를 이용해서 메세지 보내기
+//                msg = handler1.obtainMessage();
+//
+//                msg.arg1 = cnt;
+//                msg.what = 200; // 구분하기 위한 넘버링
+//
+//                handler1.sendMessage(msg); // handleMessage로 간다.
 
 
 //                et.setText("cnt : " + cnt); // 내가 만든 쓰레드는 UI 변경 불가. 메인 쓰레드만 가능하다. Toast도 마찬가지 불가능  -> Handler 필요
