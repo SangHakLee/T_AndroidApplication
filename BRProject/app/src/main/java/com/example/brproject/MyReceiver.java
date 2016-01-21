@@ -12,6 +12,8 @@ public class MyReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) { // 방송 듣는 부분
         cnt++;
+        String action = intent.getAction(); // 어떤 방송인지 분기하기 위해서
         Log.v(TAG, "cnt :" + cnt);
+        Log.v(TAG, "action :" + action);
     }
 }
