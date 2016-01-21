@@ -1,6 +1,7 @@
 package com.example.fragmentproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -52,14 +53,27 @@ public class FirstFragment extends Fragment {
     View.OnClickListener handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            tv.setText(et.getText().toString()); // 에딧텍스트의 값은 tv로
+            switch (v.getId()){
+                case R.id.button:
+                    tv.setText(et.getText().toString()); // 에딧텍스트의 값은 tv로
+                    break;
 
-//            switch (v.getId()){
-//                case 1:
-//                break;
-//            }
+                case R.id.button6:
+                    doAction1();
+                break;
+            }
         }
     };
+
+    void doAction1(){
+        // 프래그먼트는 액티비티의 성격을 가진다. 액티비티가 아니다.
+
+//        Intent intent = new Intent(this, MyActivity.class); // 액티비티가 아니라 할수 없다.
+//        Intent intent = new Intent(getActivity(), MyActivity.class); // 그래서 getActivity()로 context에 접근한다.
+        Intent intent = new Intent(context, MyActivity.class); // 또 하나, 여기서 onAttach에서 context를 줬기 때문에 context로 접근한다.
+        startActivity(intent);
+//        startService(intent); // Fragment에는 없다. 에러. Fragement는 액티비티가 없다.
+    }
 
     @Nullable
     @Override
@@ -71,6 +85,8 @@ public class FirstFragment extends Fragment {
         tv = (TextView)view.findViewById(R.id.showText);
         et = (EditText)view.findViewById(R.id.editText);
         view.findViewById(R.id.button).setOnClickListener(handler);
+        view.findViewById(R.id.button6).setOnClickListener(handler);
+
 
         // 여기서도 번들을 해야한다. 맨처음 뜨는곳이 여기이기 때문에
 //        Bundle bundle = getArguments(); // main에서 던진 bundle 받음
