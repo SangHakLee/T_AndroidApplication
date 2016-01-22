@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                     doAction3();
                     break;
                 case R.id.button4:
-//                    doAction4();
+                    doAction4();
                     break;
             }
         }
@@ -58,7 +58,34 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    void doAction4(){ // HTML 보여주기
+        String stringHTML = "<font color='red'>티아카데미</font> <br>  ";
+        view.loadDataWithBaseURL(null, stringHTML, "text/html", "UTF-8", null);
+    }
 
+    // 하드웨어 뒤로 눌를때 웹 뒤로가기
+    // 방법 1
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) { // 모든 버튼 잡음. 예외 전원, 홈 버튼 못 잡음
+//        switch (keyCode){
+//            case KeyEvent.KEYCODE_BACK:
+//                if(view.canGoBack()){
+//                    view.goBack(); // 뒤로가고
+//                    return true; // 앱 종료가 아니고 뒤로간다.
+//                }
+//                break;
+//        }
+//        return super.onKeyDown(keyCode, event); // 앱 종료
+//    }
+    // 방법 2
+    @Override
+    public void onBackPressed() { // 하드웨어 백버튼 다 잡는다.
+        if(view.canGoBack()){
+            view.goBack(); // 뒤로가고
+        }else{
+            finish(); // 아니면 앱 종료
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
