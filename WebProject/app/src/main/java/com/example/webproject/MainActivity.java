@@ -7,6 +7,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,13 +23,13 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             switch (v.getId()){
                 case R.id.button:
-//                    doAction1();
+                    doAction1();
                     break;
                 case R.id.button2:
-//                    doAction2();
+                    doAction2();
                     break;
                 case R.id.button3:
-//                    doAction3();
+                    doAction3();
                     break;
                 case R.id.button4:
 //                    doAction4();
@@ -36,6 +37,27 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
+
+    void doAction1(){
+        view.loadUrl(et.getText().toString()); // 입력상자의 값으로 로딩
+    }
+
+    void doAction2(){
+        if(view.canGoBack()){
+            view.goBack();
+        }else{
+            Toast.makeText(this, "처음입니다.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    void doAction3(){
+        if(view.canGoForward()){
+            view.goForward();
+        }else{
+            Toast.makeText(this, "끝.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
 
     @Override
