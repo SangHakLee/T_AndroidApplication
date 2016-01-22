@@ -14,10 +14,12 @@ public class MainActivity extends AppCompatActivity {
     ImageView img;
     AnimationDrawable animationDrawable; // 애니메이션
     Animation animation;
+    Animation buttonAnimation;
 
     View.OnClickListener handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            v.startAnimation(buttonAnimation); // 현재 눌린 버튼에 애니메이션 효과를 준다.
             switch (v.getId()){
                 case R.id.button:
                     doAction1();
@@ -77,6 +79,9 @@ public class MainActivity extends AppCompatActivity {
         img = (ImageView)findViewById(R.id.imageView);
 
         animationDrawable = (AnimationDrawable)img.getDrawable(); // 애니메이션 가져오기
+
+        animation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.move_image);
+        buttonAnimation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.button_animation);
 
     }
 }
