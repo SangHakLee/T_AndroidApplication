@@ -1,5 +1,7 @@
 package com.example.animationproject;
 
+import android.animation.AnimatorInflater;
+import android.animation.ValueAnimator;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,13 +10,17 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     ImageView img;
     AnimationDrawable animationDrawable; // 애니메이션
+    TextView tv;
+
     Animation animation;
     Animation buttonAnimation;
+    ValueAnimator valueAnimator;
 
     View.OnClickListener handler = new View.OnClickListener() {
         @Override
@@ -29,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.button3:
                     doAction3();
+                    break;
+                case R.id.button4:
+                    doAction4();
                     break;
             }
         }
@@ -54,11 +63,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    void doAction4(){
+        valueAnimator.start();
+    }
+
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
 
-        Log.v("Main", hasFocus+ "");
+        Log.v("Main", hasFocus + "");
 
         if(hasFocus){
             animationDrawable.stop();
@@ -75,13 +88,23 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button).setOnClickListener(handler);
         findViewById(R.id.button2).setOnClickListener(handler);
         findViewById(R.id.button3).setOnClickListener(handler);
+        findViewById(R.id.button4).setOnClickListener(handler);
 
         img = (ImageView)findViewById(R.id.imageView);
+        tv = (TextView) findViewById(R.id.textView2);
 
         animationDrawable = (AnimationDrawable)img.getDrawable(); // 애니메이션 가져오기
 
         animation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.move_image);
         buttonAnimation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.button_animation);
 
+        valueAnimator =  (ValueAnimator)AnimatorInflater.loadAnimator(this, R.animator.color_animator); // xml에 있는거 가져오기
+        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener(){
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                int color = (Integer)animation.getAnimatedValue();
+                tv.setBackgroundColor(color);
+            }
+        });
     }
 }
