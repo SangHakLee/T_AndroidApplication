@@ -2,12 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/menu1" android:title="설정" android:orderInCategory="4" app:showAsAction="ifRoom|withText"/>
+    <!--<item-->
+        <!--android:id="@+id/menu2"-->
+        <!--android:title="찾기"-->
+        <!--android:orderInCategory="3"-->
+        <!--app:showAsAction="ifRoom | collapseActionView"-->
+        <!--app:actionViewClass="android:support.v7.widget.SerchView"-->
+        <!--android:icon="@android:drawable/ic_menu_search"-->
+        <!--/>-->
+
     <item
-        android:id="@+id/menu2"
-        android:title="찾기"
+        android:id="@+id/menu_share"
+        android:title="공유"
         android:orderInCategory="3"
-        app:showAsAction="ifRoom | collapseActionView"
-        app:actionViewClass="android:support.v7.widget.SerchView"
-        android:icon="@android:drawable/ic_menu_search"
+        app:showAsAction="ifRoom"
+        app:actionProviderClass = "android.support.v7.widget.ShareActionProvider"
+        android:icon="@android:drawable/ic_menu_share"
         />
 </menu>
