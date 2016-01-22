@@ -5,19 +5,62 @@ import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ShareActionProvider;
-import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    Button btn;
+    MyImageView myImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        btn = (Button)findViewById(R.id.button);
+
+        registerForContextMenu(btn); // 꼭 해줘야한다.
+
+        myImageView = (MyImageView)findViewById(R.id.view);
+        registerForContextMenu(myImageView);
     }
 
+    @Override
+    public boolean onContextItemSelected(MenuItem item) { // 메뉴 선택시
+        switch (item.getItemId()){
+            case R.id.cmenu1:
+                Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.cmenu2:
+                Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT).show();
+                break;
+            case 101:
+                Toast.makeText(this, "저장", Toast.LENGTH_SHORT).show();
+                break;
+            case 102:
+                Toast.makeText(this, "삭제", Toast.LENGTH_SHORT).show();
+                break;
+            case 103:
+                Toast.makeText(this, "편집", Toast.LENGTH_SHORT).show();
+                break;
+        }
+        return super.onContextItemSelected(item);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) { // 메뉴 넣어준다.
+        switch (v.getId()){
+            case R.id.button :
+                getMenuInflater().inflate(R.menu.cmenu, menu);
+                break;
+        }
+        super.onCreateContextMenu(menu, v, menuInfo);
+    }
 
     ShareActionProvider shareActionProvider;
 
