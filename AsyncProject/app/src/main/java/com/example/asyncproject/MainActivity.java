@@ -2,9 +2,9 @@ package com.example.asyncproject;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -52,12 +52,12 @@ public class MainActivity extends AppCompatActivity {
                 if( num % 10 == 0){
                     // 특정 조건 만족시 UI 변경
                     publishProgress(num, 3, 5); // 이곳의 인자값 타입은 JobTask 클래스의
-                    SystemClock.sleep(200);
-                }
-                return "완료";
-            }
 
-            return null;
+                }
+                SystemClock.sleep(200);
+            }
+            return "완료";
+
         }
 
         // onPreExecute, onPostExecute, onProgressUpdate UI 변경에만 쓸것
