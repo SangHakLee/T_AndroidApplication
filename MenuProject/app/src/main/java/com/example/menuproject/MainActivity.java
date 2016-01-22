@@ -16,9 +16,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu); // 메뉴 Inflate 하기, xml로
-        MenuItem item = menu.add(0, 100, 5,"100 추가" ); // 코드로 추가하기
-        item.setIcon(R.mipmap.ic_launcher);
+//        getMenuInflater().inflate(R.menu.menu, menu); // 메뉴 Inflate 하기, xml로
+//        MenuItem item = menu.add(0, 100, 5,"100 추가" ); // 코드로 추가하기
+//        item.setIcon(R.mipmap.ic_launcher);
+        getMenuInflater().inflate(R.menu.menu1, menu); // 메뉴 Inflate 하기, xml로
         return super.onCreateOptionsMenu(menu);
     }
 
