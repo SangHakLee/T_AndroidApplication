@@ -4,6 +4,7 @@ import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.graphics.Color;
+import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
     TextSwitcher textSwitcher;
 
+    ImageView img1;
+
     View.OnClickListener handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -46,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.button5:
                     doAction5();
+                    break;
+                case R.id.button6:
+                    doAction6();
                     break;
             }
         }
@@ -86,6 +92,11 @@ public class MainActivity extends AppCompatActivity {
 
     void doAction5(){
         textSwitcher.showNext();
+    }
+
+    void doAction6(){
+        AnimatedVectorDrawable drawable = (AnimatedVectorDrawable)img1.getDrawable();
+        drawable.start();
     }
 
     @Override
@@ -132,6 +143,11 @@ public class MainActivity extends AppCompatActivity {
 
         textSwitcher = (TextSwitcher)findViewById(R.id.textSwitcher);
         findViewById(R.id.button5).setOnClickListener(handler);
+
+
+        findViewById(R.id.button6).setOnClickListener(handler);
+        img1 = (ImageView)findViewById(R.id.imageView2);
+
 
     }
 }
