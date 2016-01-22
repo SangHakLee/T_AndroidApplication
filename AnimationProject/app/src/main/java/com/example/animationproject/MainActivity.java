@@ -5,12 +5,15 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
     ImageView img;
-    AnimationDrawable animationDrawable;
+    AnimationDrawable animationDrawable; // 애니메이션
+    Animation animation;
 
     View.OnClickListener handler = new View.OnClickListener() {
         @Override
@@ -22,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.button2:
                     doAction2();
                     break;
+                case R.id.button3:
+                    doAction3();
+                    break;
             }
         }
     };
@@ -32,6 +38,18 @@ public class MainActivity extends AppCompatActivity {
 
     void doAction2(){
         animationDrawable.stop(); // 애니메이션 종료
+    }
+
+    boolean toggle = true;
+    void doAction3(){
+        animation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.move_image);
+        if(toggle){
+            img.startAnimation(animation);
+            toggle = false;
+        }else{
+            img.clearAnimation();
+            toggle = true;
+        }
     }
 
     @Override
@@ -54,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.button).setOnClickListener(handler);
         findViewById(R.id.button2).setOnClickListener(handler);
+        findViewById(R.id.button3).setOnClickListener(handler);
 
         img = (ImageView)findViewById(R.id.imageView);
 
