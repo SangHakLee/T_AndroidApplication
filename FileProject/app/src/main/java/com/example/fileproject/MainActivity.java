@@ -13,6 +13,7 @@ import android.view.View;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                     doAction4("aaa.txt");
                     break;
                 case R.id.button5:
-                    doAction5();
+                    doAction5("aaa", "data", "sam.txt", "안녕하세요");
                     break;
 
             }
@@ -102,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         Log.v(TAG, flag? "success" : "fail");
 
     }
-    public  void doAction5(){
+    public  void doAction5(String dir1, String dir2, String fNmae, String data){
         String state = Environment.getExternalStorageState();
         if( !state.equals(Environment.MEDIA_MOUNTED )){
             Log.v(TAG, "외장메모리 인식불가");
@@ -111,6 +112,35 @@ public class MainActivity extends AppCompatActivity {
 
         File sdCard = Environment.getExternalStorageDirectory();
         Log.v(TAG, sdCard.getAbsolutePath()); // 외장메모리 경로
+
+
+        // 외장에다 쓰기
+        // 퍼미션 먼저 줄것
+        File f1 = new File(sdCard, dir1);
+        if(!f1.exists()){ //없으면
+            f1.mkdir(); // 만든다.
+        }
+
+        File f2 = new File(f1, dir2); // f1 밑에 dir2 만든다.
+        if(!f2.exists()){ //없으면
+            f2.mkdir(); // 만든다.
+        }
+
+        File f3 = new File(f2, fNmae);
+        PrintWriter pw = null;
+
+        try{
+            pw = new PrintWriter(new FileWriter(f3));
+            pw.println(data);
+            Log.v(TAG, "sdCard wrie success");
+        }catch (IOException e){
+            Log.v(TAG, "sdCard wrie error" + e);
+        }finally {
+            if(pw != null){
+                pw.close();
+            }
+        }
+
     }
 
     @Override
