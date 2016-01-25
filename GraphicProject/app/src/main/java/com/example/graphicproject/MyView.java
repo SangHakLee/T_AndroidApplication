@@ -11,13 +11,23 @@ public class MyView extends View {
     // 생성자 위에 3개 생성
     public MyView(Context context) {
         super(context);
+        init(context);
     }
 
     public MyView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init(context);
     }
 
     public MyView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        init(context);
     }
+
+    Context context;
+    private void init(Context context){
+        this.context = context;
+    }
+
+
 }
