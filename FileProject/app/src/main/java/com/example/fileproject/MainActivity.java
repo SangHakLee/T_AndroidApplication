@@ -1,6 +1,7 @@
 package com.example.fileproject;
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -34,10 +36,13 @@ public class MainActivity extends AppCompatActivity {
                     doAction2("aaa.txt");
                     break;
                 case R.id.button3:
-//                    doAction3("aaa.txt");
+                    doAction3();
                     break;
                 case R.id.button4:
-//                    doAction4("aaa.txt");
+                    doAction4("aaa.txt");
+                    break;
+                case R.id.button5:
+                    doAction5();
                     break;
 
             }
@@ -52,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
             os.println();
             Log.v(TAG, "filw write success");
         }  catch (IOException e){
-            e.printStackTrace();
+            Log.v(TAG, "file Write error : " + e);
         }finally {
             if(os != null){
                 os.close();
@@ -63,13 +68,13 @@ public class MainActivity extends AppCompatActivity {
     public void doAction2(String fName){
         BufferedReader br = null;
         try {
-            new InputStreamReader(openFileInput(fName));
+            br = new BufferedReader(new InputStreamReader(openFileInput(fName)));
             String data = "";
             while((data = br.readLine())!= null){
-
+                Log.v(TAG, "data : " + data);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.v(TAG, "read Data error : " + e);
         }finally {
             if(br != null){
                 try {
@@ -80,12 +85,32 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // 파일 목록 확인
     public void doAction3(){
+        String[] fList = fileList();
+        Log.v(TAG, "=================");
+        for( String name : fList){
+            Log.v(TAG, name);
+
+        }
+        Log.v(TAG, "=================");
 
     }
 
-    public void doAction4(){
+    public void doAction4(String fName){
+        boolean flag = deleteFile(fName);
+        Log.v(TAG, flag? "success" : "fail");
 
+    }
+    public  void doAction5(){
+        String state = Environment.getExternalStorageState();
+        if( !state.equals(Environment.MEDIA_MOUNTED )){
+            Log.v(TAG, "외장메모리 인식불가");
+            return;
+        }
+
+        File sdCard = Environment.getExternalStorageDirectory();
+        Log.v(TAG, sdCard.getAbsolutePath()); // 외장메모리 경로
     }
 
     @Override
@@ -97,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button2).setOnClickListener(handler);
         findViewById(R.id.button3).setOnClickListener(handler);
         findViewById(R.id.button4).setOnClickListener(handler);
+        findViewById(R.id.button5).setOnClickListener(handler);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
