@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -52,13 +53,25 @@ public class MyView extends SurfaceView implements SurfaceHolder.Callback{
         public void run(){
             Canvas canvas;
             while(onAir){
-                canvas = holder.lockCanvas();
 
-                // 드로잉
-                draw(canvas);
-                // 드로잉
+                switch (state){
+                    case PLAY:
+                        doPlayAction();
+                        break;
+                    case STOP:
+                        doStopAction();
+                        break;
+                }
 
-                holder.unlockCanvasAndPost(canvas);
+                synchronized (holder){
+                    canvas = holder.lockCanvas();
+
+                    // 드로잉
+                    draw(canvas);
+                    // 드로잉
+
+                    holder.unlockCanvasAndPost(canvas);
+                }
 
                 cnt++;
                 Log.v(TAG, "cnt : "+ cnt);
@@ -72,7 +85,7 @@ public class MyView extends SurfaceView implements SurfaceHolder.Callback{
     @Override
     public void draw(Canvas canvas){
         canvas.drawColor(Color.WHITE); //잔상제거
-        canvas.drawText("cnt : "+ cnt, 100, 2000, paint);
+        canvas.drawText("cnt : " + cnt, 100, 2000, paint);
         super.draw(canvas);
     };
 
@@ -106,5 +119,35 @@ public class MyView extends SurfaceView implements SurfaceHolder.Callback{
     public MyView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
+    }
+
+
+    private static final int STOP = 0;
+    private static final int PLAY = 1;
+    int state;
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN :
+                switch (state){
+                    case PLAY:
+                        state = STOP;
+                        break;
+                    case STOP:
+                        state = PLAY;
+                        break;
+                }
+                return true;
+        }
+        return super.onTouchEvent(event);
+    }
+
+    void doPlayAction(){
+        cnt++;
+    }
+
+    void doStopAction(){
+
     }
 }
