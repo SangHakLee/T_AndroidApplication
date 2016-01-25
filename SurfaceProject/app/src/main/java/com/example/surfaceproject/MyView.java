@@ -73,9 +73,9 @@ public class MyView extends SurfaceView implements SurfaceHolder.Callback{
                     holder.unlockCanvasAndPost(canvas);
                 }
 
-                cnt++;
+//                cnt++;
                 Log.v(TAG, "cnt : "+ cnt);
-                SystemClock.sleep(1000);
+                SystemClock.sleep(500);
             }
         }
     }
@@ -84,9 +84,9 @@ public class MyView extends SurfaceView implements SurfaceHolder.Callback{
 
     @Override
     public void draw(Canvas canvas){
-        canvas.drawColor(Color.WHITE); //잔상제거
-        canvas.drawText("cnt : " + cnt, 100, 2000, paint);
         super.draw(canvas);
+        canvas.drawColor(Color.WHITE); //잔상제거
+        canvas.drawText("cnt : " + cnt, 100, 200, paint);
     };
 
     Context context;
@@ -103,6 +103,7 @@ public class MyView extends SurfaceView implements SurfaceHolder.Callback{
         paint.setAntiAlias(true);
         paint.setDither(true);
         paint.setTextSize(40);
+        paint.setStrokeWidth(3);
     }
 
     public MyView(Context context) {
