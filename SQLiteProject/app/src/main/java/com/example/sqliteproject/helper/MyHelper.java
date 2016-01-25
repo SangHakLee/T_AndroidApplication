@@ -24,7 +24,7 @@ public class MyHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "CREATE TABLE person ( _id INTEGER AUTOINCREMENT PRIMARY KEY, name TEXT, age INTEGER, type INTEGER);";
+        String sql = "CREATE TABLE person ( _id INTEGER AUTO_INCREMENT PRIMARY KEY, name TEXT, age INTEGER, type INTEGER);";
 
         // execSQL 는 반드시 try catch
 
