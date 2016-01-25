@@ -33,6 +33,8 @@ public class MyView extends View {
     private void init(Context context){
         paint = new Paint();
         paint.setColor(Color.RED);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(3);
         this.context = context;
     }
 
@@ -49,8 +51,30 @@ public class MyView extends View {
             top = (height-100) / 2;
         }
 //        canvas.drawRect(100, 100, 200, 200, paint);
-        canvas.drawRect(left, top, left+100, top+100, paint);
+//        canvas.drawRect(left, top, left+100, top+100, paint);
+
+        canvas.drawColor(Color.WHITE); // 잔상제거
+//        doDrawRect(canvas); // 기본방법
+        doDrawRect(); // 우리 방법
+        doDrawLine();
         super.onDraw(canvas);
+    }
+
+    // 기본 방법
+//    void doDrawRect(Canvas canvas){
+//        canvas.drawRect(left, top, left + 100, top + 100, paint);
+//    }
+
+    void doDrawRect(){
+        mCanvas.drawRect(left, top, left+100, top+100, paint);
+    }
+
+    void doDrawLine(){
+        mCanvas.save();
+        mCanvas.drawLine(100, 100, 200, 200, paint);
+        mCanvas.translate(100, 0); // 좌표 이동
+        mCanvas.drawLine(100, 100, 200, 200, paint);
+        mCanvas.restore(); //translate() 한거 복구. 좌표 0,0 로 이동
     }
 
     @Override
@@ -59,8 +83,8 @@ public class MyView extends View {
             // 스위치 케이스문이나 if문 없으면 모든 액션에 작업을 한다.
             case MotionEvent.ACTION_DOWN:
                 Toast.makeText(context, String.format("x : %f, y : %f", event.getX(), event.getY()), Toast.LENGTH_SHORT).show();
-                doAction(event.getX(), event.getY());
-                return  true; // 여기서는 break 말고 return;
+//                doAction(event.getX(), event.getY());
+                return  true; // 여기서는 break 말고 return; 이벤트 처리가 하위뷰에 전달 할건지 말건지. 전달하면false 안하면 true
 //                break;
         };
         return super.onTouchEvent(event);
