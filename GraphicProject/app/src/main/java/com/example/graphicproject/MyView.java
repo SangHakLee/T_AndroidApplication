@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 /**
  * Created by skplanet on 2016-01-25.
@@ -46,6 +47,12 @@ public class MyView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()){
+            // 스위치 케이스문이나 if문 없으면 모든 액션에 작업을 한다.
+            case MotionEvent.ACTION_DOWN:
+                Toast.makeText(context, String.format("x : %f, y : %f", event.getX(), event.getY()), Toast.LENGTH_SHORT).show();
+                break;
+        };
         return super.onTouchEvent(event);
     }
 }
