@@ -22,12 +22,14 @@ public class MyHelper extends SQLiteOpenHelper{
         this.context = context;
     }
 
+    // 폰에 설치되고 최초 한번만. 지웠다 깔아야함
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sql = "CREATE TABLE person ( _id INTEGER AUTO_INCREMENT PRIMARY KEY, name TEXT, age INTEGER, type INTEGER);";
 
-        // execSQL 는 반드시 try catch
 
+        Log.v(TAG, "onCreate");
+        // execSQL 는 반드시 try catch
         try{
             db.execSQL(sql); // CREATE
             db.execSQL("INSERT INTO person(name, age, type) VALUES('kim', 33, 1);");
@@ -41,7 +43,6 @@ public class MyHelper extends SQLiteOpenHelper{
             Log.v(TAG, "db error :" + e);
 
         }
-        Log.v(TAG, "onCreate");
     }
 
     @Override
