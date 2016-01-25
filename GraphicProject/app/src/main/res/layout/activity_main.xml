@@ -21,8 +21,10 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <!--XML만 가져다가 재활용 하는거-->
     <include layout="@layout/content_main" />
 
+    <!--오른쪽 하단 버튼-->
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
