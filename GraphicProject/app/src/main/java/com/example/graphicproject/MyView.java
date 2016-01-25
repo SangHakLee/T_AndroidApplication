@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -57,6 +58,7 @@ public class MyView extends View {
 //        doDrawRect(canvas); // 기본방법
         doDrawRect(); // 우리 방법
         doDrawLine();
+        doDrawPath();
         super.onDraw(canvas);
     }
 
@@ -75,6 +77,36 @@ public class MyView extends View {
         mCanvas.translate(100, 0); // 좌표 이동
         mCanvas.drawLine(100, 100, 200, 200, paint);
         mCanvas.restore(); //translate() 한거 복구. 좌표 0,0 로 이동
+    }
+
+    void doDrawPath(){
+        mCanvas.save();
+        Path path = new Path(); // Path는 계속 같은 모양을 만들 때 주로 쓰임
+        paint.setStyle(Paint.Style.FILL);
+        path.moveTo(100, 100);
+        path.lineTo(200, 100);
+        path.lineTo(250, 150);
+        path.lineTo(200, 200);
+        path.lineTo(200, 200);
+        path.lineTo(100, 200);
+        path.lineTo(150, 150);
+        path.lineTo(100, 100);
+        mCanvas.drawPath(path, paint);
+
+        mCanvas.translate(0, 300); // 위치 바꿔서
+        mCanvas.drawPath(path, paint); // 다시 그리기
+
+        mCanvas.translate(0, 300); // 위치 바꿔서
+        mCanvas.drawPath(path, paint); // 다시 그리기
+
+        mCanvas.restore();
+    }
+
+    void doDrawTextPath(){
+        // 책보고 할것 
+        Path path = new Path();
+        path.moveTo(100, 100);
+        path.addCircle(200, 200, 100, Path.Direction.CW);
     }
 
     @Override
