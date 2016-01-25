@@ -5,20 +5,55 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import java.io.IOException;
+import java.io.PrintWriter;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "Main";
+
+    View.OnClickListener handler = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.button:
+                    doAction1("aaa.txt", "안녕하세요 ㅎㅎ");
+                    break;
+
+            }
+        }
+    };
+
+    public void doAction1(String fName, String data){
+         PrintWriter os = null;
+        try {
+            os = new PrintWriter(openFileOutput(fName, MODE_PRIVATE));
+            os.write(data);
+            Log.v(TAG, "filw write success");
+        }  catch (IOException e){
+            e.printStackTrace();
+        }finally {
+            if(os != null){
+                os.close();
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        findViewById(R.id.button).setOnClickListener(handler);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-       FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
