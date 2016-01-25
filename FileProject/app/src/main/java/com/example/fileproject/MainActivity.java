@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -58,18 +59,23 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    int cnt = 0;
 
     // SharedPreferences 저장하기
     public void doAction6(){
+        cnt++;
         SharedPreferences sp = getSharedPreferences("info", MODE_PRIVATE); // context 가 가진 getSharedPreferences() 호출, MODE_PRIVATE은 0
         SharedPreferences.Editor editor = sp.edit();
         editor.putString("id", "abc");
-        editor.putInt("cnt", 3);
+        editor.putInt("cnt", cnt);
         editor.commit(); // 꼭 해야함. 안하면 메모리에만 저장
     }
 
     public void doAction7(){
-
+        SharedPreferences sp = getSharedPreferences("info", 0);
+        String id = sp.getString("id", "guest"); // 2번째 인자는 디폴트
+        cnt = sp.getInt("cnt", cnt);
+        Toast.makeText(this, " id :" +id+ ", cnt :" +cnt, Toast.LENGTH_SHORT).show();
     }
 
 
