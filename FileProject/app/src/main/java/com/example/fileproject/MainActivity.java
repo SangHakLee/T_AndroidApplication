@@ -1,5 +1,6 @@
 package com.example.fileproject;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
@@ -45,10 +46,34 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.button5:
                     doAction5("aaa", "data", "sam.txt", "안녕하세요");
                     break;
+                case R.id.button6:
+                    doAction6();
+                    break;
+                case R.id.button7:
+                    doAction7();
+                    break;
+
 
             }
         }
     };
+
+
+    // SharedPreferences 저장하기
+    public void doAction6(){
+        SharedPreferences sp = getSharedPreferences("info", MODE_PRIVATE); // context 가 가진 getSharedPreferences() 호출, MODE_PRIVATE은 0
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("id", "abc");
+        editor.putInt("cnt", 3);
+        editor.commit(); // 꼭 해야함. 안하면 메모리에만 저장
+    }
+
+    public void doAction7(){
+
+    }
+
+
+
 
 //    public void doAction1(String fName, String data){
 //        PrintWriter os = null;
@@ -142,6 +167,8 @@ public class MainActivity extends AppCompatActivity {
             Log.v(TAG, file.getName());
         }
 
+
+
         Log.v(TAG, sdCard.getAbsolutePath()); // 외장메모리 경로
 
 
@@ -184,6 +211,8 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button3).setOnClickListener(handler);
         findViewById(R.id.button4).setOnClickListener(handler);
         findViewById(R.id.button5).setOnClickListener(handler);
+        findViewById(R.id.button6).setOnClickListener(handler);
+        findViewById(R.id.button7).setOnClickListener(handler);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
