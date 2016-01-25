@@ -41,7 +41,15 @@ public class MyView extends View {
     // 실제 그리는 메소드
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.drawRect(100, 100, 200, 200, paint);
+        if(mCanvas == null){ // 멤버 canvas가 널이면 넣어줌
+            mCanvas = canvas;
+            width = getWidth(); // 뷰의 넓이 리턴, onDraw가 호출이 되야 getWidth() 할 수 있다. init()에서 불가
+            height = getHeight(); // 뷰의 높이 리턴
+            left = (width-100) / 2; // 맨처음 사각형을 중앙으로 오기 위해서
+            top = (height-100) / 2;
+        }
+//        canvas.drawRect(100, 100, 200, 200, paint);
+        canvas.drawRect(left, top, left+100, top+100, paint);
         super.onDraw(canvas);
     }
 
@@ -51,8 +59,20 @@ public class MyView extends View {
             // 스위치 케이스문이나 if문 없으면 모든 액션에 작업을 한다.
             case MotionEvent.ACTION_DOWN:
                 Toast.makeText(context, String.format("x : %f, y : %f", event.getX(), event.getY()), Toast.LENGTH_SHORT).show();
-                break;
+                doAction(event.getX(), event.getY());
+                return  true; // 여기서는 break 말고 return;
+//                break;
         };
         return super.onTouchEvent(event);
+    }
+
+    Canvas mCanvas = null; //밖에서 접근하기 위함
+
+    int left, top; // 사각형
+    int width, height;
+    void doAction(float x, float y){ // 클릭시 사각형 그리기
+        left = (int) x;
+        top = (int) y;
+        invalidate(); // 다시 그려주는거 onDraw의 canvas가 호출된다.
     }
 }
