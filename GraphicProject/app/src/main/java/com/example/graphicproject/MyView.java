@@ -40,7 +40,7 @@ public class MyView extends View {
     // 실제 그리는 메소드
     @Override
     protected void onDraw(Canvas canvas) {
-//        canvas.drawRect();
+        canvas.drawRect(100, 100, 200, 200, paint);
         super.onDraw(canvas);
     }
 
