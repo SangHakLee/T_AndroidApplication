@@ -1,6 +1,9 @@
 package com.example.surfaceproject;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -27,14 +30,19 @@ public class MyView extends SurfaceView implements SurfaceHolder.Callback{
         Log.v(TAG, "surfaceCreated");
     }
 
+    int width;
+    int height;
+
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
         Log.v(TAG, "surfaceChanged");
+        this.width = width;
+        this.height = width;
     }
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-        Log.v(TAG, "surfaceDestroyed");
+        Log.v(TAG, "surfaceDestroyed"); // 화면 돌리면 뜬다.
         onAir = false; // 쓰레드가 멈춘다.
     }
 
@@ -42,13 +50,31 @@ public class MyView extends SurfaceView implements SurfaceHolder.Callback{
     int cnt = 0;
     class AniThread extends Thread{
         public void run(){
+            Canvas canvas;
             while(onAir){
+                canvas = holder.lockCanvas();
+
+                // 드로잉
+                draw(canvas);
+                // 드로잉
+
+                holder.unlockCanvasAndPost(canvas);
+
                 cnt++;
                 Log.v(TAG, "cnt : "+ cnt);
                 SystemClock.sleep(1000);
             }
         }
     }
+
+    Paint paint;
+
+    @Override
+    public void draw(Canvas canvas){
+        canvas.drawColor(Color.WHITE); //잔상제거
+        canvas.drawText("cnt : "+ cnt, 100, 2000, paint);
+        super.draw(canvas);
+    };
 
     Context context;
 
@@ -58,6 +84,12 @@ public class MyView extends SurfaceView implements SurfaceHolder.Callback{
 
         holder = getHolder();
         holder.addCallback(this); // this 로 자기 자신의 인터페이스 변화 확인.
+
+        paint = new Paint();
+        paint.setColor(Color.RED);
+        paint.setAntiAlias(true);
+        paint.setDither(true);
+        paint.setTextSize(40);
     }
 
     public MyView(Context context) {
