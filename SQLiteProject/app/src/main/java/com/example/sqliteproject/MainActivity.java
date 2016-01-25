@@ -1,19 +1,22 @@
 package com.example.sqliteproject;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.sqliteproject.helper.MyHelper;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "Main";
 
+    SQLiteDatabase db;
+    MyHelper helper;
 
 
     View.OnClickListener handler = new View.OnClickListener() {
@@ -29,8 +32,28 @@ public class MainActivity extends AppCompatActivity {
 
     // DB 생성
     public void doAction1(){
+        doDBOpen();
+
+        // CRUD 작업
+
+        doDBClose();
     }
 
+    // DB 열기
+    public void doDBOpen(){
+        if(helper == null){
+            helper = new MyHelper(this, "myDB.db", null, 1);
+        }
+        db = helper.getWritableDatabase();
+    }
+
+    public void doDBClose(){
+        if(db != null){
+            if(db.isOpen()){
+                db.close();
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +71,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         findViewById(R.id.button).setOnClickListener(handler);
+        helper = new MyHelper(this, "myDB.db", null, 1); // myDB.db 이름의 버전이 1
     }
 
     @Override
