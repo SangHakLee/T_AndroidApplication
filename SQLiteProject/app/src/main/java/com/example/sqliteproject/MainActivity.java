@@ -9,7 +9,28 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.sqliteproject.helper.MyHelper;
+
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "Main";
+
+
+
+    View.OnClickListener handler = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.button:
+                    doAction1();
+                    break;
+            }
+        }
+    };
+
+    // DB 생성
+    public void doAction1(){
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        findViewById(R.id.button).setOnClickListener(handler);
     }
 
     @Override
