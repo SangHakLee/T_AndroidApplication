@@ -231,6 +231,25 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+
+        // 설치 후 한번만 실행되는 메소드
+        SharedPreferences sp = getSharedPreferences("info", 0);
+        boolean flag = sp.getBoolean("init", true);
+        if(flag){
+            doInit();
+        }
+    }
+
+    public void doInit(){
+        Toast.makeText(this, "한번만 호출됨", Toast.LENGTH_SHORT).show();
+
+        // 실제 초기화작업
+
+        SharedPreferences sp = getSharedPreferences("info", 0);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean("init", false);
+        editor.commit();
     }
 
     @Override
