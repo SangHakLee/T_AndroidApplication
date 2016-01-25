@@ -135,6 +135,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         File sdCard = Environment.getExternalStorageDirectory();
+
+        File f = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM); // 사진 같은 공유 자원은 이곳에 넣는다.
+        File[] fList = f.listFiles(); // DIRECTORY_DCIM 의 목록
+        for(File file : fList){
+            Log.v(TAG, file.getName());
+        }
+
         Log.v(TAG, sdCard.getAbsolutePath()); // 외장메모리 경로
 
 
