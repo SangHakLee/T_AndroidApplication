@@ -50,11 +50,35 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+//    public void doAction1(String fName, String data){
+//        PrintWriter os = null;
+//        try {
+//            os = new PrintWriter(openFileOutput(fName, MODE_PRIVATE));
+////            os.write(data);
+//            os.println();
+//            Log.v(TAG, "filw write success");
+//        }  catch (IOException e){
+//            Log.v(TAG, "file Write error : " + e);
+//        }finally {
+//            if(os != null){
+//                os.close();
+//            }
+//        }
+//    };
+
     public void doAction1(String fName, String data){
-         PrintWriter os = null;
+
+        File file = getExternalFilesDir(null); // null로 하면 디폴트로 현재 프로젝트. 디렉토리 생성
+        if(!file.exists()){
+            file.mkdir();
+        }
+        Log.v(TAG, "filw write success" + file.getAbsolutePath());
+        File f = new File(file, fName); // 파일생성
+        PrintWriter os = null;
         try {
-            os = new PrintWriter(openFileOutput(fName, MODE_PRIVATE));
+//            os = new PrintWriter(openFileOutput(fName, MODE_PRIVATE)); // 안드로이드
 //            os.write(data);
+            os = new PrintWriter(new FileWriter(f)); // 순수 자바, 퍼미션 필요
             os.println();
             Log.v(TAG, "filw write success");
         }  catch (IOException e){
