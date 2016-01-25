@@ -1,10 +1,15 @@
 package com.example.graphicproject;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.DashPathEffect;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -37,6 +42,8 @@ public class MyView extends View {
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(3);
         this.context = context;
+
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.down);
     }
 
     Paint paint= null; // 그리는 붓 같은 개념
@@ -56,9 +63,12 @@ public class MyView extends View {
 
         canvas.drawColor(Color.WHITE); // 잔상제거
 //        doDrawRect(canvas); // 기본방법
-        doDrawRect(); // 우리 방법
-        doDrawLine();
-        doDrawPath();
+
+//        doDrawRect(); // 우리 방법
+//        doDrawLine();
+//        doDrawPath();
+//        doDrawBitmap();
+        doDrawDashEffect();
         super.onDraw(canvas);
     }
 
@@ -80,6 +90,11 @@ public class MyView extends View {
     }
 
     void doDrawPath(){
+        paint.setTextSize(40);
+        float charSize = paint.measureText("가");
+        charSize = paint.measureText("A");
+        charSize = paint.measureText("1");
+
         mCanvas.save();
         Path path = new Path(); // Path는 계속 같은 모양을 만들 때 주로 쓰임
         paint.setStyle(Paint.Style.FILL);
@@ -103,7 +118,7 @@ public class MyView extends View {
     }
 
     void doDrawTextPath(){
-        // 책보고 할것 
+        // 책보고 할것
         Path path = new Path();
         path.moveTo(100, 100);
         path.addCircle(200, 200, 100, Path.Direction.CW);
@@ -130,5 +145,23 @@ public class MyView extends View {
         left = (int) x;
         top = (int) y;
         invalidate(); // 다시 그려주는거 onDraw의 canvas가 호출된다.
+    }
+
+
+    Bitmap bitmap; // 이미지 관리
+
+    void doDrawBitmap(){
+        Matrix matrix = new Matrix();
+
+        mCanvas.drawBitmap(bitmap, null, new Rect(100, 100, 200, 200), paint);
+        mCanvas.drawBitmap(bitmap, new Rect(50, 50, 70, 70), new Rect(100, 100, 200, 200), paint); // 앞에 만큼크기에 뒤에 사이즈를 그림
+    }
+
+    void doDrawDashEffect(){
+        paint.setStrokeWidth(5);
+        float[] intervals = {10,10,10};
+        DashPathEffect effect = new DashPathEffect(intervals, 3);
+        paint.setPathEffect(effect);
+        mCanvas.drawRect(100, 100, 200, 200, paint);
     }
 }
