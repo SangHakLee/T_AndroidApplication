@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
@@ -50,9 +51,9 @@ public class MainActivity extends AppCompatActivity {
         db = helper.getReadableDatabase(); //읽기 전요
         c = db.query("person", null, null, null, null, null, null); // person 데이터 모두 불러오기
 
-        //1.context 2.layout 3.cursor 4.가져오랴는 데이터 5.뷰 내부 데이터
+        //1.context 2.layout 3.cursor 4.가져오랴는 데이터 5.뷰 내부 데이터 6.데이터 변경시 알려주는 플래그
         // 4, 5버은 커스텀 뷰를 만들지 않았기 때문에 android 기본 사용
-        adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, c, new String []{"name", "age"}, new int[]{android.R.id.text1,android.R.id.text2});
+        adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, c, new String []{"name", "age"}, new int[]{android.R.id.text1,android.R.id.text2}, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
 
 
         list = (ListView)findViewById(R.id.listView);
