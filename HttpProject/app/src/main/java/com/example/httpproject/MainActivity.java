@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case 800:
-                    et.setText(msg.obj.toString());
+                    et.setText(msg.obj.toString()); // 읽어들은 값을 텍스트 뷰에 뿌린다.
             }
         }
     };
@@ -64,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
             try {
                 url = new URL(stringUrl);
                 connection = (HttpURLConnection)url.openConnection(); // 커넥션
+                connection.setConnectTimeout(10000); // 10초 동안 기다림 10초 넘으면 exception
+                connection.setReadTimeout(10000); // 10초 동안 기다림 10초 넘으면 exception
                 code = connection.getResponseCode(); // 응답 코드
                 Log.v(TAG, "code : "+ code);
 
@@ -95,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // connection.getInputStream() 로 읽어온 데이터 br
     String getData(BufferedReader br){
         String data = "";
         String readData = ""; // 읽은 데이터
