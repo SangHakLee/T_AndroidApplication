@@ -50,9 +50,10 @@ public class PersonAdapter extends BaseAdapter{
         if( convertView == null){
             convertView = View.inflate(context, layout, null);
         }
+
         Person person = list.get(position);
         TextView tv = (TextView)convertView.findViewById(R.id.textView2);
-        tv.setText(person.name + person.age); // cursor에서 가져와서 텍스트 뷰에 뿌린다. 이름과 나이
+        tv.setText(person.name + person.age +""); // cursor에서 가져와서 텍스트 뷰에 뿌린다. 이름과 나이
         ImageView img = (ImageView)convertView.findViewById(R.id.imageView);
         img.setImageResource(imgRes[person.type]);
         return convertView;
