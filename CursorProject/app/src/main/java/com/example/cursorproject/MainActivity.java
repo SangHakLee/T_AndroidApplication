@@ -61,6 +61,23 @@ public class MainActivity extends AppCompatActivity {
 //        adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, c, new String []{"name", "age"}, new int[]{android.R.id.text1,android.R.id.text2}, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER); // 기본 뷰
 //        adapter = new SimpleCursorAdapter(this, R.layout.item, c, new String []{"name", "type"}, new int[]{R.id.textView2,R.id.textView3}, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER); // 커스텀 뷰
 //        adapter = new MyCursorAdapter(this, R.layout.item, c, true);
+
+        Person person;
+        while (c.moveToNext()){ // DB 검색한다.
+            person = new Person();
+            // DB의 값을 가져온다.
+            person._id = c.getInt(0);
+            person.name = c.getString(1);
+            person.age = c.getInt(2);
+            person.type = c.getInt(3);
+            data.add(person);  // ArrayList에 넣는다.
+        }
+
+        // 더 이상 DB 접근 안하기 때문에 모두 닫는다.
+        c.close();
+        db.close();
+        helper.close();
+
         adapter = new PersonAdapter(this, R.id.listView, data); // 미리 ArrayList형 Person 객체 data를 만들어야한다.
 
         list = (ListView)findViewById(R.id.listView);
