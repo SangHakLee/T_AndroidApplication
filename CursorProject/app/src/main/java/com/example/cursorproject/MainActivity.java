@@ -12,12 +12,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     ListView list;
     Cursor c;
 //    SimpleCursorAdapter adapter; // 리시트뷰를 관리하는 어덥터
-    MyCursorAdapter adapter;
+//    MyCursorAdapter adapter; // 이미지뷰를 위한 어덥터
+    PersonAdapter adapter;
+
+    ArrayList<Person> data = null;
 
     MyHelper helper;
     SQLiteDatabase db;
@@ -55,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
 
 //        adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, c, new String []{"name", "age"}, new int[]{android.R.id.text1,android.R.id.text2}, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER); // 기본 뷰
 //        adapter = new SimpleCursorAdapter(this, R.layout.item, c, new String []{"name", "type"}, new int[]{R.id.textView2,R.id.textView3}, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER); // 커스텀 뷰
-
-        adapter = new MyCursorAdapter(this, R.layout.item, c, true);
+//        adapter = new MyCursorAdapter(this, R.layout.item, c, true);
+        adapter = new PersonAdapter(this, R.id.listView, data); // 미리 ArrayList형 Person 객체 data를 만들어야한다.
 
         list = (ListView)findViewById(R.id.listView);
         list.setAdapter(adapter); // 만든 어덥터랑 연결

@@ -5,6 +5,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import java.util.ArrayList;
+
 /**
  * Created by skplanet on 2016-01-26.
  */
@@ -13,7 +15,12 @@ public class PersonAdapter extends BaseAdapter{
     Context context;
     int layout;
 
-    public PersonAdapter() {
+    ArrayList<Person> list;
+
+    public PersonAdapter(Context context, int layout, ArrayList<Person> list) {
+        this.context = context;
+        this.layout = layout;
+        this.list = list;
     }
 
     @Override
