@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
 //        adapter = new SimpleCursorAdapter(this, R.layout.item, c, new String []{"name", "type"}, new int[]{R.id.textView2,R.id.textView3}, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER); // 커스텀 뷰
 //        adapter = new MyCursorAdapter(this, R.layout.item, c, true);
 
+        data = new ArrayList<Person>();
         Person person;
         while (c.moveToNext()){ // DB 검색한다.
             person = new Person();
