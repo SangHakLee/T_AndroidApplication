@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         }finally {
             connection.disconnect();
         }
-
+        // 현재 에러 android.os.NetworkOnMainThreadException
 
     };
 
