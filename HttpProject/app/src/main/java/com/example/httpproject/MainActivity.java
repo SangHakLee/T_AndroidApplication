@@ -5,10 +5,15 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +34,24 @@ public class MainActivity extends AppCompatActivity {
 
     // 네트워크로 서버통신
     public void doAction1(){
+        String stringUrl = "http://m.google.com"; // 접속할 주소
+
+        URL url = null;
+        HttpURLConnection connection = null; //좀더 다양한 처리 가능
+        int code;
+        // 네트워크는 꼭 try catch
+        try {
+            url = new URL(stringUrl);
+            connection = (HttpURLConnection)url.openConnection(); // 커넥션
+            code = connection.getResponseCode(); // 응답 코드
+            Log.v(TAG, "code : "+ code);
+        } catch (IOException e) {
+//            e.printStackTrace();
+            Log.v(TAG, "error : " + e);
+        }finally {
+            connection.disconnect();
+        }
+
 
     };
 
