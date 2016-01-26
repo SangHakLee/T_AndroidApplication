@@ -42,9 +42,17 @@ public class MainActivity extends AppCompatActivity {
             switch (v.getId()){
                 case R.id.button:
                     doAction2();
+                case R.id.button2:
+                    doAction3();
+
             }
         }
     };
+
+    public void doAction3(){
+
+    };
+
 
     // 쓰레드 대신 AsyncTask 사용
     class HttpTask extends AsyncTask<String, Void, String >{
@@ -202,6 +210,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.button).setOnClickListener(handler);
+        findViewById(R.id.button2).setOnClickListener(handler);
 
         et = (EditText)findViewById(R.id.editText);
 
