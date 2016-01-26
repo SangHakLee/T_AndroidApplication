@@ -50,6 +50,10 @@ public class MainActivity extends AppCompatActivity {
         db = helper.getReadableDatabase(); //읽기 전요
         c = db.query("person", null, null, null, null, null, null); // person 데이터 모두 불러오기
 
+        //1.context 2.layout 3.cursor 4.가져오랴는 데이터 5.뷰 내부 데이터
+        // 4, 5버은 커스텀 뷰를 만들지 않았기 때문에 android 기본 사용
+        adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, c, new String []{"name", "age"}, new int[]{android.R.id.text1,android.R.id.text2});
+
 
         list = (ListView)findViewById(R.id.listView);
         list.setAdapter(adapter); // 만든 어덥터랑 연결
