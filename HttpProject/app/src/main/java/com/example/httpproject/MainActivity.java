@@ -1,6 +1,8 @@
 package com.example.httpproject;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -31,10 +34,22 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    // UI 바꾸기 핸들러 만들기
+    Handler handler = new Handler(){
+        // handleMessage 재정의
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what){
+                case 999:
+                    Toast.makeText(MainActivity.this, msg.arg1 + "코드 에러", Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
+
     // 쓰레드 생성 해서 여기서 네트워크 연결
     class NetworkThread extends Thread{
         public void run(){
-            String stringUrl = "http://m.google.co.kr"; // 접속할 주소
+            String stringUrl = "http://www.naver.com"; // 접속할 주소
 
             URL url = null;
             HttpURLConnection connection = null; //좀더 다양한 처리 가능
@@ -45,6 +60,23 @@ public class MainActivity extends AppCompatActivity {
                 connection = (HttpURLConnection)url.openConnection(); // 커넥션
                 code = connection.getResponseCode(); // 응답 코드
                 Log.v(TAG, "code : "+ code);
+
+                Message msg = handler.obtainMessage();
+                switch (code){
+                    case HttpURLConnection.HTTP_OK :
+                        // 여기서 UI 바꾸기 안됨
+                        // 핸들러 이용
+                        break;
+
+                    default:
+                        msg.what = 999;
+                        msg.arg1 = code;
+                        break;
+                }
+
+                // UI 변경을 위해서 핸들러에게 메시지 보낸다.
+                handler.sendMessage(msg);
+                
             } catch (IOException e) {
 //            e.printStackTrace();
                 Log.v(TAG, "error : " + e);
