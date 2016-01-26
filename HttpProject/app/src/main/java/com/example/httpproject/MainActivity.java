@@ -50,8 +50,59 @@ public class MainActivity extends AppCompatActivity {
     };
 
     public void doAction3(){
+        new WeatherTask().execute("http://www.kma.go.kr/XML/weather/sfc_web_map.xml");
 
     };
+
+
+    class WeatherTask extends AsyncTask<String, Void, String >{
+        @Override
+        protected String doInBackground(String... params) {
+            String stringUrl = params[0]; // doAction2()에서 인자값
+            HttpClient client = null;
+            HttpGet request = null; // 요청 객체
+            HttpResponse response = null; // 응답 객체
+
+            String data = "";
+
+            Weather weather = null;
+
+            int code;
+            // 네트워크는 꼭 try catch
+            try {
+                client = new DefaultHttpClient();
+                request = new HttpGet(stringUrl); // NameValuePair 로 만든 쿼리 스트링 Url
+                response = client.execute(request);
+
+                code = response.getStatusLine().getStatusCode(); // 응답객체 응답코드
+
+                Log.v(TAG, "code : "+ code);
+
+                WeatherXMLParser parser = new WeatherXMLParser();
+                switch (code){
+                    case HttpURLConnection.HTTP_OK :
+                        weather = parser.doParser(response.getEntity().getContent());
+                        break;
+
+                    default:
+                        data = " code : "+ code;
+                        break;
+                }
+
+
+            } catch (IOException e) {
+//            e.printStackTrace();
+                Log.v(TAG, "error : " + e);
+            }
+            return weather; // onPostExecute() 로 데이터 이동
+        }
+
+        @Override
+        protected void onPostExecute(Weather weather) {
+            et.setText(weather.toString()); // HttpTask 에서 return 값
+//            super.onPostExecute(weather);
+        }
+    }
 
 
     // 쓰레드 대신 AsyncTask 사용
