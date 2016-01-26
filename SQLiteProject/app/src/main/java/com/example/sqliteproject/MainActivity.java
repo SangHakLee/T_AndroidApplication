@@ -36,11 +36,20 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.button3:
                     doAction3();
                     break;
+                case R.id.button4:
+                    // SELECT name, age, type
+                    // FROM person
+                    // WHERE LIKE '%L%'
+                    // ORDER BY age DESC
+                    // LIMIT 2, 3
+                    doAction4("person", new String[]{"name", "age", "type"}, "K", "age DESC", "2,3"); // 불러오려는 컬럼은 배열로 1.테이블명 2. 가져올 칼럼 3.조건식대입문(like) 4.order 5.limit
+                    break;
             }
         }
     };
 
     // DB 생성
+    // DB 추가 ContentValues
     public void doAction1(String name, int age, int type){
         doDBOpen();
 
@@ -51,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
         values.put("type", type);
 
         try{
-            long id = db.insert("person", null, values);
-            Log.v(TAG, id>0?"insert success" : "insert fail");
+            long id = db.insert("person", null, values); // 1. 테이블명, 2.?? 3, ContentValues(들어 가는 값)
+            Log.v(TAG, id > 0 ? "insert success" : "insert fail"); // db.insert하고 나온 반환값이 1이상이어야한다.
         }catch(SQLException e){
             Log.v(TAG, "insert error : " + e);
         }
@@ -69,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
         doDBClose();
     }
 
+    // DB 갱신
     public void doAction2(String newName, int newAge, int wid, int wtype){
         doDBOpen();
         ContentValues values = new ContentValues();
@@ -85,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
         }finally {
 
         }
+        doDBClose();
     }
 
     // SELECT 문
@@ -108,6 +119,28 @@ public class MainActivity extends AppCompatActivity {
             Log.v(TAG, "SQL error = "+ e);
         }
 
+        doDBClose();
+    }
+
+    // 조건식에 맞는 SELECT
+    public void doAction4(String tableName, String[] colNames, String wStr, String order, String limit){ // wStr이 조건절 여기서는 LIKE 문
+        doDBOpen();
+        try{
+            String[] str = {"%"+wStr+"%"}; // db.query의 4번째 조건식 ?에 들어갈 내용
+
+            // 1.테이블명 2. 가져올 칼럼 3. 조건식 4.조건식에 들어갈 내용 5.gruop 6.having 7.order 8.limit
+            Cursor c = db.query(tableName, colNames, "name LIKE ?", str, null, null, order, limit); // 반환 값이 Cursor
+            while (c.moveToNext()){ // 다음 것이 있으면 실행
+                String name = c.getString(0); // 이번엔 name이 0번째
+                int age = c.getInt(1);
+                int type = c.getInt(2);
+                Log.v(TAG, String.format(" %s %d %d", name, age, type));
+            }
+
+            c.close(); // 다 하고 나서 close 꼭 할것
+        }catch (SQLException e){
+            Log.v(TAG, "SQL error = "+ e);
+        }
         doDBClose();
     }
 
@@ -147,6 +180,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button).setOnClickListener(handler);
         findViewById(R.id.button2).setOnClickListener(handler);
         findViewById(R.id.button3).setOnClickListener(handler);
+        findViewById(R.id.button4).setOnClickListener(handler);
         helper = new MyHelper(this, "myDB.db", null, 1); // myDB.db 이름의 버전이 1
     }
 
