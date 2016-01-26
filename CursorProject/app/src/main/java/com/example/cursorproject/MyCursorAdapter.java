@@ -24,11 +24,14 @@ public class MyCursorAdapter extends CursorAdapter {
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
-        return null;
+        // 1. context 2.xml 3.view구룹
+        View view = View.inflate(context, layout, null);
+        return view;
     }
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
+        // newView에서 생선된 view가 넘어온다.
 
     }
 }
