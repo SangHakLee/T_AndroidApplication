@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
     // UI 바꾸기 핸들러 만들기
-    Handler handler = new Handler(){
+    Handler uiHandler = new Handler(){
         // handleMessage 재정의
         @Override
         public void handleMessage(Message msg) {
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     // 쓰레드 생성 해서 여기서 네트워크 연결
     class NetworkThread extends Thread{
         public void run(){
-            String stringUrl = "http://www.naver.com"; // 접속할 주소
+            String stringUrl = "http://m.google.co.kr";; // 접속할 주소
 
             URL url = null;
             HttpURLConnection connection = null; //좀더 다양한 처리 가능
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 code = connection.getResponseCode(); // 응답 코드
                 Log.v(TAG, "code : "+ code);
 
-                Message msg = handler.obtainMessage();
+                Message msg = uiHandler.obtainMessage();
                 switch (code){
                     case HttpURLConnection.HTTP_OK :
                         // 여기서 UI 바꾸기 안됨
@@ -75,8 +75,8 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 // UI 변경을 위해서 핸들러에게 메시지 보낸다.
-                handler.sendMessage(msg);
-                
+                uiHandler.sendMessage(msg);
+
             } catch (IOException e) {
 //            e.printStackTrace();
                 Log.v(TAG, "error : " + e);
