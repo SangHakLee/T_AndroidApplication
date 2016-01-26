@@ -7,9 +7,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -53,7 +53,9 @@ public class MainActivity extends AppCompatActivity {
 
         //1.context 2.layout 3.cursor 4.가져오랴는 데이터 5.뷰 내부 데이터 6.데이터 변경시 알려주는 플래그
         // 4, 5버은 커스텀 뷰를 만들지 않았기 때문에 android 기본 사용
-        adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, c, new String []{"name", "age"}, new int[]{android.R.id.text1,android.R.id.text2}, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
+
+//        adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, c, new String []{"name", "age"}, new int[]{android.R.id.text1,android.R.id.text2}, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER); // 기본 뷰
+        adapter = new SimpleCursorAdapter(this, R.layout.item, c, new String []{"name", "type"}, new int[]{R.id.textView2,R.id.textView3}, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER); // 커스텀 뷰
 
 
         list = (ListView)findViewById(R.id.listView);
