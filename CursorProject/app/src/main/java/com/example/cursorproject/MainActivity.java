@@ -1,5 +1,7 @@
 package com.example.cursorproject;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -7,6 +9,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +18,8 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "Main";
 
     ListView list;
     Cursor c;
@@ -26,6 +31,22 @@ public class MainActivity extends AppCompatActivity {
 
     MyHelper helper;
     SQLiteDatabase db;
+
+    View.OnClickListener handler = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            doAction1();
+        }
+    };
+
+    // 전화 번호 추가하기
+    public void doAction1(){
+        AccountManager manager = AccountManager.get(this);
+        Account[] accounts = manager.getAccounts();
+        for(Account a : accounts){
+            Log.v(TAG, a.name + "," + a.type);
+        }
+    }
 
     // DB 열기
     public void doDBOpen(){
@@ -49,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         setContentView(R.layout.activity_main);
+
+        findViewById(R.id.button).setOnClickListener(handler);
 
         helper = new MyHelper(this, "myDB.db", null, 1); //
 
