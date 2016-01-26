@@ -44,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
                     // LIMIT 2, 3
                     doAction4("person", new String[]{"name", "age", "type"}, "K", "age DESC", "2,3"); // 불러오려는 컬럼은 배열로 1.테이블명 2. 가져올 칼럼 3.조건식대입문(like) 4.order 5.limit
                     break;
+                case R.id.button5:
+                    doAction5(1);
+                    break;
             }
         }
     };
@@ -144,6 +147,21 @@ public class MainActivity extends AppCompatActivity {
         doDBClose();
     }
 
+    // 삭제
+   public void doAction5(int type){
+       doDBOpen();
+       String wStr = "type = ?";
+       String [] wContent = {type + ""};
+       try{
+           int count = db.delete("person", wStr, wContent); // 삭제된 레코드의 개수가 반환
+           Log.v(TAG, "SQL 삭제된 레코드 개수 = "+ count);
+
+       }catch (SQLException e){
+           Log.v(TAG, "SQL error = "+ e);
+       }
+       doDBClose();
+    }
+
     // DB 열기
     public void doDBOpen(){
         if(helper == null){
@@ -181,6 +199,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button2).setOnClickListener(handler);
         findViewById(R.id.button3).setOnClickListener(handler);
         findViewById(R.id.button4).setOnClickListener(handler);
+        findViewById(R.id.button5).setOnClickListener(handler);
         helper = new MyHelper(this, "myDB.db", null, 1); // myDB.db 이름의 버전이 1
     }
 
