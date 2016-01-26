@@ -45,7 +45,10 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        helper = new MyHelper(this, "myDB.db", null, 1); // myDB.db 이름의 버전이 1
+        helper = new MyHelper(this, "myDB.db", null, 1); //
+
+        db = helper.getReadableDatabase(); //읽기 전요
+        c = db.query("person", null, null, null, null, null, null); // person 데이터 모두 불러오기
 
 
         list = (ListView)findViewById(R.id.listView);
