@@ -1,11 +1,15 @@
 package com.example.sqliteproject;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,17 +28,85 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             switch (v.getId()){
                 case R.id.button:
-                    doAction1();
+                    doAction1("Kim", 40, 1);
+                    break;
+                case R.id.button2:
+                    doAction2("Lee", 20, 20, 2);
+                    break;
+                case R.id.button3:
+                    doAction3();
                     break;
             }
         }
     };
 
     // DB 생성
-    public void doAction1(){
+    public void doAction1(String name, int age, int type){
         doDBOpen();
 
         // CRUD 작업
+        ContentValues values = new ContentValues();
+        values.put("name", name);
+        values.put("age", age);
+        values.put("type", type);
+
+        try{
+            long id = db.insert("person", null, values);
+            Log.v(TAG, id>0?"insert success" : "insert fail");
+        }catch(SQLException e){
+            Log.v(TAG, "insert error : " + e);
+        }
+//        String sqlFormat = "insert into person(name, age, type) values('%s', %d, %d);";
+//        String sql = String.format(sqlFormat, name, age, type);
+//        Log.v(TAG, "sql : " + sql);
+//        try{
+//            db.execSQL(sql);
+//            Log.v(TAG, "insert success");
+//        }catch(SQLException e){
+//            Log.v(TAG, "insert error : " + e);
+//        }
+
+        doDBClose();
+    }
+
+    public void doAction2(String newName, int newAge, int wid, int wtype){
+        doDBOpen();
+        ContentValues values = new ContentValues();
+        values.put("name", newName);
+        values.put("age", newAge);
+
+        // update person set nam e = 'ddd', age= 44 where _id > 2 and type = 0
+        String wStr = "_id > ? and type = ?";
+        String [] wContent = {wid + "", wtype+""};
+        try{
+            int count = db.update("person", values, wStr, wContent);
+        }catch (SQLException e){
+            Log.v(TAG, "SQL error = "+ e);
+        }finally {
+
+        }
+    }
+
+    // SELECT 문
+    public void doAction3(){
+        doDBOpen();
+        try{
+            // select * from person;
+//            db.query("person", null, null, null, null, null); // 1.DB명 , , , 5.그룹By, 6.Having
+            Cursor c = db.query("person", null, null, null, null, null, null); // 반환 값이 Cursor
+            while (c.moveToNext()){ // 다음 것이 있으면 실행
+                int idx = c.getColumnIndex("_id"); // _id 컬럼의 인덱스 값을 가져온다.
+                int id = c.getInt(idx); // 현재 위치의 _id 칼럼의 값
+                String name = c.getString(c.getColumnIndex("name"));
+                int age = c.getInt(2); // 우리가 알고 있는 INSERT문에 들어갔던 그 순서 인덱스 번호
+                int type = c.getInt(3);
+                Log.v(TAG, String.format("%d %s %d %d", id , name, age, type));
+            }
+
+            c.close(); // 다 하고 나서 close 꼭 할것
+        }catch (SQLException e){
+            Log.v(TAG, "SQL error = "+ e);
+        }
 
         doDBClose();
     }
@@ -73,6 +145,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         findViewById(R.id.button).setOnClickListener(handler);
+        findViewById(R.id.button2).setOnClickListener(handler);
+        findViewById(R.id.button3).setOnClickListener(handler);
         helper = new MyHelper(this, "myDB.db", null, 1); // myDB.db 이름의 버전이 1
     }
 

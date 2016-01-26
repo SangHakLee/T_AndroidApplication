@@ -14,6 +14,9 @@ public class MyHelper extends SQLiteOpenHelper{
 
     private static final String TAG = "Main";
 
+
+    public static final String COL_NAME = "name"; // Main에서 쓰는 COL_NAME
+
     Context context; // 나중에 쓸 수도 있으니 context 멤버로
 
     // context, DB명, factory는 null, 버전정보
@@ -25,8 +28,7 @@ public class MyHelper extends SQLiteOpenHelper{
     // 폰에 설치되고 최초 한번만. 지웠다 깔아야함
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "CREATE TABLE person ( _id INTEGER AUTO_INCREMENT PRIMARY KEY, name TEXT, age INTEGER, type INTEGER);";
-
+        String sql = "CREATE TABLE person ( _id INTEGER  PRIMARY KEY AUTOINCREMENT, name TEXT, age INTEGER, type INTEGER);";
 
         Log.v(TAG, "onCreate");
         // execSQL 는 반드시 try catch
