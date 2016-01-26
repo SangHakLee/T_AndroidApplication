@@ -1,5 +1,6 @@
 package com.example.httpproject;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -13,6 +14,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -31,10 +37,62 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             switch (v.getId()){
                 case R.id.button:
-                    doAction1();
+                    doAction2();
             }
         }
     };
+
+    // 쓰레드 대신 AsyncTask 사용
+    class HttpTask extends AsyncTask<String, Void, String >{
+        @Override
+        protected String doInBackground(String... params) {
+            String stringUrl = params[0]; // doAction2()에서 인자값
+            HttpClient client = null;
+            HttpGet request = null; // 요청 객체
+            HttpResponse response = null; // 응답 객체
+
+            String data = "";
+
+            int code;
+            // 네트워크는 꼭 try catch
+            try {
+                client = new DefaultHttpClient();
+                request = new HttpGet(stringUrl); // 접속하려는 URL 인자로
+                response = client.execute(request);
+
+                code = response.getStatusLine().getStatusCode(); // 응답객체 응답코드
+
+                Log.v(TAG, "code : "+ code);
+
+                switch (code){
+                    case HttpURLConnection.HTTP_OK :
+                        data = getData( new BufferedReader(new InputStreamReader(response.getEntity().getContent())) ); //  getEntity() 입출력 관리, getContent() 입력 관리
+                        break;
+
+                    default:
+                        data = " code : "+ code;
+                        break;
+                }
+
+
+            } catch (IOException e) {
+//            e.printStackTrace();
+                Log.v(TAG, "error : " + e);
+            }finally {
+            }
+            return data; // onPostExecute() 로 데이터 이동
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            et.setText(s); // HttpTask 에서 return 값
+            super.onPostExecute(s);
+        }
+    }
+
+    public void doAction2(){
+        new HttpTask().execute("http://m.google.co.kr"); // onPostExecute로 인자값 전달됨;
+    }
 
     // UI 바꾸기 핸들러 만들기
     Handler uiHandler = new Handler(){
