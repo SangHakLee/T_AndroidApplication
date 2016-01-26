@@ -12,10 +12,14 @@ import android.widget.CursorAdapter;
 public class MyCursorAdapter extends CursorAdapter {
     // 메소드 newView bindView 오버라이딩
     // 생성자 생성
-    
 
-    public MyCursorAdapter(Context context, Cursor c, boolean autoRequery) {
+    int layout; // 여기서 layout은 Main에서 넘기 R.id.item 레이아웃
+
+    int[] imgRes = {R.drawable.icon01, R.drawable.icon02, R.drawable.icon03};
+
+    public MyCursorAdapter(Context context, int layout,  Cursor c, boolean autoRequery) {
         super(context, c, autoRequery);
+        this.layout = layout;
     }
 
     @Override
