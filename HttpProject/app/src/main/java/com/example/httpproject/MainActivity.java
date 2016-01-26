@@ -31,28 +31,32 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    // 쓰레드 생성 해서 여기서 네트워크 연결
+    class NetworkThread extends Thread{
+        public void run(){
+            String stringUrl = "http://m.google.co.kr"; // 접속할 주소
+
+            URL url = null;
+            HttpURLConnection connection = null; //좀더 다양한 처리 가능
+            int code;
+            // 네트워크는 꼭 try catch
+            try {
+                url = new URL(stringUrl);
+                connection = (HttpURLConnection)url.openConnection(); // 커넥션
+                code = connection.getResponseCode(); // 응답 코드
+                Log.v(TAG, "code : "+ code);
+            } catch (IOException e) {
+//            e.printStackTrace();
+                Log.v(TAG, "error : " + e);
+            }finally {
+                connection.disconnect();
+            }
+        }
+    }
 
     // 네트워크로 서버통신
     public void doAction1(){
-        String stringUrl = "http://m.google.com"; // 접속할 주소
-
-        URL url = null;
-        HttpURLConnection connection = null; //좀더 다양한 처리 가능
-        int code;
-        // 네트워크는 꼭 try catch
-        try {
-            url = new URL(stringUrl);
-            connection = (HttpURLConnection)url.openConnection(); // 커넥션
-            code = connection.getResponseCode(); // 응답 코드
-            Log.v(TAG, "code : "+ code);
-        } catch (IOException e) {
-//            e.printStackTrace();
-            Log.v(TAG, "error : " + e);
-        }finally {
-            connection.disconnect();
-        }
-        // 현재 에러 android.os.NetworkOnMainThreadException
-
+        new NetworkThread().start();
     };
 
     @Override
