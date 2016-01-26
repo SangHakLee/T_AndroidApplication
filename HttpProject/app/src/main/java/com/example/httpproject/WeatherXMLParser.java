@@ -4,6 +4,7 @@ import android.util.Log;
 
 import org.xml.sax.SAXException;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -20,13 +21,20 @@ public class WeatherXMLParser {
         Weather weather = null;
 
         SAXParserFactory factory = SAXParserFactory.newInstance(); // 여기서 만들어서 넘겨준다.
+        SAXParser parser = null;
+        WeaterXMLHandler handler = new WeaterXMLHandler();
         try {
-            SAXParser parser = factory.newSAXParser();
+            parser = factory.newSAXParser();
+            parser.parse(is, handler); // 실제로 파싱은 핸들러가
+            weather = handler.getWeather(); // 핸들러에서 만들어서 넘긴다.
         } catch (ParserConfigurationException e) {
 //            e.printStackTrace();
             Log.v(TAG, "error1 : " + e);
         } catch (SAXException e) {
             Log.v(TAG, "error2 : " + e);
+//            e.printStackTrace();
+        } catch (IOException e) {
+            Log.v(TAG, "error3 : " + e);
 //            e.printStackTrace();
         }
 
