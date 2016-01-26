@@ -111,7 +111,8 @@ public class MainActivity extends AppCompatActivity {
             while (c.moveToNext()){ // 다음 것이 있으면 실행
                 int idx = c.getColumnIndex("_id"); // _id 컬럼의 인덱스 값을 가져온다.
                 int id = c.getInt(idx); // 현재 위치의 _id 칼럼의 값
-                String name = c.getString(c.getColumnIndex("name"));
+//                String name = c.getString(c.getColumnIndex("name"));
+                String name = c.getString(c.getColumnIndex(MyHelper.COL_NAME)); // "name" 과 같다.
                 int age = c.getInt(2); // 우리가 알고 있는 INSERT문에 들어갔던 그 순서 인덱스 번호
                 int type = c.getInt(3);
                 Log.v(TAG, String.format("%d %s %d %d", id , name, age, type));
