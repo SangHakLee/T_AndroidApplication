@@ -1,5 +1,7 @@
 package com.example.cursorproject;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,13 +10,44 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 
 public class MainActivity extends AppCompatActivity {
+
+    ListView list;
+    Cursor c;
+    SimpleCursorAdapter adapter; // 리시트뷰를 관리하는 어덥터
+
+    MyHelper helper;
+    SQLiteDatabase db;
+
+    // DB 열기
+    public void doDBOpen(){
+        if(helper == null){
+            helper = new MyHelper(this, "myDB.db", null, 1);
+        }
+        db = helper.getWritableDatabase();
+    }
+    // DB 닫기
+    public void doDBClose(){
+        if(db != null){
+            if(db.isOpen()){
+                db.close();
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_main);
+
+        list = (ListView)findViewById(R.id.listView);
+        list.setAdapter(adapter); // 만든 어덥터랑 연결
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
