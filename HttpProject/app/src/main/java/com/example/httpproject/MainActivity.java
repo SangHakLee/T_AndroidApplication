@@ -14,7 +14,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -42,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
             switch (msg.what){
                 case 999:
                     Toast.makeText(MainActivity.this, msg.arg1 + "코드 에러", Toast.LENGTH_SHORT).show();
+                    break;
+
+                case 800:
+                    et.setText(msg.obj.toString());
             }
         }
     };
@@ -66,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
                     case HttpURLConnection.HTTP_OK :
                         // 여기서 UI 바꾸기 안됨
                         // 핸들러 이용
+                        String data = getData(new BufferedReader(new InputStreamReader(connection.getInputStream())) ); // 내가 만든 메소드 connection.getInputStream() : 입력용 객체
+                        msg.what = 800;
+                        msg.obj = data;
                         break;
 
                     default:
@@ -85,6 +94,21 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+    String getData(BufferedReader br){
+        String data = "";
+        String readData = ""; // 읽은 데이터
+        StringBuilder builder = new StringBuilder();
+        try {
+            while ( (readData = br.readLine()) != null ){
+                builder.append(readData).append(" \n");
+            }
+            data = builder.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return data;
+    };
 
     // 네트워크로 서버통신
     public void doAction1(){
