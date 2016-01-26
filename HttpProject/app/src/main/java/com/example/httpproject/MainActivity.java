@@ -16,15 +16,19 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,11 +57,26 @@ public class MainActivity extends AppCompatActivity {
 
             String data = "";
 
+            // http://openapi.naver.com/search?key=c1b406b32dbbbbeee5f2a36ddc14067f&query=영화&display=10&start=1&target=movie 이거  만들기
+            ArrayList<NameValuePair> queryList = new ArrayList<NameValuePair>(); // 쿼리 스트링 만들 리스트
+            // 한글은 URLEncoder 꼭 사용
+            queryList.add(new BasicNameValuePair("query", "영화"));
+            queryList.add(new BasicNameValuePair("key", "c1b406b32dbbbbeee5f2a36ddc14067f"));
+            queryList.add(new BasicNameValuePair("display", "10"));
+            queryList.add(new BasicNameValuePair("start", "1"));
+            queryList.add(new BasicNameValuePair("target", "movie"));
+
+            String query = URLEncodedUtils.format(queryList, "utf-8"); // 사용법
+            String url = stringUrl + "?" + query; // 주의사항 url엔 공백 없다.
+            Log.v(TAG, "url : " + url);
+
+
             int code;
             // 네트워크는 꼭 try catch
             try {
                 client = new DefaultHttpClient();
-                request = new HttpGet(stringUrl); // 접속하려는 URL 인자로
+//                request = new HttpGet(stringUrl); // 접속하려는 URL 인자로
+                request = new HttpGet(url); // NameValuePair 로 만든 쿼리 스트링 Url
                 response = client.execute(request);
 
                 code = response.getStatusLine().getStatusCode(); // 응답객체 응답코드
@@ -91,9 +110,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void doAction2(){
-        new HttpTask().execute("http://m.google.co.kr"); // onPostExecute로 인자값 전달됨;
+//        new HttpTask().execute("http://m.google.co.kr"); // onPostExecute로 인자값 전달됨;
+        new HttpTask().execute("http://openapi.naver.com/search"); // onPostExecute로 인자값 전달됨;
     }
-
     // UI 바꾸기 핸들러 만들기
     Handler uiHandler = new Handler(){
         // handleMessage 재정의
