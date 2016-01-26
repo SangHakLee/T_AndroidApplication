@@ -45,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+        helper = new MyHelper(this, "myDB.db", null, 1); // myDB.db 이름의 버전이 1
+
+
         list = (ListView)findViewById(R.id.listView);
         list.setAdapter(adapter); // 만든 어덥터랑 연결
 
