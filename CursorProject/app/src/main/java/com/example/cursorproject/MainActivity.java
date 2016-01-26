@@ -2,9 +2,13 @@ package com.example.cursorproject;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
+import android.content.ContentUris;
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -42,10 +46,34 @@ public class MainActivity extends AppCompatActivity {
     // 전화 번호 추가하기
     public void doAction1(){
         AccountManager manager = AccountManager.get(this);
-        Account[] accounts = manager.getAccounts();
+        Account[] accounts = manager.getAccounts(); // 계정 가져오기
         for(Account a : accounts){
-            Log.v(TAG, a.name + "," + a.type);
+            Log.v(TAG, a.name + "," + a.type); // 모든 계정 가져와서 로그 남기기
         }
+
+
+        ContentValues values = new ContentValues();
+        values.put(ContactsContract.RawContacts.ACCOUNT_NAME, "leesanghak7298@gmail.com"); // 위에서 가져온 accounts의 name
+        values.put(ContactsContract.RawContacts.ACCOUNT_TYPE, "com.google"); // 위에서 가져온 accounts의 type
+        Uri uri = getContentResolver().insert(ContactsContract.RawContacts.CONTENT_URI, values);
+        long rawId = ContentUris.parseId(uri); // rawId 로 접근
+        Log.v(TAG, "rawId : " + rawId);
+
+        // 이름 추가
+        values.clear();
+        values.put(ContactsContract.Data.RAW_CONTACT_ID, rawId);
+        values.put(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE);
+        values.put(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, "테스트유저");
+        getContentResolver().insert(ContactsContract.Data.CONTENT_URI, values);
+
+        // 번호 추가
+        values.clear();
+        values.put(ContactsContract.Data.RAW_CONTACT_ID, rawId);
+        values.put(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE);
+        values.put(ContactsContract.CommonDataKinds.Phone.NUMBER, "123444556");
+        values.put(ContactsContract.CommonDataKinds.Phone.TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_HOME);
+        getContentResolver().insert(ContactsContract.Data.CONTENT_URI, values);
+        Log.v(TAG, "success");
     }
 
     // DB 열기
