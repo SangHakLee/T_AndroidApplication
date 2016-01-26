@@ -55,9 +55,9 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
-    class WeatherTask extends AsyncTask<String, Void, String >{
+    class WeatherTask extends AsyncTask<String, Void, Weather >{
         @Override
-        protected String doInBackground(String... params) {
+        protected Weather  doInBackground(String... params) {
             String stringUrl = params[0]; // doAction2()에서 인자값
             HttpClient client = null;
             HttpGet request = null; // 요청 객체
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 WeatherXMLParser parser = new WeatherXMLParser();
                 switch (code){
                     case HttpURLConnection.HTTP_OK :
-                        weather = parser.doParser(response.getEntity().getContent());
+                        weather = parser.doParser(response.getEntity().getContent()); // !! 여기서 시작
                         break;
 
                     default:

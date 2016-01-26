@@ -17,7 +17,7 @@ import javax.xml.parsers.SAXParserFactory;
 public class WeatherXMLParser {
     private static final String TAG = "Main";
 
-    public Weather doParser(InputStream is){
+    public Weather doParser(InputStream is){ // !! 여기로온다.
         Weather weather = null;
 
         SAXParserFactory factory = SAXParserFactory.newInstance(); // 여기서 만들어서 넘겨준다.
@@ -25,7 +25,7 @@ public class WeatherXMLParser {
         WeaterXMLHandler handler = new WeaterXMLHandler();
         try {
             parser = factory.newSAXParser();
-            parser.parse(is, handler); // 실제로 파싱은 핸들러가
+            parser.parse(is, handler); // 실제로 파싱은 핸들러가 한다.
             weather = handler.getWeather(); // 핸들러에서 만들어서 넘긴다.
         } catch (ParserConfigurationException e) {
 //            e.printStackTrace();

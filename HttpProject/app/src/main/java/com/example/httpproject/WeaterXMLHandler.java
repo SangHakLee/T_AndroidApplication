@@ -15,7 +15,7 @@ public class WeaterXMLHandler extends DefaultHandler {
     String tag ;
 
 
-    public Weather getWeather(){
+    public Weather getWeather(){ // 파싱하는 부분 밑에 3가지 오버라이딘된 메소드가 실행됨
         return weather;
     }
 
@@ -23,7 +23,7 @@ public class WeaterXMLHandler extends DefaultHandler {
 
     @Override // 엘리먼트 시작 <>
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-        if(localName.equals("weather")){ // 태그가 <weater 로 시작하는거 잡기     <weather year="2016" month="01" day="26" hour="16">
+        if("weather".equals(localName)){ // 태그가 <weater 로 시작하는거 잡기     <weather year="2016" month="01" day="26" hour="16">
             weather = new Weather();
             weather.year = attributes.getValue("year"); // 각각 weater 객체에 넣어준다,
             weather.month = attributes.getValue("month");
@@ -51,7 +51,7 @@ public class WeaterXMLHandler extends DefaultHandler {
             weather.list.add(local); // 마직막 태그를 읽으면 ArrayList에 넣는다.
         }
 
-        tag = null; // </> 태그 읽고 나서 뒤에 줄바꿈도 처리하는데 이것을 막기위해서.
+        tag = null; // </> 태그 읽고 나서 뒤에 줄바꿈도 처리하는데 이것을 막기위해서. 꼭 해준다. 이렇게 하면 characters() 에서 if 문에서 안걸려서 작업 안한다.
     }
 
     @Override // <> 여기 데이터 가저올때 호출 </>
