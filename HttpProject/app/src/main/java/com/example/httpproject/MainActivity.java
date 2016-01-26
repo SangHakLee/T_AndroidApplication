@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 url = new URL(stringUrl);
                 connection = (HttpURLConnection)url.openConnection(); // 커넥션
+//                connection.setDoOutput(true); // 이 코드가 있으면 POST 방식
                 connection.setConnectTimeout(10000); // 10초 동안 기다림 10초 넘으면 exception
                 connection.setReadTimeout(10000); // 10초 동안 기다림 10초 넘으면 exception
                 code = connection.getResponseCode(); // 응답 코드
