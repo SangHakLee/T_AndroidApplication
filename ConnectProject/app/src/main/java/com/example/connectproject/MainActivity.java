@@ -1,9 +1,11 @@
 package com.example.connectproject;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.ConnectivityManager;
-import android.net.DhcpInfo;
-import android.net.NetworkInfo;
-import android.net.wifi.WifiInfo;
+import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -21,6 +23,7 @@ import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.Enumeration;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -70,44 +73,59 @@ public class MainActivity extends AppCompatActivity {
         return null;
     }
 
-
-
-    // 네트워크 상태 가져오기
-    public void doAction1(){
-
-        // 와이파이에 잡힌 아이피 가져오기
-        WifiManager wm = (WifiManager) getSystemService(WIFI_SERVICE);
-        DhcpInfo dhcpInfo = wm.getDhcpInfo() ;
-        WifiInfo wifiInfo = wm.getConnectionInfo();
-        int serverIp = dhcpInfo.gateway;
-        int myIp = wifiInfo.getIpAddress();
-        String myIpAddress = String.format(
-                "%d.%d.%d.%d",
-                (myIp & 0xff),
-                (myIp >> 8 & 0xff),
-                (myIp >> 16 & 0xff),
-                (myIp >> 24 & 0xff));
-        String ipAddress = String.format(
-                "%d.%d.%d.%d",
-                (serverIp & 0xff),
-                (serverIp >> 8 & 0xff),
-                (serverIp >> 16 & 0xff),
-                (serverIp >> 24 & 0xff));
-        Log.v(TAG, "ipAddress : " + ipAddress);
-        Log.v(TAG, "myIpAddress : " + myIpAddress);
-
-        NetworkInfo info = manager.getActiveNetworkInfo();
-        if( info == null){ // 네트워크 없음
-            Log.v(TAG, "현재 사용할 수 있는 네트워크 없음");
-        }else{
-            if(ConnectivityManager.TYPE_MOBILE == info.getType()){
-                Log.v(TAG, "3G 상태");
-            }else if(ConnectivityManager.TYPE_WIFI == info.getType()){
-                Log.v(TAG, "WIFI 상태");
-                info.getState();
+    WifiManager wifiManager;
+    BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if(intent.getAction().equals(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION)){ // 와이파이 잡았다는 뜻
+                List<ScanResult> list = wifiManager.getScanResults();
+                for(ScanResult s : list){ // 현재 잡을 수 있는 모든 와이파이 잡는다
+                    Log.v(TAG, String.format("이름 : %s, 세기 : %d", s.SSID, s.level));
+                }
             }
         }
+    };
+    // 네트워크 상태 가져오기
+    public void doAction1(){
+        IntentFilter filter = new IntentFilter(); // 인텐트를 잡는다
+        filter.addAction(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION); // 와이파이가 검색됬다는 뜻
+        registerReceiver(receiver, filter); // 와이파이가 검색되면 여기로 날림
+        wifiManager = (WifiManager)getSystemService(WIFI_SERVICE);
+        wifiManager.startScan(); // 스캔한다.  퍼미션 추가해야함
 
+
+//        // 와이파이에 잡힌 아이피 가져오기
+//        WifiManager wm = (WifiManager) getSystemService(WIFI_SERVICE);
+//        DhcpInfo dhcpInfo = wm.getDhcpInfo() ;
+//        WifiInfo wifiInfo = wm.getConnectionInfo();
+//        int serverIp = dhcpInfo.gateway;
+//        int myIp = wifiInfo.getIpAddress();
+//        String myIpAddress = String.format(
+//                "%d.%d.%d.%d",
+//                (myIp & 0xff),
+//                (myIp >> 8 & 0xff),
+//                (myIp >> 16 & 0xff),
+//                (myIp >> 24 & 0xff));
+//        String ipAddress = String.format(
+//                "%d.%d.%d.%d",
+//                (serverIp & 0xff),
+//                (serverIp >> 8 & 0xff),
+//                (serverIp >> 16 & 0xff),
+//                (serverIp >> 24 & 0xff));
+//        Log.v(TAG, "ipAddress : " + ipAddress);
+//        Log.v(TAG, "myIpAddress : " + myIpAddress);
+//
+//        NetworkInfo info = manager.getActiveNetworkInfo();
+//        if( info == null){ // 네트워크 없음
+//            Log.v(TAG, "현재 사용할 수 있는 네트워크 없음");
+//        }else{
+//            if(ConnectivityManager.TYPE_MOBILE == info.getType()){
+//                Log.v(TAG, "3G 상태");
+//            }else if(ConnectivityManager.TYPE_WIFI == info.getType()){
+//                Log.v(TAG, "WIFI 상태");
+//                info.getState();
+//            }
+//        }
     }
 
     @Override
