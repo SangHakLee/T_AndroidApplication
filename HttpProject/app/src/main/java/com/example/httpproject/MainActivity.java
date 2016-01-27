@@ -15,6 +15,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -59,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
     };
 
     public void doAction4(){
+
+        Gson gson = new Gson();
+
         Data d = new Data();
         d.name = "학학이";
         d.age = 25;
