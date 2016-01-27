@@ -6,9 +6,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,12 +24,51 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.button:
                     doAction1();
                     break;
+                case R.id.button2:
+                    doAction2();
+                    break;
             }
         }
     };
 
-    MediaPlayer mediaPlayer1;
+    // 액티비티 종료 될때
+    @Override
+    protected void onDestroy() {
+        killMediaPlaying(); // 액티비티 안에서만 재생 하려고
+        super.onDestroy();
+    }
 
+    public void killMediaPlaying(){
+        if(mediaPlayer2 != null){
+            if(mediaPlayer2.isPlaying()){
+                mediaPlayer2.stop();
+            }
+            mediaPlayer2.release(); // 꼭 할것
+            mediaPlayer2 = null;
+            System.gc();
+        }
+    }
+
+    MediaPlayer mediaPlayer2;
+    // 긴 파일 재생
+    public void doAction2(String fNmae){
+        if(mediaPlayer2 == null){
+            mediaPlayer2 = new MediaPlayer();
+        }
+
+        if(mediaPlayer2.isPlaying()){
+            mediaPlayer2.stop();
+            mediaPlayer2.reset(); // 초기화 작업
+        }
+        String path = "";
+        try {
+            mediaPlayer2.setDataSource(path);
+        } catch (IOException e) {
+            Log.v(TAG, "play error : "+ e);
+        }
+    }
+
+    MediaPlayer mediaPlayer1;
     // 미디어 플레이어를 통한 재생
     public void doAction1(){
         mediaPlayer1.start(); // 시작
@@ -38,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.button).setOnClickListener(handler);
+        findViewById(R.id.button2).setOnClickListener(handler);
 
         mediaPlayer1 = MediaPlayer.create(this, R.raw.dingdong); // 짧은 음원은 그냥 하면 끝
 
