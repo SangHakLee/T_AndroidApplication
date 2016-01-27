@@ -62,9 +62,9 @@ public class MainActivity extends AppCompatActivity {
     };
 
     // doAction5() 를 위한 Task
-    class MelonTask extends AsyncTask<String, Void, String >{
+    class MelonTask extends AsyncTask<String, Void, MelonResult >{ // 리턴 타입을 MelonResult
         @Override
-        protected String doInBackground(String... params) {
+        protected MelonResult doInBackground(String... params) { // 반환 타입도 MelonResult
             String stringUrl = params[0]; // doAction2()에서 인자값
             HttpClient client = null;
             HttpGet request = null; // 요청 객체
@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
             String url = stringUrl + "?" + query; // 주의사항 url엔 공백 없다.
             Log.v(TAG, "url : " + url);
 
+            MelonResult result = null;
 
             int code;
             // 네트워크는 꼭 try catch
@@ -102,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (code){
                     case HttpURLConnection.HTTP_OK :
                         data = getData( new BufferedReader(new InputStreamReader(response.getEntity().getContent())) ); //  getEntity() 입출력 관리, getContent() 입력 관리
+                        result = MelonJasonParser.doJsonParser(data); // 파싱해서 얻어진걸 result
                         break;
 
                     default:
@@ -111,16 +113,15 @@ public class MainActivity extends AppCompatActivity {
 
 
             } catch (IOException e) {
-//            e.printStackTrace();
                 Log.v(TAG, "error : " + e);
             }finally {
             }
-            return data; // onPostExecute() 로 데이터 이동
+            return result; // onPostExecute() 로 데이터 이동
         }
 
         @Override
-        protected void onPostExecute(String s) {
-            et.setText(s); // HttpTask 에서 return 값
+        protected void onPostExecute(MelonResult s) {
+            et.setText(s.toString()); // HttpTask 에서 return 값
             super.onPostExecute(s);
         }
     }
