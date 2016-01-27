@@ -53,10 +53,82 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.button3:
                     doAction4();
                     break;
+                case R.id.button4:
+                    doAction5();
+                    break;
 
             }
         }
     };
+
+    // doAction5() 를 위한 Task
+    class MelonTask extends AsyncTask<String, Void, String >{
+        @Override
+        protected String doInBackground(String... params) {
+            String stringUrl = params[0]; // doAction2()에서 인자값
+            HttpClient client = null;
+            HttpGet request = null; // 요청 객체
+            HttpResponse response = null; // 응답 객체
+
+            String data = "";
+
+            // http://apis.skplanetx.com/melon/charts/realtime?count=10&page=1&version=1
+            ArrayList<NameValuePair> queryList = new ArrayList<NameValuePair>(); // 쿼리 스트링 만들 리스트
+            // 한글은 URLEncoder 꼭 사용
+            queryList.add(new BasicNameValuePair("version", "1"));
+            queryList.add(new BasicNameValuePair("count", "10"));
+            queryList.add(new BasicNameValuePair("page", "1"));
+
+            String query = URLEncodedUtils.format(queryList, "utf-8"); // 사용법
+            String url = stringUrl + "?" + query; // 주의사항 url엔 공백 없다.
+            Log.v(TAG, "url : " + url);
+
+
+            int code;
+            // 네트워크는 꼭 try catch
+            try {
+                client = new DefaultHttpClient();
+//                request = new HttpGet(stringUrl); // 접속하려는 URL 인자로
+                request = new HttpGet(url); // NameValuePair 로 만든 쿼리 스트링 Url
+                request.setHeader("appKey", "d8a122f8-d03f-37ca-968a-aba76934c836"); // 헤더 추가
+                request.setHeader("Accept", "application/json"); // 헤더 추가
+
+                response = client.execute(request);
+
+                code = response.getStatusLine().getStatusCode(); // 응답객체 응답코드
+
+                Log.v(TAG, "code : "+ code);
+
+                switch (code){
+                    case HttpURLConnection.HTTP_OK :
+                        data = getData( new BufferedReader(new InputStreamReader(response.getEntity().getContent())) ); //  getEntity() 입출력 관리, getContent() 입력 관리
+                        break;
+
+                    default:
+                        data = " code : "+ code;
+                        break;
+                }
+
+
+            } catch (IOException e) {
+//            e.printStackTrace();
+                Log.v(TAG, "error : " + e);
+            }finally {
+            }
+            return data; // onPostExecute() 로 데이터 이동
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            et.setText(s); // HttpTask 에서 return 값
+            super.onPostExecute(s);
+        }
+    }
+
+    //  T 멜론 정보 가져오기
+    public void doAction5(){
+        new MelonTask().execute("http://apis.skplanetx.com/melon/charts/realtime");
+    }
 
     public void doAction4(){
 
@@ -338,6 +410,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button).setOnClickListener(handler);
         findViewById(R.id.button2).setOnClickListener(handler);
         findViewById(R.id.button3).setOnClickListener(handler);
+        findViewById(R.id.button4).setOnClickListener(handler);
 
         et = (EditText)findViewById(R.id.editText);
 
