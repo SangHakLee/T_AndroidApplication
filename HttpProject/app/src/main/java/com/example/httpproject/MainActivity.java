@@ -42,12 +42,27 @@ public class MainActivity extends AppCompatActivity {
             switch (v.getId()){
                 case R.id.button:
                     doAction2();
+                    break;
+
                 case R.id.button2:
                     doAction3();
+                    break;
+
+                case R.id.button3:
+                    doAction4();
+                    break;
 
             }
         }
     };
+
+    public void doAction4(){
+        Data d = new Data();
+        d.name = "학학이";
+        d.age = 25;
+        d.addres = "주소";
+        d.sex = true;
+    }
 
     public void doAction3(){
         new WeatherTask().execute("http://www.kma.go.kr/XML/weather/sfc_web_map.xml");
@@ -262,6 +277,7 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.button).setOnClickListener(handler);
         findViewById(R.id.button2).setOnClickListener(handler);
+        findViewById(R.id.button3).setOnClickListener(handler);
 
         et = (EditText)findViewById(R.id.editText);
 
