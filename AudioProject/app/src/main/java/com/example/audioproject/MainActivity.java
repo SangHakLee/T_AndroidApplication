@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
                     doAction1();
                     break;
                 case R.id.button2:
-                    doAction2("shuffle.wav");
+                    doAction2("music.mp3");
                     break;
                 case R.id.button3:
                     doAction3();
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         if(position > 0){
             mediaPlayer2.seekTo(position); // 재생 위치부터 시작
         }
-        mediaPlayer2.start();
+//        mediaPlayer2.start();
     }
 
     int position;
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     public void doAction3(){
         if(mediaPlayer2.isPlaying()){
             position = mediaPlayer2.getCurrentPosition(); // 현재 재생 위치 저장
-            mediaPlayer2.stop();
+            mediaPlayer2.pause();
         }
     }
 
@@ -72,6 +72,14 @@ public class MainActivity extends AppCompatActivity {
             System.gc();
         }
     }
+
+    MediaPlayer.OnSeekCompleteListener seekCompleteListener = new MediaPlayer.OnSeekCompleteListener(){
+        @Override
+        public void onSeekComplete(MediaPlayer mp) {
+            mp.start();
+
+        }
+    };
 
     MediaPlayer.OnPreparedListener preparedListener = new MediaPlayer.OnPreparedListener(){
         @Override
@@ -95,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
         File sdCard = Environment.getExternalStorageDirectory();
         File file = new File(sdCard, fName);
         path = file.getAbsolutePath();
+        Log.v(TAG, "path : " + path);
         try {
             mediaPlayer2.setDataSource(path);
 
@@ -102,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
 //            mediaPlayer2.start(); // prepare()와 같이 씀
 
             mediaPlayer2.setOnPreparedListener(preparedListener); // 위에서 만든 OnPreparedListener 에 리스너 건다.
+            mediaPlayer2.setOnSeekCompleteListener(seekCompleteListener);
             mediaPlayer2.prepareAsync(); // 동기 쓰레드 필요없음
 
         } catch (IOException e) {
