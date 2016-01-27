@@ -61,16 +61,39 @@ public class MainActivity extends AppCompatActivity {
     public void doAction4(){
 
         Gson gson = new Gson();
+        ArrayList<Data> list = new ArrayList<Data>();
 
-        Data d = new Data();
-        d.name = "학학이";
-        d.age = 25;
-        d.addres = "주소";
-        d.sex = true;
+        for(int i = 0 ; i < 6; i++){
+            list.add(new Data("이이"+i, 20 +i, "경기"+i, false));
+        }
 
-//        String json = d.toString(); JSONObject 방법
-        String json = gson.toJson(d);
-        Log.v(TAG, "json : " + json);
+        DataResult result = new DataResult();
+        result.list = list;
+        result.count = list.size();
+        result.status = "success";
+
+//        String s = gson.toJson(list);
+        String s = gson.toJson(result); // {}으로 시작하기 위해서 DataResult라는 클래스 만들고 이걸 보낸다.
+        Log.v(TAG, "s : " + s); // 일반적으로 배열이기 때문에 [] 로 시작 하지만 DataResult로 {} 객체로 보낸다.
+
+
+        // Gson 기본 방법
+//        Gson gson = new Gson();
+//
+//        Data d = new Data();
+//        d.name = "학학이";
+//        d.age = 25;
+//        d.addres = "주소";
+//        d.sex = true;
+//
+////        String json = d.toString(); JSONObject 방법
+//        String json = gson.toJson(d);
+//        Log.v(TAG, "json : " + json);
+//        String str = "{\"addres\":\"주소\",\"name\":\"학학이\",\"age\":25,\"sex\":true}";
+//
+//        // Gson으로 json 파싱
+//        Data d1 = gson.fromJson(str, Data.class); // 문자열과 클래스 원형
+//        Log.v(TAG, "d1 : " + d1.toString());
 
 
 

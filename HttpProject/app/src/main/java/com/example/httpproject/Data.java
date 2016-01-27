@@ -10,6 +10,13 @@ public class Data {
     public String addres;
     public boolean sex;
 
+    public Data(String name, int age, String addres, boolean sex) {
+        this.name = name;
+        this.age = age;
+        this.addres = addres;
+        this.sex = sex;
+    }
+
     @Override
     public String toString() {
         return "Data{" +
