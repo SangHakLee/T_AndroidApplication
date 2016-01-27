@@ -22,6 +22,8 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -65,6 +67,29 @@ public class MainActivity extends AppCompatActivity {
 
         String json = d.toString();
         Log.v(TAG, "json : " + json);
+        String str = "{name:\"학학이\", age:25, addres:\"주소\", sex:true}"; // json 값
+
+        JSONObject object = null;
+        Data d1 = new Data(); // json -> 자바객체 담음
+        // 파싱
+        try {
+
+             // 파싱해서 자바 객체로
+            object = new JSONObject(str);
+            d1.name = object.getString("name");
+            d1.addres = object.getString("addres");
+            d1.sex = object.getBoolean("sex");
+            d1.age = object.getInt("age");
+
+//            d1.age = object.getInt("age1234"); // 없는거 넣으면 exception
+
+            Log.v(TAG, "d1 : " + d1.toString());
+
+
+        } catch (JSONException e) {
+            Log.v(TAG, "error json e: " + e);
+//            e.printStackTrace();
+        }
     }
 
     public void doAction3(){
