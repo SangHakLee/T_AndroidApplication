@@ -12,11 +12,22 @@ public class Data {
 
     @Override
     public String toString() {
-        return "{" +
-                "name:\"" + name + "\"" +
-                ", age:" + age +
-                ", addres:\"" + addres + "\"" +
-                ", sex:" + sex +
+        return "Data{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", addres='" + addres + '\'' +
+                ", sex=" + sex +
                 '}';
     }
+
+    // JSONObject 방법
+//    @Override
+//    public String toString() {
+//        return "{" +
+//                "name:\"" + name + "\"" +
+//                ", age:" + age +
+//                ", addres:\"" + addres + "\"" +
+//                ", sex:" + sex +
+//                '}';
+//    }
 }
