@@ -1,11 +1,13 @@
 package com.example.connectproject;
 
 import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,7 +29,19 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    // 네트워크 상태 가져오기
     public void doAction1(){
+        NetworkInfo info = manager.getActiveNetworkInfo();
+        if( info == null){ // 네트워크 없음
+            Log.v(TAG, "현재 사용할 수 있는 네트워크 없음");
+        }else{
+            if(ConnectivityManager.TYPE_MOBILE == info.getType()){
+                Log.v(TAG, "3G 상태");
+            }else if(ConnectivityManager.TYPE_WIFI == info.getType()){
+                Log.v(TAG, "WIFI 상태");
+                info.getState();
+            }
+        }
 
     }
 
