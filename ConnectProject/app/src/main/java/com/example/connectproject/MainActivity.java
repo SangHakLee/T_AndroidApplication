@@ -1,5 +1,6 @@
 package com.example.connectproject;
 
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,6 +13,8 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "Main";
+
+    ConnectivityManager manager; // 네크퉈크 연결 가능한지 알려주는 매니저
 
     View.OnClickListener handler = new View.OnClickListener() {
         @Override
@@ -32,8 +35,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         findViewById(R.id.button).setOnClickListener(handler);
+
+        manager = (ConnectivityManager)getSystemService(CONNECTIVITY_SERVICE); // 내 폰에 있는 시스템 기능 가져오기
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
