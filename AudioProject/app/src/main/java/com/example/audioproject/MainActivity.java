@@ -27,11 +27,33 @@ public class MainActivity extends AppCompatActivity {
                     doAction1();
                     break;
                 case R.id.button2:
-                    doAction2();
+                    doAction2("shuffle.wav");
+                    break;
+                case R.id.button3:
+                    doAction3();
+                    break;
+                case R.id.button4:
+                    doAction4();
                     break;
             }
         }
     };
+
+    public void doAction4(){
+        if(position > 0){
+            mediaPlayer2.seekTo(position); // 재생 위치부터 시작
+        }
+        mediaPlayer2.start();
+    }
+
+    int position;
+    // 영상 정지
+    public void doAction3(){
+        if(mediaPlayer2.isPlaying()){
+            position = mediaPlayer2.getCurrentPosition(); // 현재 재생 위치 저장
+            mediaPlayer2.stop();
+        }
+    }
 
     // 액티비티 종료 될때
     @Override
@@ -100,6 +122,8 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.button).setOnClickListener(handler);
         findViewById(R.id.button2).setOnClickListener(handler);
+        findViewById(R.id.button3).setOnClickListener(handler);
+        findViewById(R.id.button4).setOnClickListener(handler);
 
         mediaPlayer1 = MediaPlayer.create(this, R.raw.dingdong); // 짧은 음원은 그냥 하면 끝
 
