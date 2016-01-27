@@ -2,6 +2,7 @@ package com.example.audioproject;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.io.File;
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
@@ -49,9 +51,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    MediaPlayer.OnPreparedListener preparedListener = new MediaPlayer.OnPreparedListener(){
+        @Override
+        public void onPrepared(MediaPlayer mp) {
+            mp.start(); // 동기는 여기서 start()
+        }
+    };
+
     MediaPlayer mediaPlayer2;
     // 긴 파일 재생
-    public void doAction2(String fNmae){
+    public void doAction2(String fName){
         if(mediaPlayer2 == null){
             mediaPlayer2 = new MediaPlayer();
         }
@@ -61,8 +70,18 @@ public class MainActivity extends AppCompatActivity {
             mediaPlayer2.reset(); // 초기화 작업
         }
         String path = "";
+        File sdCard = Environment.getExternalStorageDirectory();
+        File file = new File(sdCard, fName);
+        path = file.getAbsolutePath();
         try {
             mediaPlayer2.setDataSource(path);
+
+//            mediaPlayer2.prepare(); //블럭됨 쓰레드에서 해야함
+//            mediaPlayer2.start(); // prepare()와 같이 씀
+
+            mediaPlayer2.setOnPreparedListener(preparedListener); // 위에서 만든 OnPreparedListener 에 리스너 건다.
+            mediaPlayer2.prepareAsync(); // 동기 쓰레드 필요없음
+
         } catch (IOException e) {
             Log.v(TAG, "play error : "+ e);
         }
