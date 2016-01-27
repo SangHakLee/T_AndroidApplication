@@ -11,6 +11,9 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Surface;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 import android.view.View;
 
 import java.io.File;
@@ -47,7 +50,25 @@ public class MainActivity extends AppCompatActivity {
     };
 
     MediaPlayer mediaPlayer3;
-    
+    SurfaceView view;
+    SurfaceHolder holder;
+    SurfaceHolder.Callback callback = new SurfaceHolder.Callback() {
+        @Override
+        public void surfaceCreated(SurfaceHolder holder) {
+
+        }
+
+        @Override
+        public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+
+        }
+
+        @Override
+        public void surfaceDestroyed(SurfaceHolder holder) {
+
+        }
+    };
+
     public void doAction6(){
         if(mediaPlayer2.isPlaying()){
             position = mediaPlayer2.getCurrentPosition(); // 현재 재생 위치 저장
@@ -196,6 +217,12 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button6).setOnClickListener(handler);
 
         mediaPlayer1 = MediaPlayer.create(this, R.raw.dingdong); // 짧은 음원은 그냥 하면 끝
+
+        // SurfaceView 반드시 해야할것
+        view = (SurfaceView)findViewById(R.id.surfaceView);
+        holder = view.getHolder();
+        holder.addCallback(callback); // addCallback 해서 callback을 관리
+        // SurfaceView 반드시 해야할것
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
