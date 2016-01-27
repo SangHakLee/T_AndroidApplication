@@ -1,16 +1,26 @@
 package com.example.connectproject;
 
 import android.net.ConnectivityManager;
+import android.net.DhcpInfo;
 import android.net.NetworkInfo;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import java.net.Inet4Address;
+import java.net.Inet6Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,8 +39,63 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    // 내 폰 아이피 얻기
+    public final static int INET4ADDRESS = 1;
+    public final static int INET6ADDRESS = 2;
+    public static String getLocalIpAddress(int type) {
+        try {
+            for (Enumeration en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements();) { // NetworkInterface 네트워크 정보
+                NetworkInterface intf = ( NetworkInterface ) en.nextElement();
+                for (Enumeration enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements();) { // 현재 핸드폰 IP getInetAddresses
+                    InetAddress inetAddress = ( InetAddress ) enumIpAddr.nextElement();
+                    if (!inetAddress.isLoopbackAddress()) {
+                        switch (type) {
+                            case INET6ADDRESS:
+                                if (inetAddress instanceof Inet6Address) {
+                                    return inetAddress.getHostAddress().toString();
+                                }
+                                break;
+                            case INET4ADDRESS:
+                                if (inetAddress instanceof Inet4Address) {
+                                    return inetAddress.getHostAddress().toString();
+                                }
+                                break;
+                        }
+
+                    }
+                }
+            }
+        } catch (SocketException ex) {
+        }
+        return null;
+    }
+
+
+
     // 네트워크 상태 가져오기
     public void doAction1(){
+
+        // 와이파이에 잡힌 아이피 가져오기
+        WifiManager wm = (WifiManager) getSystemService(WIFI_SERVICE);
+        DhcpInfo dhcpInfo = wm.getDhcpInfo() ;
+        WifiInfo wifiInfo = wm.getConnectionInfo();
+        int serverIp = dhcpInfo.gateway;
+        int myIp = wifiInfo.getIpAddress();
+        String myIpAddress = String.format(
+                "%d.%d.%d.%d",
+                (myIp & 0xff),
+                (myIp >> 8 & 0xff),
+                (myIp >> 16 & 0xff),
+                (myIp >> 24 & 0xff));
+        String ipAddress = String.format(
+                "%d.%d.%d.%d",
+                (serverIp & 0xff),
+                (serverIp >> 8 & 0xff),
+                (serverIp >> 16 & 0xff),
+                (serverIp >> 24 & 0xff));
+        Log.v(TAG, "ipAddress : " + ipAddress);
+        Log.v(TAG, "myIpAddress : " + myIpAddress);
+
         NetworkInfo info = manager.getActiveNetworkInfo();
         if( info == null){ // 네트워크 없음
             Log.v(TAG, "현재 사용할 수 있는 네트워크 없음");
