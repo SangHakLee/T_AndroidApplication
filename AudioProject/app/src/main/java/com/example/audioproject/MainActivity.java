@@ -98,8 +98,8 @@ public class MainActivity extends AppCompatActivity {
         try {
 
 
-            mediaPlayer3.setDataSource(this, uri); // 인터넷에 있는거
-//            mediaPlayer3.setDataSource(path); // 인터넷에 있는거
+            mediaPlayer3.setDataSource(this, uri);
+//            mediaPlayer3.setDataSource(path);
             mediaPlayer3.prepare(); //블럭됨 쓰레드에서 해야함
             mediaPlayer3.setDisplay(holder); // 보여주고자 하는 것
             mediaPlayer3.start(); // prepare()와 같이 씀
