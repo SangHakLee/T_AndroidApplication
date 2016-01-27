@@ -9,4 +9,14 @@ public class Data {
     public int age;
     public String addres;
     public boolean sex;
+
+    @Override
+    public String toString() {
+        return "{" +
+                "name:\"" + name + "\"" +
+                ", age:" + age +
+                ", addres:\"" + addres + "\"" +
+                ", sex:" + sex +
+                '}';
+    }
 }

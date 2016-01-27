@@ -62,6 +62,9 @@ public class MainActivity extends AppCompatActivity {
         d.age = 25;
         d.addres = "주소";
         d.sex = true;
+
+        String json = d.toString();
+        Log.v(TAG, "json : " + json);
     }
 
     public void doAction3(){
