@@ -1,6 +1,7 @@
 package com.example.audioproject;
 
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
@@ -103,9 +104,15 @@ public class MainActivity extends AppCompatActivity {
         File sdCard = Environment.getExternalStorageDirectory();
         File file = new File(sdCard, fName);
         path = file.getAbsolutePath();
-        Log.v(TAG, "path : " + path);
+
+        String audioUrl = "http://sites.google.com/site/ubiaccessmobile/sample_audio.amr";
+        Uri uri = Uri.parse(audioUrl);
+
         try {
-            mediaPlayer2.setDataSource(path);
+
+            mediaPlayer2.setDataSource(path); // 실제 디바이스에 있는거 쓸 때
+
+            mediaPlayer2.setDataSource(this, uri); // 인터넷에 있는거 
 
 //            mediaPlayer2.prepare(); //블럭됨 쓰레드에서 해야함
 //            mediaPlayer2.start(); // prepare()와 같이 씀
