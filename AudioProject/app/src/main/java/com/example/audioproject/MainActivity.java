@@ -2,6 +2,7 @@ package com.example.audioproject;
 
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
@@ -11,7 +12,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                     doAction4();
                     break;
                 case R.id.button5:
-                    doAction5(); //영상 재생
+                    doAction5("hoot.mp4"); //영상 재생
                     break;
                 case R.id.button6:
                     doAction6(); // 영상 멈춤
@@ -69,42 +69,44 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    // 동영상 정지
     public void doAction6(){
-        if(mediaPlayer2.isPlaying()){
-            position = mediaPlayer2.getCurrentPosition(); // 현재 재생 위치 저장
-            mediaPlayer2.pause();
+        if(mediaPlayer3.isPlaying()){
+            position = mediaPlayer3.getCurrentPosition(); // 현재 재생 위치 저장
+            mediaPlayer3.stop();
         }
     }
-
-    public void doAction5(){
-        if(mediaPlayer2 == null){
-            mediaPlayer2 = new MediaPlayer();
+    // 동영상 재생
+    public void doAction5(String fName){
+        if(mediaPlayer3 == null){
+            mediaPlayer3 = new MediaPlayer();
         }
 
-        if(mediaPlayer2.isPlaying()){
-            mediaPlayer2.stop();
-            mediaPlayer2.reset(); // 초기화 작업
+        if(mediaPlayer3.isPlaying()){
+            mediaPlayer3.stop();
+            mediaPlayer3.reset(); // 초기화 작업
         }
         String path = "";
         File sdCard = Environment.getExternalStorageDirectory();
         File file = new File(sdCard, fName);
-        path = file.getAbsolutePath();
 
-        String audioUrl = "http://sites.google.com/site/ubiaccessmobile/sample_audio.amr";
-        Uri uri = Uri.parse(audioUrl);
+        Uri uri = Uri.fromFile(file);
+        Log.v(TAG, "play uri : "+ uri);
+
+
 
         try {
 
-//            mediaPlayer2.setDataSource(path); // 실제 디바이스에 있는거 쓸 때
 
-            mediaPlayer2.setDataSource(this, uri); // 인터넷에 있는거
+            mediaPlayer3.setDataSource(this, uri); // 인터넷에 있는거
+//            mediaPlayer3.setDataSource(path); // 인터넷에 있는거
+            mediaPlayer3.prepare(); //블럭됨 쓰레드에서 해야함
+            mediaPlayer3.setDisplay(holder); // 보여주고자 하는 것
+            mediaPlayer3.start(); // prepare()와 같이 씀
 
-//            mediaPlayer2.prepare(); //블럭됨 쓰레드에서 해야함
-//            mediaPlayer2.start(); // prepare()와 같이 씀
-
-            mediaPlayer2.setOnPreparedListener(preparedListener); // 위에서 만든 OnPreparedListener 에 리스너 건다.
-            mediaPlayer2.setOnSeekCompleteListener(seekCompleteListener);
-            mediaPlayer2.prepareAsync(); // 동기 쓰레드 필요없음
+//            mediaPlayer3.setOnPreparedListener(preparedListener); // 위에서 만든 OnPreparedListener 에 리스너 건다.
+//            mediaPlayer3.setOnSeekCompleteListener(seekCompleteListener);
+//            mediaPlayer3.prepareAsync(); // 동기 쓰레드 필요없음
 
         } catch (IOException e) {
             Log.v(TAG, "play error : "+ e);
@@ -223,6 +225,11 @@ public class MainActivity extends AppCompatActivity {
         holder = view.getHolder();
         holder.addCallback(callback); // addCallback 해서 callback을 관리
         // SurfaceView 반드시 해야할것
+
+        if(Build.VERSION.SDK_INT < 11){
+            // 최신버전에서 쓰면 안나오기 때문에 if문
+            holder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS); // 예전 폰에서 나오게 하기 위해서
+        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
