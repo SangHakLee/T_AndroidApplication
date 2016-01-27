@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "C:\\andDev\\work\\HttpProject\\refresh\\build\\intermediates\\res\\merged\\release\\layout\\pull_to_refresh_header_google_style.xml",
+        "source": "C:\\andDev\\work\\HttpProject\\refresh\\src\\main\\res\\layout\\pull_to_refresh_header_google_style.xml"
+    },
+    {
+        "merged": "C:\\andDev\\work\\HttpProject\\refresh\\build\\intermediates\\res\\merged\\release\\layout\\pull_to_refresh_header_horizontal.xml",
+        "source": "C:\\andDev\\work\\HttpProject\\refresh\\src\\main\\res\\layout\\pull_to_refresh_header_horizontal.xml"
+    },
+    {
+        "merged": "C:\\andDev\\work\\HttpProject\\refresh\\build\\intermediates\\res\\merged\\release\\layout\\pulling_progress_layout.xml",
+        "source": "C:\\andDev\\work\\HttpProject\\refresh\\src\\main\\res\\layout\\pulling_progress_layout.xml"
+    },
+    {
+        "merged": "C:\\andDev\\work\\HttpProject\\refresh\\build\\intermediates\\res\\merged\\release\\layout\\pull_to_refresh_progress_google_style.xml",
+        "source": "C:\\andDev\\work\\HttpProject\\refresh\\src\\main\\res\\layout\\pull_to_refresh_progress_google_style.xml"
+    },
+    {
+        "merged": "C:\\andDev\\work\\HttpProject\\refresh\\build\\intermediates\\res\\merged\\release\\layout\\pull_to_refresh_header_vertical.xml",
+        "source": "C:\\andDev\\work\\HttpProject\\refresh\\src\\main\\res\\layout\\pull_to_refresh_header_vertical.xml"
+    }
+]

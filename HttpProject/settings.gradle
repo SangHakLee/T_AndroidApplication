@@ -1,1 +1,2 @@
-include ':app'
+include ':app', ':refresh1'
+project(':refresh1').projectDir = new File('refresh')
