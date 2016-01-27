@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     WifiManager wifiManager;
+    // registerReceiver 에서 등록한 것
     BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -87,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
     };
     // 네트워크 상태 가져오기
     public void doAction1(){
+
+        // 주위에 있는 wifi 정보 가져오는 것
         IntentFilter filter = new IntentFilter(); // 인텐트를 잡는다
         filter.addAction(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION); // 와이파이가 검색됬다는 뜻
         registerReceiver(receiver, filter); // 와이파이가 검색되면 여기로 날림
