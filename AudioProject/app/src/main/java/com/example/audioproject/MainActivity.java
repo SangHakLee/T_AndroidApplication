@@ -36,9 +36,60 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.button4:
                     doAction4();
                     break;
+                case R.id.button5:
+                    doAction5(); //영상 재생
+                    break;
+                case R.id.button6:
+                    doAction6(); // 영상 멈춤
+                    break;
             }
         }
     };
+
+    MediaPlayer mediaPlayer3;
+    
+    public void doAction6(){
+        if(mediaPlayer2.isPlaying()){
+            position = mediaPlayer2.getCurrentPosition(); // 현재 재생 위치 저장
+            mediaPlayer2.pause();
+        }
+    }
+
+    public void doAction5(){
+        if(mediaPlayer2 == null){
+            mediaPlayer2 = new MediaPlayer();
+        }
+
+        if(mediaPlayer2.isPlaying()){
+            mediaPlayer2.stop();
+            mediaPlayer2.reset(); // 초기화 작업
+        }
+        String path = "";
+        File sdCard = Environment.getExternalStorageDirectory();
+        File file = new File(sdCard, fName);
+        path = file.getAbsolutePath();
+
+        String audioUrl = "http://sites.google.com/site/ubiaccessmobile/sample_audio.amr";
+        Uri uri = Uri.parse(audioUrl);
+
+        try {
+
+//            mediaPlayer2.setDataSource(path); // 실제 디바이스에 있는거 쓸 때
+
+            mediaPlayer2.setDataSource(this, uri); // 인터넷에 있는거
+
+//            mediaPlayer2.prepare(); //블럭됨 쓰레드에서 해야함
+//            mediaPlayer2.start(); // prepare()와 같이 씀
+
+            mediaPlayer2.setOnPreparedListener(preparedListener); // 위에서 만든 OnPreparedListener 에 리스너 건다.
+            mediaPlayer2.setOnSeekCompleteListener(seekCompleteListener);
+            mediaPlayer2.prepareAsync(); // 동기 쓰레드 필요없음
+
+        } catch (IOException e) {
+            Log.v(TAG, "play error : "+ e);
+        }
+    }
+
 
     public void doAction4(){
         if(position > 0){
@@ -110,9 +161,9 @@ public class MainActivity extends AppCompatActivity {
 
         try {
 
-            mediaPlayer2.setDataSource(path); // 실제 디바이스에 있는거 쓸 때
+//            mediaPlayer2.setDataSource(path); // 실제 디바이스에 있는거 쓸 때
 
-            mediaPlayer2.setDataSource(this, uri); // 인터넷에 있는거 
+            mediaPlayer2.setDataSource(this, uri); // 인터넷에 있는거
 
 //            mediaPlayer2.prepare(); //블럭됨 쓰레드에서 해야함
 //            mediaPlayer2.start(); // prepare()와 같이 씀
@@ -141,6 +192,8 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button2).setOnClickListener(handler);
         findViewById(R.id.button3).setOnClickListener(handler);
         findViewById(R.id.button4).setOnClickListener(handler);
+        findViewById(R.id.button5).setOnClickListener(handler);
+        findViewById(R.id.button6).setOnClickListener(handler);
 
         mediaPlayer1 = MediaPlayer.create(this, R.raw.dingdong); // 짧은 음원은 그냥 하면 끝
 
