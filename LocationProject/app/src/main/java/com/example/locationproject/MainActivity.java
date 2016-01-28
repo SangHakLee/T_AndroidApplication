@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initView(){
+        configureMapView();
         mMapView.setCenterPoint(126.977963, 37.56647);
     }
 
