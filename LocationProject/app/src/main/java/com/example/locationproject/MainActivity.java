@@ -1,6 +1,7 @@
 package com.example.locationproject;
 
 import android.Manifest;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -64,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
         manager.removeUpdates(listener);
     }
 
+    PendingIntent pendingIntent;
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -77,15 +80,11 @@ public class MainActivity extends AppCompatActivity {
         // 자동 생성 퍼미션 체크
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: 퍼미션 창 띄우기
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
+
             return;
         }
         manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, listener); // 마시멜로 버전은 무조건 실행되지 않고 버전 체크 해야한다.
+        manager.addProximityAlert(37.56647, 126.977963, 100, -1, pendingIntent); // 반경 100에서 들어가거나 나오면 pendingIntent 동작
     }
 
     int cnt = 0;
