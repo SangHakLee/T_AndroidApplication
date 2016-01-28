@@ -1,14 +1,17 @@
 package com.example.locationproject;
 
+import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "Main";
@@ -22,6 +25,24 @@ public class MainActivity extends AppCompatActivity {
 
     LocationManager manager;
 
+    // 오버라이딩 전에 startActivityForResult를 선언해야한다.
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode){
+            case 999:
+                switch (resultCode){
+                    case RESULT_OK:
+                        Toast.makeText(this, "설정완료", Toast.LENGTH_SHORT).show();
+                        break;
+                    default:
+                        Toast.makeText(this, "GPS 사용불가", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+                break;
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +51,10 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         manager = (LocationManager)getSystemService(LOCATION_SERVICE); // 위치 서비스 얻기
+        if(manager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+//            Log.v(TAG, "GPS 가용가능");
+            startActivityForResult(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS), 999);
+        }
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
