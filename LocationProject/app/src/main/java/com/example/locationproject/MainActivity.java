@@ -69,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onLocationChanged(Location location) {
             cnt++;
+            Location location1 = null;
+            float length = location.distanceTo(location1); // 좌표 간 거리. 좌표간 거리를 저장할때 이상하면 저장 하지않게 하기 위해서  GPS 보정
             Log.v(TAG, String.format("위도 %f, 경도 %f, 고도 %f", location.getLatitude(), location.getLongitude(), location.getAltitude()));
         }
 
@@ -123,8 +125,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         manager = (LocationManager)getSystemService(LOCATION_SERVICE); // 위치 서비스 얻기
-        if(manager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
-//            Log.v(TAG, "GPS 가용가능");
+        if(!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)){ // 사용불가면 GPS 열기
             startActivityForResult(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS), 999);
         }
 
