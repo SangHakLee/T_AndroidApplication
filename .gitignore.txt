@@ -1,0 +1,3 @@
+SampleExpandableList8/*
+SampleAutoCompleteTextView8/*
+SampleContactsProvider8/*
