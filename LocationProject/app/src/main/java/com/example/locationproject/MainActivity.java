@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.PointF;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -27,10 +28,12 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.skp.Tmap.TMapMarkerItem;
+import com.skp.Tmap.TMapPOIItem;
 import com.skp.Tmap.TMapPoint;
 import com.skp.Tmap.TMapView;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -67,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
         mMapView.setIconVisibility(true); // 이미지 보일지 여부
         mMapView.setSightVisible(true);
         mMapView.setCompassMode(false);
+
+        mMapView.setOnClickListenerCallBack(callback); // 먼저 setOnClickListenerCallBack을 등록한다.
     }
 
     public TMapPoint randomTMapPoint() {
@@ -135,6 +140,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+    TMapView.OnClickListenerCallback callback = new TMapView.OnClickListenerCallback() {
+        @Override
+        public boolean onPressEvent(ArrayList<TMapMarkerItem> arrayList, ArrayList<TMapPOIItem> arrayList1, TMapPoint tMapPoint, PointF pointF) {
+            Log.v(TAG, "위치 : " + tMapPoint.getLatitude() + ", " + tMapPoint.getLongitude());
+            return false;
+        }
+
+        @Override
+        public boolean onPressUpEvent(ArrayList<TMapMarkerItem> arrayList, ArrayList<TMapPOIItem> arrayList1, TMapPoint tMapPoint, PointF pointF) {
+            return false;
+        }
+    };
 
 
     public void doAction1(){
