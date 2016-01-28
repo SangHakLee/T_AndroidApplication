@@ -47,12 +47,13 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("cnt", cnt);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
+        cnt++;
         // 노티 기본 패턴
         Notification notification = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher) // 작은 아이콘, 정적 아이콘 회사 아이콘 같은거
                 .setLargeIcon(bitmap) // 비트맵임, 동적 아이콘 쓰는게 좋음
                 .setTicker("티커문자열")
-                .setContentTitle("제목")
+                .setContentTitle("제목" + cnt)
                 .setContentText("내용")
                 .setContentInfo("인포") // 시간 밑에 내용
                 .setContentIntent(pendingIntent) // 터치하면 실행

@@ -20,7 +20,7 @@ public class NotiActivity extends AppCompatActivity {
 
 
         TextView tv = (TextView)findViewById(R.id.textView2);
-        Intent intent = new Intent();
+        Intent intent = getIntent();
         tv.setText("cnt : " + intent.getIntExtra("cnt", 100)); //cnt 라는 이름으로 100 보낸다.ㄴ
 
 
