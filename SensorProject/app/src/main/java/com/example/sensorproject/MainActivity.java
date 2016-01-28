@@ -33,15 +33,25 @@ public class MainActivity extends AppCompatActivity {
 //            }
 
             switch (event.sensor.getType()){
-                case Sensor.TYPE_LIGHT:
+//                case Sensor.TYPE_LIGHT:
+//                    cnt1++;
+//                    float[] values = event.values;
+//                    tv1.setText("cnt1 :"+cnt1 + " 값 :" +values[0]);
+//                    break;
+//                case Sensor.TYPE_TEMPERATURE:
+//                    cnt1++;
+//                    float[] values2 = event.values;
+//                    tv1.setText("cnt2 :"+cnt1 + " 값 :" +values2[0]);
+//                    break;
+                case Sensor.TYPE_ROTATION_VECTOR: // 기울기 값에 따라 변경
+                    float[] m = new float[9];
+                    float[] values = new float[3]; // values 에 기울기 값이 들어간다
+                    manager.getRotationMatrixFromVector(m, event.values);
+                    manager.getOrientation(m, values);
                     cnt1++;
-                    float[] values = event.values;
                     tv1.setText("cnt1 :"+cnt1 + " 값 :" +values[0]);
-                    break;
-                case Sensor.TYPE_TEMPERATURE:
-                    cnt1++;
-                    float[] values2 = event.values;
-                    tv1.setText("cnt2 :"+cnt1 + " 값 :" +values2[0]);
+                    tv1.setText("방위각 :"+values[0] + " x축 :" +values[1]+ " y축 :" +values[2]);
+
                     break;
             }
         }
@@ -63,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         manager.registerListener(listener, manager.getDefaultSensor(Sensor.TYPE_LIGHT), SensorManager.SENSOR_DELAY_UI);
         manager.registerListener(listener, manager.getDefaultSensor(Sensor.TYPE_TEMPERATURE), SensorManager.SENSOR_DELAY_UI);
+        manager.registerListener(listener, manager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR), SensorManager.SENSOR_DELAY_UI);
     }
 
     @Override
