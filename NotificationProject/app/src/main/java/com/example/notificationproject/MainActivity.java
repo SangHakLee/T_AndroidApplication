@@ -2,6 +2,8 @@ package com.example.notificationproject;
 
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.design.widget.FloatingActionButton;
@@ -34,9 +36,19 @@ public class MainActivity extends AppCompatActivity {
     //노티
     public void doAction2(){
 
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.icon02);
+
         // 노티 기본 패턴
-        Notification notification = new NotificationCompat.Builder(this).build();
-        manager.notify(1, notification);
+        Notification notification = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.mipmap.ic_launcher) // 작은 아이콘, 정적 아이콘 회사 아이콘 같은거
+                .setLargeIcon(bitmap) // 비트맵임, 동적 아이콘 쓰는게 좋음
+                .setTicker("티커문자열")
+                .setContentTitle("제목")
+                .setContentText("내용")
+                .setContentInfo("인포") // 시간 밑에 내용
+                .build();
+
+        manager.notify(50, notification); // 1.노티 구분 아이디
     }
 
     Vibrator vibrator;     // 진동관리 객체
