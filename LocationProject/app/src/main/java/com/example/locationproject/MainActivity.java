@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initView(){
-        configureMapView();
         mMapView.setCenterPoint(126.977963, 37.56647);
     }
 
@@ -111,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
     LocationListener listener = new LocationListener() {
         @Override
         public void onLocationChanged(Location location) {
+            mMapView.setCenterPoint(location.getLongitude(), location.getLongitude()); // 내 위치에 따라 지도 이동
             cnt++;
             Location location1 = null;
             float length = location.distanceTo(location1); // 좌표 간 거리. 좌표간 거리를 저장할때 이상하면 저장 하지않게 하기 위해서  GPS 보정
@@ -176,6 +176,7 @@ public class MainActivity extends AppCompatActivity {
             startActivityForResult(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS), 999);
         }
 
+        configureMapView();
         initView();
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
