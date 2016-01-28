@@ -84,6 +84,9 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, listener); // 마시멜로 버전은 무조건 실행되지 않고 버전 체크 해야한다.
+
+        Intent intent = new Intent(this, MyReceiver.class); // 내가 만든 리시버를 동작하게 한다.
+        pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT); // 방송 쓸 인텐트
         manager.addProximityAlert(37.56647, 126.977963, 100, -1, pendingIntent); // 반경 100에서 들어가거나 나오면 pendingIntent 동작
     }
 
