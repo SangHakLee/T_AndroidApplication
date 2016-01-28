@@ -90,6 +90,13 @@ public class MainActivity extends AppCompatActivity {
         tmapdata.findPathDataWithType(TMapData.TMapPathType.CAR_PATH, point1, point2, new TMapData.FindPathDataListenerCallback() {
             @Override
             public void onFindPathData(TMapPolyLine polyLine) {
+                ArrayList<TMapPoint> list = polyLine.getLinePoint();
+                for(TMapPoint point : list){
+                    Log.v(TAG, "onFindPathData 위치 : " + point.getLatitude() + ", " + point.getLongitude()); // 경로 위치 계속 찍기
+
+                    
+                }
+
                 mMapView.addTMapPath(polyLine);
             }
         });
