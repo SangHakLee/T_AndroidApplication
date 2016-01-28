@@ -24,6 +24,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.skp.Tmap.TMapView;
 
 import java.io.IOException;
 import java.util.List;
@@ -44,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
     };
 
     GoogleApiClient apiClient;
+
+    TMapView view; // T맵
 
     public void doAction1(){
         Geocoder geocoder = new Geocoder(this, Locale.KOREAN);
@@ -153,6 +156,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.button).setOnClickListener(handler);
+
+        view = (TMapView)findViewById(R.id.view); // T맵 뷰 연결
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

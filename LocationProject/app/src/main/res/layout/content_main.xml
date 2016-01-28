@@ -27,4 +27,13 @@
         android:layout_below="@+id/textView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <com.skp.Tmap.TMapView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/view"
+        android:layout_below="@+id/button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="70dp" />
 </RelativeLayout>
