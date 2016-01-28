@@ -49,7 +49,11 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("cnt", cnt);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        RemoteViews views = null;
+        // 리모트뷰로 커스텀노티 만들기
+        RemoteViews views = new RemoteViews(getPackageName(), R.layout.noti); // 1,패키지이름 2.리모트뷰
+        views.setTextViewText(R.id.button3, "저장");
+        views.setImageViewResource(R.id.imageView,R.drawable.icon05);
+        views.setOnClickPendingIntent(R.id.button3, pendingIntent); // 만든 pending intent
 
         // 노티 기본 패턴
         Notification notification = new NotificationCompat.Builder(this)
@@ -57,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
                 .setLargeIcon(bitmap) // 비트맵임, 동적 아이콘 쓰는게 좋음
                 .setTicker("티커문자열")
                 .setContent(views)
-                .setContentIntent(pendingIntent) // 터치하면 실행
                 .setAutoCancel(true) // 노티 누르면 없어짐
                 .build();
 
