@@ -23,6 +23,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
@@ -40,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
+
+    GoogleApiClient apiClient;
 
     public void doAction1(){
         Geocoder geocoder = new Geocoder(this, Locale.KOREAN);
