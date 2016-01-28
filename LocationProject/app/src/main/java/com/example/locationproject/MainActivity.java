@@ -3,6 +3,8 @@ package com.example.locationproject;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -20,15 +22,37 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "Main";
 
     View.OnClickListener handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            switch (v.getId()){
+                case R.id.button:
+                    doAction1();
+                    break;
+            }
         }
     };
+
+    public void doAction1(){
+        Geocoder geocoder = new Geocoder(this, Locale.KOREAN);
+        try {
+            List<Address> list =  geocoder.getFromLocationName("서울시청", 5);
+            if(list != null){
+                for(Address address : list){
+                    Log.v(TAG, "Address  :  위도 : " + address.getLatitude() + " 경도 : " + address.getLongitude() + " 기타 :" + address.getCountryName());
+                }
+            }
+        } catch (IOException e) {
+            Log.v(TAG, "getFromLocationName e : " + e);
+        }
+    }
 
     @Override
     protected void onPause() {
@@ -121,6 +145,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        findViewById(R.id.button).setOnClickListener(handler);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
