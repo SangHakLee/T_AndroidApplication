@@ -17,6 +17,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RemoteViews;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "Main";
@@ -31,9 +32,38 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.button2:
                     doAction2();
                     break;
+                case R.id.button4:
+                    doAction3();
+                    break;
             }
         }
     };
+
+    // 커스텀 노티 보내기
+    public void doAction3(){
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.icon02);
+
+        cnt++;
+        Intent intent = new Intent(this, NotiActivity.class);
+        intent.setData(Uri.parse("myScheme://"+ getPackageName() + "/"+cnt)); // 다른 인텐트라고 판단시키기위해 항상 다른값을 준다 cnt를 더하면서
+        intent.putExtra("cnt", cnt);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        RemoteViews views = null;
+
+        // 노티 기본 패턴
+        Notification notification = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.mipmap.ic_launcher) // 작은 아이콘, 정적 아이콘 회사 아이콘 같은거
+                .setLargeIcon(bitmap) // 비트맵임, 동적 아이콘 쓰는게 좋음
+                .setTicker("티커문자열")
+                .setContent(views)
+                .setContentIntent(pendingIntent) // 터치하면 실행
+                .setAutoCancel(true) // 노티 누르면 없어짐
+                .build();
+
+        manager.notify(cnt, notification); // 1.노티 구분 아이디
+//        manager.cancel(cnt--); // 특정 노티 지우기 id 번호로 지운다.
+    }
 
     int cnt = 0;
 
@@ -62,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         manager.notify(cnt, notification); // 1.노티 구분 아이디
+//        manager.cancel(cnt--); // 특정 노티 지우기 id 번호로 지운다.
     }
 
     Vibrator vibrator;     // 진동관리 객체
@@ -78,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.button).setOnClickListener(handler);
         findViewById(R.id.button2).setOnClickListener(handler);
+        findViewById(R.id.button4).setOnClickListener(handler);
 
         // getSystemService 에서 얻는건 한번만 얻으면 되는거
         vibrator = (Vibrator)getSystemService(VIBRATOR_SERVICE); // 하드웨서 진동 객체 얻기
