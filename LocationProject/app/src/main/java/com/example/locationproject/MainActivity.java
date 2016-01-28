@@ -26,6 +26,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.skp.Tmap.TMapMarkerItem;
+import com.skp.Tmap.TMapPoint;
 import com.skp.Tmap.TMapView;
 
 import java.io.IOException;
@@ -41,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
             switch (v.getId()){
                 case R.id.button:
                     doAction1();
+                    break;
+                case R.id.button2:
+                    showMarkerPoint();
                     break;
             }
         }
@@ -63,6 +68,74 @@ public class MainActivity extends AppCompatActivity {
         mMapView.setSightVisible(true);
         mMapView.setCompassMode(false);
     }
+
+    public TMapPoint randomTMapPoint() {
+        double latitude = ((double)Math.random() ) * (37.575113-37.483086) + 37.483086;
+        double longitude = ((double)Math.random() ) * (127.027359-126.878357) + 126.878357;
+
+        latitude = Math.min(37.575113, latitude);
+        latitude = Math.max(37.483086, latitude);
+
+        longitude = Math.min(127.027359, longitude);
+        longitude = Math.max(126.878357, longitude);
+
+        Log.v(TAG, latitude + " " + longitude);
+
+        TMapPoint point = new TMapPoint(latitude, longitude);
+
+        return point;
+    }
+    /**
+     * showMarkerPoint
+     * 지도에 마커를 표출한다.
+     */
+    public void showMarkerPoint() {
+
+        Bitmap bitmap_i = BitmapFactory.decodeResource(getResources(), R.drawable.i_go); // > 아이콘
+
+
+        Bitmap bitmap = null;
+        bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.i_location);
+
+        TMapPoint point = new TMapPoint(37.566474, 126.985022);
+        TMapMarkerItem item1 = new TMapMarkerItem();
+
+        item1.setTMapPoint(point);
+        item1.setName("SKT타워");
+        item1.setVisible(item1.VISIBLE);
+        item1.setIcon(bitmap);
+        item1.setCalloutTitle("SKT타워");
+        item1.setCalloutSubTitle("을지로입구역 500M");
+        item1.setCanShowCallout(true);
+        item1.setAutoCalloutVisible(true);
+        item1.setCalloutRightButtonImage(bitmap_i);
+
+        String strID = String.format("pmarker%d", 1);
+        mMapView.addMarkerItem(strID, item1);  // 마커에 아이디를 다르게 해줘야한다. 문자열로
+
+
+
+        point = new TMapPoint(37.55102510077652, 126.98789834976196);
+        TMapMarkerItem item2 = new TMapMarkerItem();
+
+        item2.setTMapPoint(point);
+        item2.setName("N서울타워");
+        item2.setVisible(item2.VISIBLE);
+        item2.setCalloutTitle("청호타워 4층");
+        item2.setCanShowCallout(true);
+        item2.setCalloutRightButtonImage(bitmap_i);
+
+        bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.pin_tevent);
+        item2.setIcon(bitmap);
+
+        strID = String.format("pmarker%d", 2);
+
+        mMapView.addMarkerItem(strID, item2);
+
+    }
+
+
+
 
     public void doAction1(){
         Geocoder geocoder = new Geocoder(this, Locale.KOREAN);
@@ -172,6 +245,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.button).setOnClickListener(handler);
+        findViewById(R.id.button2).setOnClickListener(handler);
 
         mMapView = (TMapView)findViewById(R.id.view); // T맵 뷰 연결
 
