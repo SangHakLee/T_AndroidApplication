@@ -2,6 +2,8 @@ package com.example.notificationproject;
 
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -32,11 +34,18 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    int cnt = 0;
+
     NotificationManager manager; // 노티 관리 객체
     //노티
     public void doAction2(){
 
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.icon02);
+
+
+        Intent intent = new Intent(this, NotiActivity.class);
+        intent.putExtra("cnt", cnt);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         // 노티 기본 패턴
         Notification notification = new NotificationCompat.Builder(this)
@@ -46,9 +55,11 @@ public class MainActivity extends AppCompatActivity {
                 .setContentTitle("제목")
                 .setContentText("내용")
                 .setContentInfo("인포") // 시간 밑에 내용
+                .setContentIntent(pendingIntent) // 터치하면 실행
+                .setAutoCancel(true) // 노티 누르면 없어짐
                 .build();
 
-        manager.notify(50, notification); // 1.노티 구분 아이디
+        manager.notify(cnt, notification); // 1.노티 구분 아이디
     }
 
     Vibrator vibrator;     // 진동관리 객체
