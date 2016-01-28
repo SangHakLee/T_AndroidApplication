@@ -46,7 +46,16 @@ public class MainActivity extends AppCompatActivity {
 
     GoogleApiClient apiClient;
 
-    TMapView view; // T맵
+    TMapView mMapView; // T맵
+    public static String mApiKey = "d8a122f8-d03f-37ca-968a-aba76934c836";
+
+    private void configureMapView() {
+        mMapView.setSKPMapApiKey(mApiKey);
+    }
+
+    public void initView(){
+        mMapView.setCenterPoint(126.977963, 37.56647);
+    }
 
     public void doAction1(){
         Geocoder geocoder = new Geocoder(this, Locale.KOREAN);
@@ -149,7 +158,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     Location location;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -157,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.button).setOnClickListener(handler);
 
-        view = (TMapView)findViewById(R.id.view); // T맵 뷰 연결
+        mMapView = (TMapView)findViewById(R.id.view); // T맵 뷰 연결
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -167,6 +175,7 @@ public class MainActivity extends AppCompatActivity {
             startActivityForResult(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS), 999);
         }
 
+        initView();
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
