@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.design.widget.FloatingActionButton;
@@ -42,12 +43,12 @@ public class MainActivity extends AppCompatActivity {
 
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.icon02);
 
-
+        cnt++;
         Intent intent = new Intent(this, NotiActivity.class);
+        intent.setData(Uri.parse("myScheme://"+ getPackageName() + "/"+cnt)); // 다른 인텐트라고 판단시키기위해 항상 다른값을 준다 cnt를 더하면서
         intent.putExtra("cnt", cnt);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        cnt++;
         // 노티 기본 패턴
         Notification notification = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher) // 작은 아이콘, 정적 아이콘 회사 아이콘 같은거
