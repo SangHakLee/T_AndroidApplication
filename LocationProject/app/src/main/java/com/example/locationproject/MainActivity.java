@@ -27,9 +27,11 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.skp.Tmap.TMapData;
 import com.skp.Tmap.TMapMarkerItem;
 import com.skp.Tmap.TMapPOIItem;
 import com.skp.Tmap.TMapPoint;
+import com.skp.Tmap.TMapPolyLine;
 import com.skp.Tmap.TMapView;
 
 import java.io.IOException;
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.button2:
                     showMarkerPoint();
+                    drawCarPath();
                     break;
             }
         }
@@ -72,6 +75,30 @@ public class MainActivity extends AppCompatActivity {
         mMapView.setCompassMode(false);
 
         mMapView.setOnClickListenerCallBack(callback); // 먼저 setOnClickListenerCallBack을 등록한다.
+
+        mMapView.setTileType(TMapView.LANGUAGE_ENGLISH); // 지도 글자 영어로 안됨
+        mMapView.setTrafficInfo(true); // 교통량 표시
+    }
+
+    public void drawCarPath() {
+
+        TMapPoint point1 = mMapView.getCenterPoint();
+        TMapPoint point2 = randomTMapPoint();
+
+        TMapData tmapdata = new TMapData();
+
+        tmapdata.findPathDataWithType(TMapData.TMapPathType.CAR_PATH, point1, point2, new TMapData.FindPathDataListenerCallback() {
+            @Override
+            public void onFindPathData(TMapPolyLine polyLine) {
+                mMapView.addTMapPath(polyLine);
+            }
+        });
+    }
+
+    void setMethod(){
+        mMapView.setZoomLevel(3); // 1 ~ 21   TMap 5 ~ 19
+        mMapView.MapZoomIn();
+        mMapView.MapZoomOut();
     }
 
     public TMapPoint randomTMapPoint() {
