@@ -4,6 +4,8 @@ import android.Manifest;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -55,6 +57,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void initView(){
         mMapView.setCenterPoint(126.977963, 37.56647);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+        mMapView.setIcon(bitmap); // 지도 중앙에 이미지 보이게 하기, 네비게이션에서 자동차 같은 개념
+        mMapView.setIconVisibility(true); // 이미지 보일지 여부
+        mMapView.setSightVisible(true);
+        mMapView.setCompassMode(false);
     }
 
     public void doAction1(){
