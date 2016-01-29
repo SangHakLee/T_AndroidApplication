@@ -27,6 +27,7 @@ import com.google.android.gms.iid.InstanceID;
 
 import java.io.IOException;
 
+// GCM 등록하는 부분
 public class RegistrationIntentService extends IntentService {
 
     private static final String TAG = "RegIntentService";
@@ -39,11 +40,11 @@ public class RegistrationIntentService extends IntentService {
     }
 
     @Override
-    protected void onHandleIntent(Intent intent) {
+    protected void onHandleIntent(Intent intent) { // startServie 하면 동작하는 놈
 
         try {
             InstanceID instanceID = InstanceID.getInstance(this);
-            String token = instanceID.getToken(getString(R.string.gcm_defaultSenderId),
+            String token = instanceID.getToken(getString(R.string.gcm_defaultSenderId), // 센더 아이디 널기
                     GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
             PropertyManager.getInstance().setRegistrationToken(token);
             // Subscribe to topic channels
