@@ -25,6 +25,8 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Arrays;
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button loginButton;
     Button postButton;
+    Button feedButton;
     LoginManager manager;
 
     CallbackManager callbackManager; // 페북에서 제공하는 콜백 매니저
@@ -51,6 +54,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         state = LOGIN;
+        feedButton = (Button)findViewById(R.id.button3);
+        feedButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                state = FEEDING;
+                if(!isLogin()){ //로그인이 안된경우
+                    manager.logInWithReadPermissions(MainActivity.this, Arrays.asList("user_posts"));
+                }else{ // 로그인 된 경우 로그 아웃
+                    if(AccessToken.getCurrentAccessToken().getPermissions().contains("user_posts")){ // publish_actions 퍼미션이 있는지 없는지
+                        // 글쓰기
+                        postMessage();
+                    }else{
+                        manager.logInWithReadPermissions(MainActivity.this, Arrays.asList("user_posts"));
+                    }
+                }
+            }
+        });
 
         postButton = (Button)findViewById(R.id.button2);
         postButton.setOnClickListener(new View.OnClickListener() {
@@ -160,6 +180,30 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this, "error : " + response.getError().getErrorMessage(), Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(MainActivity.this, "post object id : " + id, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+        request.executeAsync();
+    }
+
+    private void getHome() {
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        String graphPath = "/me/feed";
+        GraphRequest request = new GraphRequest(accessToken, graphPath, null, HttpMethod.GET,
+                new GraphRequest.Callback() {
+                    @Override
+                    public void onCompleted(GraphResponse response) {
+                        Log.v("MainActitiy", "response : " + response.toString());
+                        JSONObject data = response.getJSONObject();
+                        JSONArray array = data.optJSONArray("data");
+                        String message = "";
+                        for(int i = 0; i < array.length(); i++){
+                            try {
+                                message = array.optJSONObject(i).getString("message");
+                                Log.v("MainActivity", message);
+                            }catch(JSONException e){
+                                Log.v("MainActivity", "e : " + e);
+                            }
                         }
                     }
                 });
