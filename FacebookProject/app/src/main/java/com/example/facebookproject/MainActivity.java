@@ -63,8 +63,7 @@ public class MainActivity extends AppCompatActivity {
                     manager.logInWithReadPermissions(MainActivity.this, Arrays.asList("user_posts"));
                 }else{ // 로그인 된 경우 로그 아웃
                     if(AccessToken.getCurrentAccessToken().getPermissions().contains("user_posts")){ // publish_actions 퍼미션이 있는지 없는지
-                        // 글쓰기
-                        postMessage();
+                        getHome();
                     }else{
                         manager.logInWithReadPermissions(MainActivity.this, Arrays.asList("user_posts"));
                     }
@@ -119,6 +118,10 @@ public class MainActivity extends AppCompatActivity {
                     case POSTING :
                         postMessage();
                         break;
+                    case FEEDING:
+                        getHome();
+                        break;
+
                 }
             }
             @Override
@@ -186,7 +189,9 @@ public class MainActivity extends AppCompatActivity {
         request.executeAsync();
     }
 
+    // 피드 가져오기. 없을수도 있기 때문에 try catch
     private void getHome() {
+        Log.v("MainActitiy", "getHome : ");
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         String graphPath = "/me/feed";
         GraphRequest request = new GraphRequest(accessToken, graphPath, null, HttpMethod.GET,
@@ -198,7 +203,7 @@ public class MainActivity extends AppCompatActivity {
                         JSONArray array = data.optJSONArray("data");
                         String message = "";
                         for(int i = 0; i < array.length(); i++){
-                            try {
+                            try { //메세지 없을수도 있기 때문에
                                 message = array.optJSONObject(i).getString("message");
                                 Log.v("MainActivity", message);
                             }catch(JSONException e){
