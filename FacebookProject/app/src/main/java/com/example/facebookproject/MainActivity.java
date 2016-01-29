@@ -6,21 +6,73 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "Main";
+
+    Button loginButton1;
+    LoginManager manager;
+
     CallbackManager callbackManager; // 페북에서 제공하는 콜백 매니저
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+        manager = LoginManager.getInstance();
+
+        callbackManager = CallbackManager.Factory.create(); // 콜백 매니저 등록
+
+        LoginButton loginButton = (LoginButton)findViewById(R.id.view);
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() { // 버튼에 콜백 매니저 연결
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                Toast.makeText(MainActivity.this, "success id : " + loginResult.toString(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancel() {
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+            }
+        }); // 버튼에 콜백 등록
+
+        isLogin();
+
+        loginButton1 = (Button)findViewById(R.id.button);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+    }
 
     @Override
     protected void onResume() {
@@ -40,48 +92,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode,resultCode,data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
-    boolean isLogin = false;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-
-        callbackManager = CallbackManager.Factory.create(); // 콜백 매니저 등록
-
-        LoginButton loginButton = (LoginButton)findViewById(R.id.view);
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() { // 버튼에 콜백 매니저 연결
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                Toast.makeText(MainActivity.this, "success id : " + loginResult.toString(), Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onCancel() {
-
-            }
-
-            @Override
-            public void onError(FacebookException error) {
-
-            }
-        }); // 버튼에 콜백 등록
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-    }
+    boolean isLogin(){
+        AccessToken token = AccessToken.getCurrentAccessToken();
+        Log.v(TAG, "token : " + token);
+        return token == null ? false : true;
+    };
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -104,4 +122,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }

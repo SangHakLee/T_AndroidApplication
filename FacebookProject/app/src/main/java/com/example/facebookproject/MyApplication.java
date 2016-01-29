@@ -15,7 +15,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        this.context = context;
+        this.context = this;
         FacebookSdk.sdkInitialize(this);
     }
 }
