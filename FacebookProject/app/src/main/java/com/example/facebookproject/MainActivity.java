@@ -17,10 +17,17 @@ import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.HttpMethod;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+
+import org.json.JSONObject;
+
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,14 +49,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(!isLogin()){ //로그인이 안된경우
-                    manager.logInWithReadPermissions(MainActivity.this, null);
+                    manager.logInWithPublishPermissions(MainActivity.this, Arrays.asList(""));
                 }else{ // 로그인 된 경우 로그 아웃
-                    manager.logOut();
-                    loginButton.setText("로그인");
+                    postMessage();
                 }
             }
         });
 
+        // 커스텀 로그인 버튼
         loginButton = (Button)findViewById(R.id.button);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,11 +81,9 @@ public class MainActivity extends AppCompatActivity {
             }
             @Override
             public void onCancel() {
-
             }
             @Override
             public void onError(FacebookException error) {
-
             }
         });
 
@@ -90,11 +95,9 @@ public class MainActivity extends AppCompatActivity {
             public void onSuccess(LoginResult loginResult) {
                 Toast.makeText(MainActivity.this, "success id : " + loginResult.toString(), Toast.LENGTH_SHORT).show();
             }
-
             @Override
             public void onCancel() {
             }
-
             @Override
             public void onError(FacebookException error) {
             }
@@ -114,6 +117,32 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+    }
+
+    private void postMessage() {
+        String message = "facebook test message";
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        String graphPath = "/me/feed";
+        Bundle parameters = new Bundle();
+        parameters.putString("message", message);
+        parameters.putString("link", "http://developers.facebook.com/docs/android");
+        parameters.putString("picture", "https://fbstatic-a.akamaihd.net/rsrc.php/v2/yx/r/pyNVUg5EM0j.png");
+        parameters.putString("name", "Hello Facebook");
+        parameters.putString("description", "The 'Hello Facebook' sample  showcases simple …");
+        GraphRequest request = new GraphRequest(accessToken, graphPath, parameters, HttpMethod.POST,
+                new GraphRequest.Callback() {
+                    @Override
+                    public void onCompleted(GraphResponse response) {
+                        JSONObject data = response.getJSONObject();
+                        String id = (data == null)?null:data.optString("id");
+                        if (id == null) {
+                            Toast.makeText(MainActivity.this, "error : " + response.getError().getErrorMessage(), Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(MainActivity.this, "post object id : " + id, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+        request.executeAsync();
     }
 
     @Override
