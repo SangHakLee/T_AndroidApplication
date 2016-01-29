@@ -32,6 +32,7 @@ public class MyReceiver extends BroadcastReceiver {
 
     void doStartActivity(Context context, Intent intent){
         Intent intent1 = new Intent(context, MainActivity.class);
+        intent1. addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //이거 해야 새로운 태스크가 만들어지고 그 위에 화면을 쌓을 수 있다.
         context.startActivity(intent1);
     }
 
