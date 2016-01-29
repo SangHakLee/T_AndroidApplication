@@ -1,24 +1,20 @@
 package com.example.facebookproject;
 
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Base64;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.facebook.CallbackManager;
 import com.facebook.appevents.AppEventsLogger;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 public class MainActivity extends AppCompatActivity {
+
+    CallbackManager callbackManager; // 페북에서 제공하는 콜백 매니저
 
     @Override
     protected void onResume() {
@@ -38,22 +34,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
-        try {
-            PackageInfo info = getPackageManager().getPackageInfo(
-                    "com.example.facebookproject", // 현재 앱 패키지명
-                    PackageManager.GET_SIGNATURES);
-            for (android.content.pm.Signature signature : info.signatures) {
-                MessageDigest md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
-            }
-        } catch (PackageManager.NameNotFoundException e) {
-
-        } catch (NoSuchAlgorithmException e) {
-
-        }
-
+        callbackManager = CallbackManager.Factory.create(); // 콜백 매니저 등록
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
