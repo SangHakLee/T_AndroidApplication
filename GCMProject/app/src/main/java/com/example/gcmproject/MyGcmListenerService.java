@@ -42,7 +42,8 @@ public class MyGcmListenerService extends GcmListenerService {
     // [START receive_message]
     @Override
     public void onMessageReceived(String from, Bundle data) {
-        String message = data.getString("message");
+        String message = data.getString("message"); // 해당 이름으로 온것
+        String code = data.getString("code"); // 해당 이름으로 온것
         Log.d(TAG, "From: " + from);
         Log.d(TAG, "Message: " + message);
 
@@ -64,7 +65,7 @@ public class MyGcmListenerService extends GcmListenerService {
          * In some cases it may be useful to show a notification indicating to the user
          * that a message was received.
          */
-        sendNotification(message);
+        sendNotification(message, code);
         // [END_EXCLUDE]
     }
     // [END receive_message]
@@ -74,8 +75,14 @@ public class MyGcmListenerService extends GcmListenerService {
      *
      * @param message GCM message received.
      */
-    private void sendNotification(String message) {
-        Intent intent = new Intent(this, MainActivity.class);
+    private void sendNotification(String message, String  code) {
+        Intent intent = null;
+        if(code.equals("1")){ // 서버에서 준 코드 값
+            intent = new Intent(this, MainActivity.class); // 푸시 앱실행
+        }else if(code.equals("2")){
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse(message)); // 푸시 메세지 값으로 인터넷 열기
+        }
+
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT);
@@ -90,7 +97,7 @@ public class MyGcmListenerService extends GcmListenerService {
                 .setContentIntent(pendingIntent);
 
         NotificationManager notificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);  // GCM 받고 노티 나오게
 
         notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
     }

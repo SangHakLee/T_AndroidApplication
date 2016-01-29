@@ -39,7 +39,9 @@ public class GCMSender {
 //		Message message = new Message.Builder().addData("code", "1").addData("result", "GCMTest 축하드립리다.").build();
 //		Message message = new Message.Builder().addData("code", "2").addData("result", "http://m.naver.com").build();
 //		Message message = new Message.Builder().addData("code", "3").addData("result", "37.554644,126.970700").build();
-      Message message = new Message.Builder().addData("code", "4").addData("message", "화면 켜고 Main 실행").build();
+//      Message message = new Message.Builder().addData("code", "1").addData("message", "화면 켜고 Main 실행").build();
+      Message message = new Message.Builder().addData("code", "2").addData("message", "http://m.naver.com").build();
+      
 
 
       try{

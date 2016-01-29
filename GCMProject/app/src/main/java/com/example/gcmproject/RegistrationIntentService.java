@@ -41,7 +41,7 @@ public class RegistrationIntentService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) { // startServie 하면 동작하는 놈
-
+        // 처음 한번만 실행
         try {
             InstanceID instanceID = InstanceID.getInstance(this);
             String token = instanceID.getToken(getString(R.string.gcm_defaultSenderId), // 센더 아이디 널기
