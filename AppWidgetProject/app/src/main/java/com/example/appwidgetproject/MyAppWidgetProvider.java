@@ -57,6 +57,15 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
         PendingIntent pendingIntent1 = PendingIntent.getBroadcast(context, 0, intent1, PendingIntent.FLAG_CANCEL_CURRENT); // 서비스를 펜딩 인텐트에
         views.setOnClickPendingIntent(R.id.button2, pendingIntent1);
 
+
+        // 액티비티 띄우는 인첸트
+        Intent intent2 = new Intent("com.example.appwidgetproject.START.ACTIVITY"); // 펜딩에 걸 인텐트
+        // PendingIntent.FLAG_CANCEL_CURRENT 현재 액티비티 종료
+        PendingIntent pendingIntent2 = PendingIntent.getBroadcast(context, 0, intent2, PendingIntent.FLAG_CANCEL_CURRENT);// intent 방송을 뿌린다.
+        views.setOnClickPendingIntent(R.id.textView, pendingIntent2); // 버튼 클릭시 펜딩 인텐트
+
+
+
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }

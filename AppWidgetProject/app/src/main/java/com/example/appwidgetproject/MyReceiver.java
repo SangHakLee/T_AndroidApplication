@@ -25,7 +25,14 @@ public class MyReceiver extends BroadcastReceiver {
             doStartService(context);
         }else if("com.example.appwidgetproject.STOP".equals(action)){
             doStopService(context);
+        }else if("com.example.appwidgetproject.START.ACTIVITY".equals(action)){
+            doStartActivity(context, intent);
         }
+    }
+
+    void doStartActivity(Context context, Intent intent){
+        Intent intent1 = new Intent(context, MainActivity.class);
+        context.startActivity(intent1);
     }
 
     void doStopService(Context context){
@@ -40,6 +47,8 @@ public class MyReceiver extends BroadcastReceiver {
 
     // 이 메소드에서 수정
     void doCountProccess(Context context, Intent intent){
+
+        // 아래 코드들만 실행하면 앱위젯 제어가능
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
 
         // UI 변경 하는 코드
