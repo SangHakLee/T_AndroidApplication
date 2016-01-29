@@ -80,7 +80,7 @@ public class MyGcmListenerService extends GcmListenerService {
         if(code.equals("1")){ // 서버에서 준 코드 값
             intent = new Intent(this, MainActivity.class); // 푸시 앱실행
         }else if(code.equals("2")){
-            intent = new Intent(Intent.ACTION_VIEW, Uri.parse(message)); // 푸시 메세지 값으로 인터넷 열기
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse(message)); // 푸시 메세지 값으로 인터넷 열기 서버에서 보낼때 message 안에 uri 넣는다.
         }
 
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
