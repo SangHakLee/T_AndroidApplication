@@ -26,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "Main";
 
-    Button loginButton1;
+    Button loginButton;
+    Button postButton;
     LoginManager manager;
 
     CallbackManager callbackManager; // 페북에서 제공하는 콜백 매니저
@@ -36,12 +37,54 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        postButton = (Button)findViewById(R.id.button2);
+        postButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!isLogin()){ //로그인이 안된경우
+                    manager.logInWithReadPermissions(MainActivity.this, null);
+                }else{ // 로그인 된 경우 로그 아웃
+                    manager.logOut();
+                    loginButton.setText("로그인");
+                }
+            }
+        });
 
-        manager = LoginManager.getInstance();
+        loginButton = (Button)findViewById(R.id.button);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!isLogin()){ //로그인이 안된경우
+                    manager.logInWithReadPermissions(MainActivity.this, null);
+                }else{ // 로그인 된 경우 로그 아웃
+                    manager.logOut();
+                    loginButton.setText("로그인");
+                }
+            }
+        });
+
+
+        manager = LoginManager.getInstance(); // loginButton1
+        manager.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                String id = AccessToken.getCurrentAccessToken().getUserId(); //유저 아이디
+                Toast.makeText(MainActivity.this, "success id : " + id, Toast.LENGTH_SHORT).show();
+                loginButton.setText("로그아웃");
+            }
+            @Override
+            public void onCancel() {
+
+            }
+            @Override
+            public void onError(FacebookException error) {
+
+            }
+        });
 
         callbackManager = CallbackManager.Factory.create(); // 콜백 매니저 등록
 
-        LoginButton loginButton = (LoginButton)findViewById(R.id.view);
+        final LoginButton loginButton = (LoginButton)findViewById(R.id.view);
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() { // 버튼에 콜백 매니저 연결
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -59,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
 
         isLogin();
 
-        loginButton1 = (Button)findViewById(R.id.button);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
