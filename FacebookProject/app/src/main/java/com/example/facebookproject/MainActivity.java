@@ -40,7 +40,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode,resultCode,data);
     }
+
+    boolean isLogin = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         callbackManager = CallbackManager.Factory.create(); // 콜백 매니저 등록
 
         LoginButton loginButton = (LoginButton)findViewById(R.id.view);
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() { // 버튼에 콜백 매니저 연결
             @Override
             public void onSuccess(LoginResult loginResult) {
                 Toast.makeText(MainActivity.this, "success id : " + loginResult.toString(), Toast.LENGTH_SHORT).show();
