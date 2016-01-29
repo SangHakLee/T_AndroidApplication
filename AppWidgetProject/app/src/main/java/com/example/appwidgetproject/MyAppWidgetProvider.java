@@ -24,20 +24,18 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
         if("com.example.appwidgetproject.COUNT".equals(action)){
             doProcess(context, intent);
         }
-        doProcess(context, intent);
     }
 
     void doProcess(Context context, Intent intent){
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.my_app_widget_provider);
-        views.setTextViewText(R.id.textView, intent.getStringExtra("cnt"));
-
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+
+        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.my_app_widget_provider);
+        views.setTextViewText(R.id.textView, "cnt : " + intent.getStringExtra("cnt"));
+
 
         ComponentName componentName = new ComponentName(context, MyAppWidgetProvider.class);
 
         appWidgetManager.updateAppWidget(componentName, views); // UI 바뀌주는 메소드 updateAppWidget()
-
-
     };
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
@@ -51,11 +49,14 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
 
         Intent intent = new Intent("com.example.appwidgetproject.COUNT"); // 펜딩에 걸 인텐트
         intent.putExtra("cnt", "123");
-
         // PendingIntent.FLAG_CANCEL_CURRENT 현재 액티비티 종료
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);// intent 방송을 뿌린다.
         views.setOnClickPendingIntent(R.id.button, pendingIntent); // 버튼 클릭시 펜딩 인텐트
 
+
+        Intent intent1 = new Intent(context, MyService.class); // 서비스 인텐트
+        PendingIntent pendingIntent1 = PendingIntent.getService(context, 0, intent1, PendingIntent.FLAG_CANCEL_CURRENT); // 서비스를 펜딩 인텐트에
+        views.setOnClickPendingIntent(R.id.button2, pendingIntent1);
 
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);

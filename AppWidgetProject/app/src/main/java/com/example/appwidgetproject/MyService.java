@@ -4,6 +4,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.os.SystemClock;
+import android.util.Log;
 
 // 백 그라운드에서 계속 카운팅
 // 노래 바뀔때마다 UI 변경처럼 만들기
@@ -19,6 +20,10 @@ public class MyService extends Service{
         public void run(){
             while (onAir){
                 cnt++;
+                Intent intent = new Intent("com.example.appwidgetproject.COUNT");
+                intent.putExtra("cnt", ""+cnt);
+                sendBroadcast(intent); // 방송으로 인텐트 쏜다.
+                Log.v(TAG, "cnt : " + cnt);
                 SystemClock.sleep(1000);
             }
         }
