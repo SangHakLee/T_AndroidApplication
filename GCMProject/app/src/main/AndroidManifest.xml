@@ -33,6 +33,13 @@
                 <category android:name="com.example.gcmproject" /> <!--내 패키지로-->
             </intent-filter>
         </receiver>
+        <service
+            android:name=".MyGcmListenerService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
