@@ -32,6 +32,8 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="com.example.appwidgetproject.COUNT" />
+                <action android:name="com.example.appwidgetproject.START" />
+                <action android:name="com.example.appwidgetproject.STOP" />
             </intent-filter>
         </receiver>
     </application>

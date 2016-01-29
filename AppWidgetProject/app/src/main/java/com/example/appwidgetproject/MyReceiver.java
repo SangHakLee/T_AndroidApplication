@@ -21,7 +21,21 @@ public class MyReceiver extends BroadcastReceiver {
         String action = intent.getAction();
         if("com.example.appwidgetproject.COUNT".equals(action)){
             doCountProccess(context, intent);
+        }else if("com.example.appwidgetproject.START".equals(action)){
+            doStartService(context);
+        }else if("com.example.appwidgetproject.STOP".equals(action)){
+            doStopService(context);
         }
+    }
+
+    void doStopService(Context context){
+        Intent service = new Intent(context, MyService.class);
+        context.stopService(service);
+    }
+
+    void doStartService(Context context){
+        Intent service = new Intent(context, MyService.class);
+        context.startService(service); // 서비스 시작
     }
 
     // 이 메소드에서 수정
