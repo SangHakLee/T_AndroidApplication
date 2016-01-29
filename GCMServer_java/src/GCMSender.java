@@ -10,6 +10,7 @@ public class GCMSender {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		new GCMSender();
+		aa();
 
 	}
 	
@@ -46,8 +47,8 @@ public class GCMSender {
 //			multi = sender.send(message, list, 5);
 //			results = multi.getResults();
 
-          Result result = sender.send(message, regId, 5);
-          if (result.getMessageId() != null) {
+          Result result = sender.send(message, regId, 5); // 3번째 인자 재실행 회수
+          if (result.getMessageId() != null) { // 정상 보내짐
 
               System.out.println("send success");
               String canonicalRegId = result
@@ -55,7 +56,7 @@ public class GCMSender {
               if (canonicalRegId != null) {
             	  System.out.println("key : " + key);
               }
-          } else {
+          } else { // 실패
               String error = result.getErrorCodeName();
               if (error.equals(Constants.ERROR_NOT_REGISTERED)) {
             	  System.out.println("key : " + key);
