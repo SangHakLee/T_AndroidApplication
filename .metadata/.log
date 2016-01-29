@@ -1,0 +1,1981 @@
+!SESSION 2016-01-29 13:19:19.955 -----------------------------------------------
+eclipse.buildId=4.5.0.I20150603-2000
+java.version=1.8.0_71
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=ko_KR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-01-29 14:24:21.157
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\skplanet'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.oomph.setup.core 4 0 2016-01-29 14:24:21.676
+!MESSAGE Connection refused: connect
+!STACK 0
+org.eclipse.oomph.util.IOExceptionWithCause: Connection refused: connect
+	at org.eclipse.oomph.setup.internal.core.util.ECFURIHandlerImpl.createInputStream(ECFURIHandlerImpl.java:266)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createInputStream(ExtensibleURIConverterImpl.java:360)
+	at org.eclipse.oomph.setup.internal.core.util.SetupCoreUtil.handleArchiveRedirection(SetupCoreUtil.java:356)
+	at org.eclipse.oomph.setup.internal.core.util.SetupCoreUtil.configureResourceSet(SetupCoreUtil.java:342)
+	at org.eclipse.oomph.setup.internal.core.util.SetupCoreUtil.createResourceSet(SetupCoreUtil.java:124)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.performStartup(SetupUIPlugin.java:369)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.access$3(SetupUIPlugin.java:310)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin$1$1.run(SetupUIPlugin.java:210)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient4.ECFHttpClientProtocolSocketFactory.connectSocket(ECFHttpClientProtocolSocketFactory.java:84)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:177)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:131)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1077)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:618)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:885)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:106)
+	at org.eclipse.oomph.setup.internal.core.util.ECFURIHandlerImpl.createInputStream(ECFURIHandlerImpl.java:201)
+	... 8 more
+
+!ENTRY org.eclipse.oomph.setup.core 4 0 2016-01-29 14:24:23.012
+!MESSAGE Connection refused: connect
+!STACK 0
+org.eclipse.oomph.util.IOExceptionWithCause: Connection refused: connect
+	at org.eclipse.oomph.setup.internal.core.util.ECFURIHandlerImpl.createInputStream(ECFURIHandlerImpl.java:266)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createInputStream(ExtensibleURIConverterImpl.java:360)
+	at org.eclipse.oomph.setup.internal.core.util.SetupCoreUtil.handleArchiveRedirection(SetupCoreUtil.java:356)
+	at org.eclipse.oomph.setup.internal.core.util.SetupCoreUtil.configureResourceSet(SetupCoreUtil.java:342)
+	at org.eclipse.oomph.setup.internal.core.util.SetupCoreUtil.createResourceSet(SetupCoreUtil.java:124)
+	at org.eclipse.oomph.setup.internal.core.util.UserURIHandlerImpl.create(UserURIHandlerImpl.java:195)
+	at org.eclipse.oomph.setup.internal.core.util.UserURIHandlerImpl.exists(UserURIHandlerImpl.java:106)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.exists(ExtensibleURIConverterImpl.java:378)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin$2.run(SetupUIPlugin.java:265)
+	at org.eclipse.oomph.util.WorkerPool.begin(WorkerPool.java:119)
+	at org.eclipse.oomph.setup.internal.core.util.ResourceMirror.begin(ResourceMirror.java:111)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.mirror(SetupUIPlugin.java:274)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.performStartup(SetupUIPlugin.java:377)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.access$3(SetupUIPlugin.java:310)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin$1$1.run(SetupUIPlugin.java:210)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient4.ECFHttpClientProtocolSocketFactory.connectSocket(ECFHttpClientProtocolSocketFactory.java:84)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:177)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:131)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1077)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:618)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:885)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:106)
+	at org.eclipse.oomph.setup.internal.core.util.ECFURIHandlerImpl.createInputStream(ECFURIHandlerImpl.java:201)
+	... 15 more
+
+!ENTRY org.eclipse.oomph.base 2 0 2016-01-29 14:24:24.144
+!MESSAGE org.eclipse.oomph.util.IOExceptionWithCause: Connection refused: connect
+!STACK 0
+org.eclipse.emf.ecore.resource.impl.ResourceSetImpl$1DiagnosticWrappedException: org.eclipse.oomph.util.IOExceptionWithCause: Connection refused: connect
+	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.handleDemandLoadException(ResourceSetImpl.java:319)
+	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.demandLoadHelper(ResourceSetImpl.java:278)
+	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl$ResourceLocator.demandLoadHelper(ResourceSetImpl.java:804)
+	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl$MappedResourceLocator.getResource(ResourceSetImpl.java:1204)
+	at org.eclipse.oomph.setup.internal.core.util.SetupCoreUtil$1.getResource(SetupCoreUtil.java:294)
+	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.getResource(ResourceSetImpl.java:352)
+	at org.eclipse.oomph.base.util.BaseUtil.loadResourceSafely(BaseUtil.java:54)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.getInstallation(SetupContext.java:613)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.create(SetupContext.java:248)
+	at org.eclipse.oomph.setup.internal.core.SetupTaskPerformer.createForIDE(SetupTaskPerformer.java:3413)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.performStartup(SetupUIPlugin.java:403)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.access$3(SetupUIPlugin.java:310)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin$1$1.run(SetupUIPlugin.java:210)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: org.eclipse.oomph.util.IOExceptionWithCause: Connection refused: connect
+	at org.eclipse.oomph.setup.internal.core.util.ECFURIHandlerImpl.createInputStream(ECFURIHandlerImpl.java:266)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createInputStream(ExtensibleURIConverterImpl.java:360)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.load(ResourceImpl.java:1269)
+	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.demandLoad(ResourceSetImpl.java:259)
+	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.demandLoadHelper(ResourceSetImpl.java:274)
+	... 12 more
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient4.ECFHttpClientProtocolSocketFactory.connectSocket(ECFHttpClientProtocolSocketFactory.java:84)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:177)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:131)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1077)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:618)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:885)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:106)
+	at org.eclipse.oomph.setup.internal.core.util.ECFURIHandlerImpl.createInputStream(ECFURIHandlerImpl.java:201)
+	... 16 more
+
+!ENTRY org.eclipse.oomph.setup.core 4 0 2016-01-29 14:24:25.324
+!MESSAGE Connection refused: connect
+!STACK 0
+org.eclipse.oomph.util.IOExceptionWithCause: Connection refused: connect
+	at org.eclipse.oomph.setup.internal.core.util.ECFURIHandlerImpl.createInputStream(ECFURIHandlerImpl.java:266)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createInputStream(ExtensibleURIConverterImpl.java:360)
+	at org.eclipse.oomph.setup.internal.core.util.SetupCoreUtil.handleArchiveRedirection(SetupCoreUtil.java:356)
+	at org.eclipse.oomph.setup.internal.core.util.SetupCoreUtil.configureResourceSet(SetupCoreUtil.java:342)
+	at org.eclipse.oomph.setup.internal.core.util.SetupCoreUtil.createResourceSet(SetupCoreUtil.java:124)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.associate(SetupContext.java:354)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.createSelf(SetupContext.java:235)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.performStartup(SetupUIPlugin.java:416)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.access$3(SetupUIPlugin.java:310)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin$1$1.run(SetupUIPlugin.java:210)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient4.ECFHttpClientProtocolSocketFactory.connectSocket(ECFHttpClientProtocolSocketFactory.java:84)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:177)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:131)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1077)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:618)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:885)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:106)
+	at org.eclipse.oomph.setup.internal.core.util.ECFURIHandlerImpl.createInputStream(ECFURIHandlerImpl.java:201)
+	... 10 more
+
+!ENTRY org.eclipse.epp.logging.aeri.ui 2 23 2016-01-29 14:24:32.356
+!MESSAGE The server availability check failed Version: 1.0.0.v20150617-0732
+!STACK 0
+org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:8080 [/127.0.0.1] failed: Connection refused: connect
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:142)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:319)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:371)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:219)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at org.apache.http.client.fluent.Executor.execute(Executor.java:206)
+	at org.eclipse.epp.internal.logging.aeri.ui.log.CheckServerAvailabilityJob.run(CheckServerAvailabilityJob.java:48)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:72)
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:125)
+	... 12 more
+
+!ENTRY org.eclipse.epp.logging.aeri.ui 2 18 2016-01-29 14:25:22.264
+!MESSAGE Updating the index from remote failed. Version: 1.0.0.v20150617-0732
+!STACK 0
+org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:8080 [/127.0.0.1] failed: Connection refused: connect
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:142)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:319)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:371)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:219)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at org.apache.http.client.fluent.Executor.execute(Executor.java:206)
+	at org.eclipse.epp.internal.logging.aeri.ui.log.ProblemsDatabaseUpdateJob.getEtag(ProblemsDatabaseUpdateJob.java:94)
+	at org.eclipse.epp.internal.logging.aeri.ui.log.ProblemsDatabaseUpdateJob.run(ProblemsDatabaseUpdateJob.java:58)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:72)
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:125)
+	... 13 more
+
+!ENTRY org.eclipse.epp.logging.aeri.ui 2 6 2016-01-29 14:25:22.265
+!MESSAGE Failed to determine ETAG for remote problems database. Stopping update. Version: 1.0.0.v20150617-0732
+
+!ENTRY org.eclipse.jdt.core 4 2 2016-01-29 14:30:44.952
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.core".
+!STACK 0
+java.lang.NoClassDefFoundError: org/eclipse/jst/jsp/core/taglib/TaglibIndex$1
+	at org.eclipse.jst.jsp.core.taglib.TaglibIndex$ClasspathChangeListener.elementChanged(TaglibIndex.java:96)
+	at org.eclipse.jst.jsp.core.taglib.TaglibIndex$ClasspathChangeListener.elementChanged(TaglibIndex.java:90)
+	at org.eclipse.jst.jsp.core.taglib.TaglibIndex$ClasspathChangeListener.elementChanged(TaglibIndex.java:79)
+	at org.eclipse.jdt.internal.core.DeltaProcessor$3.run(DeltaProcessor.java:1662)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.notifyListeners(DeltaProcessor.java:1652)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.firePostChangeDelta(DeltaProcessor.java:1486)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.fire(DeltaProcessor.java:1462)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.resourceChanged(DeltaProcessor.java:2074)
+	at org.eclipse.jdt.internal.core.DeltaProcessingState.resourceChanged(DeltaProcessingState.java:477)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:289)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:152)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:373)
+	at org.eclipse.core.internal.resources.Workspace.checkpoint(Workspace.java:528)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:263)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:92)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:218)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+Caused by: java.lang.ClassNotFoundException: org.eclipse.jst.jsp.core.taglib.TaglibIndex$1 cannot be found by org.eclipse.jst.jsp.core_1.2.800.v201505130300
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:439)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:352)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:344)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:160)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	... 24 more
+
+!ENTRY org.eclipse.jst.jsp.core 4 0 2016-01-29 14:30:44.952
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+java.io.IOException: Exception in opening zip file: D:\eclipse\plugins\org.eclipse.jst.jsp.core_1.2.800.v201505130300.jar
+	at org.eclipse.osgi.framework.util.SecureAction.getZipFile(SecureAction.java:305)
+	at org.eclipse.osgi.storage.bundlefile.ZipBundleFile.basicOpen(ZipBundleFile.java:85)
+	at org.eclipse.osgi.storage.bundlefile.ZipBundleFile.getZipFile(ZipBundleFile.java:98)
+	at org.eclipse.osgi.storage.bundlefile.ZipBundleFile.checkedOpen(ZipBundleFile.java:65)
+	at org.eclipse.osgi.storage.bundlefile.ZipBundleFile.getEntry(ZipBundleFile.java:232)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findClassImpl(ClasspathManager.java:562)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClassImpl(ClasspathManager.java:540)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:527)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:324)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:327)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:402)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:352)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:344)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:160)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.jst.jsp.core.taglib.TaglibIndex$ClasspathChangeListener.elementChanged(TaglibIndex.java:96)
+	at org.eclipse.jst.jsp.core.taglib.TaglibIndex$ClasspathChangeListener.elementChanged(TaglibIndex.java:90)
+	at org.eclipse.jst.jsp.core.taglib.TaglibIndex$ClasspathChangeListener.elementChanged(TaglibIndex.java:79)
+	at org.eclipse.jdt.internal.core.DeltaProcessor$3.run(DeltaProcessor.java:1662)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.notifyListeners(DeltaProcessor.java:1652)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.firePostChangeDelta(DeltaProcessor.java:1486)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.fire(DeltaProcessor.java:1462)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.resourceChanged(DeltaProcessor.java:2074)
+	at org.eclipse.jdt.internal.core.DeltaProcessingState.resourceChanged(DeltaProcessingState.java:477)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:289)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:152)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:373)
+	at org.eclipse.core.internal.resources.Workspace.checkpoint(Workspace.java:528)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:263)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:92)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:218)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+Caused by: java.io.FileNotFoundException: D:\eclipse\plugins\org.eclipse.jst.jsp.core_1.2.800.v201505130300.jar (지정된 파일을 찾을 수 없습니다)
+	at java.util.zip.ZipFile.open(Native Method)
+	at java.util.zip.ZipFile.<init>(Unknown Source)
+	at java.util.zip.ZipFile.<init>(Unknown Source)
+	at java.util.zip.ZipFile.<init>(Unknown Source)
+	at org.eclipse.osgi.framework.util.SecureAction.getZipFile(SecureAction.java:288)
+	... 38 more
+
+!ENTRY org.eclipse.equinox.event 4 0 2016-01-29 14:30:44.953
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+java.io.IOException: Exception in opening zip file: D:\eclipse\plugins\org.eclipse.equinox.event_1.3.100.v20140115-1647.jar
+	at org.eclipse.osgi.framework.util.SecureAction.getZipFile(SecureAction.java:305)
+	at org.eclipse.osgi.storage.bundlefile.ZipBundleFile.basicOpen(ZipBundleFile.java:85)
+	at org.eclipse.osgi.storage.bundlefile.ZipBundleFile.getZipFile(ZipBundleFile.java:98)
+	at org.eclipse.osgi.storage.bundlefile.ZipBundleFile.checkedOpen(ZipBundleFile.java:65)
+	at org.eclipse.osgi.storage.bundlefile.ZipBundleFile.getEntry(ZipBundleFile.java:232)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findClassImpl(ClasspathManager.java:562)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClassImpl(ClasspathManager.java:540)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:527)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:324)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:327)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:402)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:352)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:344)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:160)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.equinox.internal.event.mapper.EventRedeliverer.frameworkEvent(EventRedeliverer.java:53)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.dispatchEvent(BundleContextImpl.java:926)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+Caused by: java.io.FileNotFoundException: D:\eclipse\plugins\org.eclipse.equinox.event_1.3.100.v20140115-1647.jar (지정된 파일을 찾을 수 없습니다)
+	at java.util.zip.ZipFile.open(Native Method)
+	at java.util.zip.ZipFile.<init>(Unknown Source)
+	at java.util.zip.ZipFile.<init>(Unknown Source)
+	at java.util.zip.ZipFile.<init>(Unknown Source)
+	at org.eclipse.osgi.framework.util.SecureAction.getZipFile(SecureAction.java:288)
+	... 18 more
+
+!ENTRY org.eclipse.jdt.core 4 4 2016-01-29 14:30:44.987
+!MESSAGE Exception occurred in listener of Java element change notification
+!STACK 0
+java.lang.NoClassDefFoundError: org/eclipse/jst/jsp/core/taglib/TaglibIndex$1
+	at org.eclipse.jst.jsp.core.taglib.TaglibIndex$ClasspathChangeListener.elementChanged(TaglibIndex.java:96)
+	at org.eclipse.jst.jsp.core.taglib.TaglibIndex$ClasspathChangeListener.elementChanged(TaglibIndex.java:90)
+	at org.eclipse.jst.jsp.core.taglib.TaglibIndex$ClasspathChangeListener.elementChanged(TaglibIndex.java:79)
+	at org.eclipse.jdt.internal.core.DeltaProcessor$3.run(DeltaProcessor.java:1662)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.notifyListeners(DeltaProcessor.java:1652)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.firePostChangeDelta(DeltaProcessor.java:1486)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.fire(DeltaProcessor.java:1462)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.resourceChanged(DeltaProcessor.java:2074)
+	at org.eclipse.jdt.internal.core.DeltaProcessingState.resourceChanged(DeltaProcessingState.java:477)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:289)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:152)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:373)
+	at org.eclipse.core.internal.resources.Workspace.checkpoint(Workspace.java:528)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:263)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:92)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:218)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+Caused by: java.lang.ClassNotFoundException: org.eclipse.jst.jsp.core.taglib.TaglibIndex$1 cannot be found by org.eclipse.jst.jsp.core_1.2.800.v201505130300
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:439)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:352)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:344)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:160)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	... 24 more
+
+!ENTRY org.eclipse.ltk.ui.refactoring 4 10000 2016-01-29 14:30:45.456
+!MESSAGE Internal Error
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:794)
+	at org.eclipse.core.internal.resources.Project.delete(Project.java:323)
+	at org.eclipse.ltk.core.refactoring.resource.DeleteResourceChange.perform(DeleteResourceChange.java:160)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:258)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:92)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:218)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+Contains: Could not delete '/TestWeb/System Volume Information'.
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.delete(FileSystemResourceManager.java:354)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFolder(ResourceTree.java:358)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteProject(ResourceTree.java:393)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteProject(ResourceTree.java:850)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1835)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:781)
+	at org.eclipse.core.internal.resources.Project.delete(Project.java:323)
+	at org.eclipse.ltk.core.refactoring.resource.DeleteResourceChange.perform(DeleteResourceChange.java:160)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:258)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:92)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:218)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+Contains: Problems encountered while deleting files.
+Contains: Could not delete: D:\System Volume Information.
+Contains: Could not delete '/TestWeb/eclipse'.
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.delete(FileSystemResourceManager.java:354)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFolder(ResourceTree.java:358)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteProject(ResourceTree.java:393)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteProject(ResourceTree.java:850)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1835)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:781)
+	at org.eclipse.core.internal.resources.Project.delete(Project.java:323)
+	at org.eclipse.ltk.core.refactoring.resource.DeleteResourceChange.perform(DeleteResourceChange.java:160)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:258)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:92)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:218)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+Contains: Problems encountered while deleting files.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.core.runtime\.manager\.tmp3505576107070920742.instance.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.core.runtime\.manager.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.core.runtime.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.equinox.app\.manager\.tmp8200641175220399378.instance.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.equinox.app\.manager.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.equinox.app.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\101\0\.cp\jWinHttp-1.0.0.dll.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\101\0\.cp.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\101\0.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\101.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\747\0\.cp\swt-gdip-win32-4527.dll.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\747\0\.cp\swt-win32-4527.dll.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\747\0\.cp.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\747\0.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\747.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\98\0\.cp\os\win32\x86\localfile_1_0_0.dll.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\98\0\.cp\os\win32\x86.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\98\0\.cp\os\win32.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\98\0\.cp\os.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\98\0\.cp.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\98\0.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\98.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi.
+Contains: Could not delete: D:\eclipse\configuration.
+Contains: Could not delete: D:\eclipse\eclipse.exe.
+Contains: Could not delete: D:\eclipse\plugins\com.ibm.icu_54.1.1.v201501272100.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.apache.xalan_2.7.1.v201005080400.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.apache.xerces_2.9.0.v201101211617.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.ant.core_3.4.0.v20150428-1928.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.compare.core_3.5.500.v20150505-1058.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.compare_3.5.600.v20150420-1449.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.core.commands_3.7.0.v20150422-0725.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.core.resources.win32.x86_3.5.100.v20140124-1940.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.core.resources_3.10.0.v20150423-0755.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.core.runtime.compatibility.registry_3.6.0.v20150318-1505\runtime_registry_compatibility.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.core.runtime.compatibility.registry_3.6.0.v20150318-1505.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.datatools.connectivity_1.2.11.v201401230755.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.datatools.sqltools.sqlscrapbook_1.0.2.v201205310922.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.debug.core_3.10.0.v20150303-1130.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.debug.ui_3.11.0.v20150514-0917.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.e4.ui.css.swt_0.12.0.v20150511-1003.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.e4.ui.workbench.renderers.swt_0.13.0.v20150603-0857.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.e4.ui.workbench_1.3.0.v20150531-1948.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.egit.core_4.0.0.201506090130-r.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.egit.ui_4.0.0.201506090130-r.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.equinox.common_3.7.0.v20150402-1709.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.equinox.launcher.win32.win32.x86_1.1.300.v20150602-1417\eclipse_1611.dll.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.equinox.launcher.win32.win32.x86_1.1.300.v20150602-1417.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.equinox.launcher_1.3.100.v20150511-1540.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.equinox.registry_3.6.0.v20150318-1503.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jdt.apt.core_3.4.0.v20150518-1201.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jdt.core.manipulation_1.5.100.v20141002-1241.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jdt.core_3.11.0.v20150602-1242.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jdt.ui_3.11.0.v20150527-0925.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jem.util_2.1.200.v201404021757.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jface_3.11.0.v20150602-1400.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jgit_4.0.0.201506090130-r.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jpt.common.core_1.4.0.v201308261915.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jpt.common.utility_2.3.0.v201311152020.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jpt.jpa.core_3.4.0.v201312052110.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jpt.jpa.db_2.2.100.v201311150251.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jst.ejb.ui_1.1.900.v201402130359.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jst.j2ee.core_1.3.200.v201505041449.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jst.j2ee.navigator.ui_1.1.600.v201302011850.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jst.j2ee.ui_1.1.801.v201501141713.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jst.j2ee.web_1.1.850.v201503311656.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jst.j2ee_1.1.850.v201506041749.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jst.jee.ui_1.0.701.v201408251535.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jst.jsf.facelet.ui_1.3.100.v201505112336.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jst.jsp.ui_1.1.1000.v201505130300.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jst.servlet.ui_1.1.801.v201409042158.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jst.ws.jaxws.dom.integration_1.0.300.v201308151836.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jst.ws.jaxws.dom.runtime_1.0.300.v201308151836.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jst.ws.jaxws.dom.ui_1.0.100.v201308151836.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jst.ws.jaxws.utils_1.0.301.v201504272154.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.ltk.core.refactoring_3.6.200.v20140826-0859.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.ltk.ui.refactoring_3.7.200.v20140625-1835.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.m2e.core.ui_1.6.0.20150526-2032.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.m2e.core_1.6.0.20150526-2032.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.indexer_1.6.0.20150526-2031\indexer-artifact-3.1.0.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.indexer_1.6.0.20150526-2031\indexer-core-3.1.0.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.indexer_1.6.0.20150526-2031\lucene-core-2.4.1.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.indexer_1.6.0.20150526-2031.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.runtime_1.6.0.20150526-2031\jars\maven-core-3.3.3.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.runtime_1.6.0.20150526-2031\jars\maven-settings-3.3.3.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.runtime_1.6.0.20150526-2031\jars\takari-filemanager-0.7.0.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.runtime_1.6.0.20150526-2031\jars\takari-local-repository-0.9.0.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.runtime_1.6.0.20150526-2031\jars.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.runtime_1.6.0.20150526-2031.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.m2e.refactoring_1.6.0.20150526-2032.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.mylyn.resources.ui_3.16.0.v20150522-2252.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.mylyn.tasks.ui_3.16.0.v20150609-0543.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.oomph.p2.ui_1.1.0.v20150609-0951.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.osgi.compatibility.state_1.0.100.v20150402-1551.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.osgi_3.10.100.v20150529-1857.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.pde.ui_3.8.200.v20150602-2024.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.rse.files.ui_3.2.200.201502052140.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.rse.ui_3.3.100.201503112018.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.swt.win32.win32.x86_3.104.0.v20150528-0211.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.swt_3.104.0.v20150528-0211.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.team.core_3.7.100.v20150203-1452.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.team.ui_3.7.200.v20150203-1452.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.text_3.5.400.v20150505-1044.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.tm.terminal.connector.local_4.0.0.201505081521.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.tm.terminal.control_4.0.0.201505221029.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.tm.terminal.view.ui_4.0.0.201506031417.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.ui.editors_3.9.0.v20150213-1939.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.ui.ide_3.11.0.v20150510-1749.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.ui.navigator.resources_3.5.0.v20150422-0725.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.ui.navigator_3.6.0.v20150422-0725.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.ui.views_3.8.0.v20150422-0725.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.ui.win32_3.2.500.v20150423-0822.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.ui.workbench.texteditor_3.9.100.v20141023-1946.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.ui.workbench_3.107.0.v20150510-1732.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.ui_3.107.0.v20150507-1945.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.command.env.core_1.0.300.v201505131719.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.command.env_1.0.500.v201505131719.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.common.emfworkbench.integration_1.2.101.v201107081800.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.common.frameworks.ui_1.2.400.v201504292002.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.common.modulecore_1.2.401.v201408132036.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.dtd.core_1.1.700.v201211012112.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.html.core_1.1.802.v201501312139.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.html.ui_1.0.1000.v201505130300.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.jsdt.core_1.3.400.v201504291620.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.jsdt.manipulation_1.0.600.v201505071819.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.jsdt.ui_1.1.600.v201504291620.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.server.core_1.6.100.v201505132000.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.server.ui_1.5.200.v201505141429.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.sse.core_1.1.900.v201401092025.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.standard.schemas_1.0.700.v201304171715.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.validation_1.2.600.v201501211647.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.ws.service.policy.ui_1.0.500.v201505131719.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.ws.service.policy_1.0.450.v201505131719.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.ws_1.1.400.v201503231435.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.xml.core_1.1.902.v201501211904.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.xml.xpath.core_1.3.0.v201108312022.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.xsl.core_1.1.301.v201405151730.jar.
+Contains: Could not delete: D:\eclipse\plugins.
+Contains: Could not delete: D:\eclipse.
+Contains: Could not delete 'D:\'.
+!SUBENTRY 1 org.eclipse.core.resources 4 273 2016-01-29 14:30:45.458
+!MESSAGE Problems encountered while deleting resources.
+!SUBENTRY 2 org.eclipse.core.resources 4 273 2016-01-29 14:30:45.458
+!MESSAGE Could not delete '/TestWeb/System Volume Information'.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.delete(FileSystemResourceManager.java:354)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFolder(ResourceTree.java:358)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteProject(ResourceTree.java:393)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteProject(ResourceTree.java:850)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1835)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:781)
+	at org.eclipse.core.internal.resources.Project.delete(Project.java:323)
+	at org.eclipse.ltk.core.refactoring.resource.DeleteResourceChange.perform(DeleteResourceChange.java:160)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:258)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:92)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:218)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+Contains: Problems encountered while deleting files.
+Contains: Could not delete: D:\System Volume Information.
+!SUBENTRY 3 org.eclipse.core.resources 4 273 2016-01-29 14:30:45.458
+!MESSAGE Problems encountered while deleting resources.
+!SUBENTRY 4 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.458
+!MESSAGE Problems encountered while deleting files.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.458
+!MESSAGE Could not delete: D:\System Volume Information.
+!SUBENTRY 2 org.eclipse.core.resources 4 273 2016-01-29 14:30:45.458
+!MESSAGE Could not delete '/TestWeb/eclipse'.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.delete(FileSystemResourceManager.java:354)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFolder(ResourceTree.java:358)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteProject(ResourceTree.java:393)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteProject(ResourceTree.java:850)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1835)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:781)
+	at org.eclipse.core.internal.resources.Project.delete(Project.java:323)
+	at org.eclipse.ltk.core.refactoring.resource.DeleteResourceChange.perform(DeleteResourceChange.java:160)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:258)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:92)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:218)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+Contains: Problems encountered while deleting files.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.core.runtime\.manager\.tmp3505576107070920742.instance.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.core.runtime\.manager.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.core.runtime.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.equinox.app\.manager\.tmp8200641175220399378.instance.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.equinox.app\.manager.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.equinox.app.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\101\0\.cp\jWinHttp-1.0.0.dll.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\101\0\.cp.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\101\0.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\101.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\747\0\.cp\swt-gdip-win32-4527.dll.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\747\0\.cp\swt-win32-4527.dll.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\747\0\.cp.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\747\0.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\747.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\98\0\.cp\os\win32\x86\localfile_1_0_0.dll.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\98\0\.cp\os\win32\x86.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\98\0\.cp\os\win32.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\98\0\.cp\os.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\98\0\.cp.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\98\0.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi\98.
+Contains: Could not delete: D:\eclipse\configuration\org.eclipse.osgi.
+Contains: Could not delete: D:\eclipse\configuration.
+Contains: Could not delete: D:\eclipse\eclipse.exe.
+Contains: Could not delete: D:\eclipse\plugins\com.ibm.icu_54.1.1.v201501272100.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.apache.xalan_2.7.1.v201005080400.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.apache.xerces_2.9.0.v201101211617.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.ant.core_3.4.0.v20150428-1928.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.compare.core_3.5.500.v20150505-1058.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.compare_3.5.600.v20150420-1449.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.core.commands_3.7.0.v20150422-0725.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.core.resources.win32.x86_3.5.100.v20140124-1940.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.core.resources_3.10.0.v20150423-0755.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.core.runtime.compatibility.registry_3.6.0.v20150318-1505\runtime_registry_compatibility.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.core.runtime.compatibility.registry_3.6.0.v20150318-1505.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.datatools.connectivity_1.2.11.v201401230755.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.datatools.sqltools.sqlscrapbook_1.0.2.v201205310922.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.debug.core_3.10.0.v20150303-1130.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.debug.ui_3.11.0.v20150514-0917.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.e4.ui.css.swt_0.12.0.v20150511-1003.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.e4.ui.workbench.renderers.swt_0.13.0.v20150603-0857.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.e4.ui.workbench_1.3.0.v20150531-1948.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.egit.core_4.0.0.201506090130-r.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.egit.ui_4.0.0.201506090130-r.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.equinox.common_3.7.0.v20150402-1709.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.equinox.launcher.win32.win32.x86_1.1.300.v20150602-1417\eclipse_1611.dll.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.equinox.launcher.win32.win32.x86_1.1.300.v20150602-1417.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.equinox.launcher_1.3.100.v20150511-1540.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.equinox.registry_3.6.0.v20150318-1503.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jdt.apt.core_3.4.0.v20150518-1201.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jdt.core.manipulation_1.5.100.v20141002-1241.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jdt.core_3.11.0.v20150602-1242.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jdt.ui_3.11.0.v20150527-0925.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jem.util_2.1.200.v201404021757.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jface_3.11.0.v20150602-1400.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jgit_4.0.0.201506090130-r.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jpt.common.core_1.4.0.v201308261915.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jpt.common.utility_2.3.0.v201311152020.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jpt.jpa.core_3.4.0.v201312052110.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jpt.jpa.db_2.2.100.v201311150251.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jst.ejb.ui_1.1.900.v201402130359.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jst.j2ee.core_1.3.200.v201505041449.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jst.j2ee.navigator.ui_1.1.600.v201302011850.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jst.j2ee.ui_1.1.801.v201501141713.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jst.j2ee.web_1.1.850.v201503311656.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jst.j2ee_1.1.850.v201506041749.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jst.jee.ui_1.0.701.v201408251535.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jst.jsf.facelet.ui_1.3.100.v201505112336.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jst.jsp.ui_1.1.1000.v201505130300.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jst.servlet.ui_1.1.801.v201409042158.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jst.ws.jaxws.dom.integration_1.0.300.v201308151836.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jst.ws.jaxws.dom.runtime_1.0.300.v201308151836.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jst.ws.jaxws.dom.ui_1.0.100.v201308151836.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.jst.ws.jaxws.utils_1.0.301.v201504272154.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.ltk.core.refactoring_3.6.200.v20140826-0859.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.ltk.ui.refactoring_3.7.200.v20140625-1835.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.m2e.core.ui_1.6.0.20150526-2032.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.m2e.core_1.6.0.20150526-2032.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.indexer_1.6.0.20150526-2031\indexer-artifact-3.1.0.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.indexer_1.6.0.20150526-2031\indexer-core-3.1.0.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.indexer_1.6.0.20150526-2031\lucene-core-2.4.1.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.indexer_1.6.0.20150526-2031.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.runtime_1.6.0.20150526-2031\jars\maven-core-3.3.3.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.runtime_1.6.0.20150526-2031\jars\maven-settings-3.3.3.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.runtime_1.6.0.20150526-2031\jars\takari-filemanager-0.7.0.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.runtime_1.6.0.20150526-2031\jars\takari-local-repository-0.9.0.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.runtime_1.6.0.20150526-2031\jars.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.runtime_1.6.0.20150526-2031.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.m2e.refactoring_1.6.0.20150526-2032.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.mylyn.resources.ui_3.16.0.v20150522-2252.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.mylyn.tasks.ui_3.16.0.v20150609-0543.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.oomph.p2.ui_1.1.0.v20150609-0951.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.osgi.compatibility.state_1.0.100.v20150402-1551.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.osgi_3.10.100.v20150529-1857.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.pde.ui_3.8.200.v20150602-2024.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.rse.files.ui_3.2.200.201502052140.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.rse.ui_3.3.100.201503112018.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.swt.win32.win32.x86_3.104.0.v20150528-0211.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.swt_3.104.0.v20150528-0211.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.team.core_3.7.100.v20150203-1452.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.team.ui_3.7.200.v20150203-1452.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.text_3.5.400.v20150505-1044.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.tm.terminal.connector.local_4.0.0.201505081521.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.tm.terminal.control_4.0.0.201505221029.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.tm.terminal.view.ui_4.0.0.201506031417.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.ui.editors_3.9.0.v20150213-1939.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.ui.ide_3.11.0.v20150510-1749.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.ui.navigator.resources_3.5.0.v20150422-0725.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.ui.navigator_3.6.0.v20150422-0725.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.ui.views_3.8.0.v20150422-0725.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.ui.win32_3.2.500.v20150423-0822.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.ui.workbench.texteditor_3.9.100.v20141023-1946.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.ui.workbench_3.107.0.v20150510-1732.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.ui_3.107.0.v20150507-1945.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.command.env.core_1.0.300.v201505131719.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.command.env_1.0.500.v201505131719.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.common.emfworkbench.integration_1.2.101.v201107081800.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.common.frameworks.ui_1.2.400.v201504292002.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.common.modulecore_1.2.401.v201408132036.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.dtd.core_1.1.700.v201211012112.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.html.core_1.1.802.v201501312139.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.html.ui_1.0.1000.v201505130300.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.jsdt.core_1.3.400.v201504291620.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.jsdt.manipulation_1.0.600.v201505071819.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.jsdt.ui_1.1.600.v201504291620.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.server.core_1.6.100.v201505132000.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.server.ui_1.5.200.v201505141429.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.sse.core_1.1.900.v201401092025.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.standard.schemas_1.0.700.v201304171715.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.validation_1.2.600.v201501211647.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.ws.service.policy.ui_1.0.500.v201505131719.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.ws.service.policy_1.0.450.v201505131719.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.ws_1.1.400.v201503231435.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.xml.core_1.1.902.v201501211904.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.xml.xpath.core_1.3.0.v201108312022.jar.
+Contains: Could not delete: D:\eclipse\plugins\org.eclipse.wst.xsl.core_1.1.301.v201405151730.jar.
+Contains: Could not delete: D:\eclipse\plugins.
+Contains: Could not delete: D:\eclipse.
+!SUBENTRY 3 org.eclipse.core.resources 4 273 2016-01-29 14:30:45.458
+!MESSAGE Problems encountered while deleting resources.
+!SUBENTRY 4 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.458
+!MESSAGE Problems encountered while deleting files.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.458
+!MESSAGE Could not delete: D:\eclipse\configuration\org.eclipse.core.runtime\.manager\.tmp3505576107070920742.instance.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.458
+!MESSAGE Could not delete: D:\eclipse\configuration\org.eclipse.core.runtime\.manager.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\configuration\org.eclipse.core.runtime.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\configuration\org.eclipse.equinox.app\.manager\.tmp8200641175220399378.instance.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\configuration\org.eclipse.equinox.app\.manager.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\configuration\org.eclipse.equinox.app.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\configuration\org.eclipse.osgi\101\0\.cp\jWinHttp-1.0.0.dll.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\configuration\org.eclipse.osgi\101\0\.cp.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\configuration\org.eclipse.osgi\101\0.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\configuration\org.eclipse.osgi\101.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\configuration\org.eclipse.osgi\747\0\.cp\swt-gdip-win32-4527.dll.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\configuration\org.eclipse.osgi\747\0\.cp\swt-win32-4527.dll.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\configuration\org.eclipse.osgi\747\0\.cp.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\configuration\org.eclipse.osgi\747\0.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\configuration\org.eclipse.osgi\747.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\configuration\org.eclipse.osgi\98\0\.cp\os\win32\x86\localfile_1_0_0.dll.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\configuration\org.eclipse.osgi\98\0\.cp\os\win32\x86.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\configuration\org.eclipse.osgi\98\0\.cp\os\win32.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\configuration\org.eclipse.osgi\98\0\.cp\os.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\configuration\org.eclipse.osgi\98\0\.cp.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\configuration\org.eclipse.osgi\98\0.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\configuration\org.eclipse.osgi\98.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\configuration\org.eclipse.osgi.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\configuration.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\eclipse.exe.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\plugins\com.ibm.icu_54.1.1.v201501272100.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\plugins\org.apache.xalan_2.7.1.v201005080400.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\plugins\org.apache.xerces_2.9.0.v201101211617.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.ant.core_3.4.0.v20150428-1928.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.compare.core_3.5.500.v20150505-1058.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.compare_3.5.600.v20150420-1449.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.core.commands_3.7.0.v20150422-0725.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.core.resources.win32.x86_3.5.100.v20140124-1940.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.core.resources_3.10.0.v20150423-0755.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.core.runtime.compatibility.registry_3.6.0.v20150318-1505\runtime_registry_compatibility.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.core.runtime.compatibility.registry_3.6.0.v20150318-1505.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.datatools.connectivity_1.2.11.v201401230755.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.datatools.sqltools.sqlscrapbook_1.0.2.v201205310922.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.debug.core_3.10.0.v20150303-1130.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.debug.ui_3.11.0.v20150514-0917.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.e4.ui.css.swt_0.12.0.v20150511-1003.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.e4.ui.workbench.renderers.swt_0.13.0.v20150603-0857.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.e4.ui.workbench_1.3.0.v20150531-1948.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.egit.core_4.0.0.201506090130-r.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.egit.ui_4.0.0.201506090130-r.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.459
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.equinox.common_3.7.0.v20150402-1709.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.equinox.launcher.win32.win32.x86_1.1.300.v20150602-1417\eclipse_1611.dll.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.equinox.launcher.win32.win32.x86_1.1.300.v20150602-1417.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.equinox.launcher_1.3.100.v20150511-1540.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.equinox.registry_3.6.0.v20150318-1503.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.jdt.apt.core_3.4.0.v20150518-1201.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.jdt.core.manipulation_1.5.100.v20141002-1241.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.jdt.core_3.11.0.v20150602-1242.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.jdt.ui_3.11.0.v20150527-0925.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.jem.util_2.1.200.v201404021757.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.jface_3.11.0.v20150602-1400.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.jgit_4.0.0.201506090130-r.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.jpt.common.core_1.4.0.v201308261915.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.jpt.common.utility_2.3.0.v201311152020.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.jpt.jpa.core_3.4.0.v201312052110.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.jpt.jpa.db_2.2.100.v201311150251.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.jst.ejb.ui_1.1.900.v201402130359.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.jst.j2ee.core_1.3.200.v201505041449.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.jst.j2ee.navigator.ui_1.1.600.v201302011850.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.jst.j2ee.ui_1.1.801.v201501141713.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.jst.j2ee.web_1.1.850.v201503311656.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.jst.j2ee_1.1.850.v201506041749.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.jst.jee.ui_1.0.701.v201408251535.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.jst.jsf.facelet.ui_1.3.100.v201505112336.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.jst.jsp.ui_1.1.1000.v201505130300.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.jst.servlet.ui_1.1.801.v201409042158.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.jst.ws.jaxws.dom.integration_1.0.300.v201308151836.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.jst.ws.jaxws.dom.runtime_1.0.300.v201308151836.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.jst.ws.jaxws.dom.ui_1.0.100.v201308151836.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.jst.ws.jaxws.utils_1.0.301.v201504272154.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.ltk.core.refactoring_3.6.200.v20140826-0859.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.ltk.ui.refactoring_3.7.200.v20140625-1835.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.m2e.core.ui_1.6.0.20150526-2032.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.m2e.core_1.6.0.20150526-2032.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.indexer_1.6.0.20150526-2031\indexer-artifact-3.1.0.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.indexer_1.6.0.20150526-2031\indexer-core-3.1.0.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.indexer_1.6.0.20150526-2031\lucene-core-2.4.1.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.indexer_1.6.0.20150526-2031.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.runtime_1.6.0.20150526-2031\jars\maven-core-3.3.3.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.runtime_1.6.0.20150526-2031\jars\maven-settings-3.3.3.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.runtime_1.6.0.20150526-2031\jars\takari-filemanager-0.7.0.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.runtime_1.6.0.20150526-2031\jars\takari-local-repository-0.9.0.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.runtime_1.6.0.20150526-2031\jars.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.m2e.maven.runtime_1.6.0.20150526-2031.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.m2e.refactoring_1.6.0.20150526-2032.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.460
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.mylyn.resources.ui_3.16.0.v20150522-2252.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.mylyn.tasks.ui_3.16.0.v20150609-0543.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.oomph.p2.ui_1.1.0.v20150609-0951.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.osgi.compatibility.state_1.0.100.v20150402-1551.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.osgi_3.10.100.v20150529-1857.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.pde.ui_3.8.200.v20150602-2024.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.rse.files.ui_3.2.200.201502052140.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.rse.ui_3.3.100.201503112018.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.swt.win32.win32.x86_3.104.0.v20150528-0211.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.swt_3.104.0.v20150528-0211.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.team.core_3.7.100.v20150203-1452.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.team.ui_3.7.200.v20150203-1452.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.text_3.5.400.v20150505-1044.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.tm.terminal.connector.local_4.0.0.201505081521.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.tm.terminal.control_4.0.0.201505221029.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.tm.terminal.view.ui_4.0.0.201506031417.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.ui.editors_3.9.0.v20150213-1939.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.ui.ide_3.11.0.v20150510-1749.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.ui.navigator.resources_3.5.0.v20150422-0725.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.ui.navigator_3.6.0.v20150422-0725.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.ui.views_3.8.0.v20150422-0725.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.ui.win32_3.2.500.v20150423-0822.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.ui.workbench.texteditor_3.9.100.v20141023-1946.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.ui.workbench_3.107.0.v20150510-1732.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.ui_3.107.0.v20150507-1945.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.wst.command.env.core_1.0.300.v201505131719.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.wst.command.env_1.0.500.v201505131719.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.wst.common.emfworkbench.integration_1.2.101.v201107081800.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.wst.common.frameworks.ui_1.2.400.v201504292002.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.wst.common.modulecore_1.2.401.v201408132036.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.wst.dtd.core_1.1.700.v201211012112.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.wst.html.core_1.1.802.v201501312139.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.wst.html.ui_1.0.1000.v201505130300.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.wst.jsdt.core_1.3.400.v201504291620.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.wst.jsdt.manipulation_1.0.600.v201505071819.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.wst.jsdt.ui_1.1.600.v201504291620.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.wst.server.core_1.6.100.v201505132000.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.wst.server.ui_1.5.200.v201505141429.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.wst.sse.core_1.1.900.v201401092025.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.wst.standard.schemas_1.0.700.v201304171715.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.wst.validation_1.2.600.v201501211647.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.wst.ws.service.policy.ui_1.0.500.v201505131719.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.wst.ws.service.policy_1.0.450.v201505131719.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.wst.ws_1.1.400.v201503231435.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.wst.xml.core_1.1.902.v201501211904.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.461
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.wst.xml.xpath.core_1.3.0.v201108312022.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.462
+!MESSAGE Could not delete: D:\eclipse\plugins\org.eclipse.wst.xsl.core_1.1.301.v201405151730.jar.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.462
+!MESSAGE Could not delete: D:\eclipse\plugins.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-01-29 14:30:45.462
+!MESSAGE Could not delete: D:\eclipse.
+!SUBENTRY 2 org.eclipse.core.resources 4 273 2016-01-29 14:30:45.462
+!MESSAGE Could not delete 'D:\'.
+
+!ENTRY org.eclipse.jst.jsp.core 4 0 2016-01-29 14:30:47.805
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+java.io.IOException: Exception in opening zip file: D:\eclipse\plugins\org.eclipse.jst.jsp.core_1.2.800.v201505130300.jar
+	at org.eclipse.osgi.framework.util.SecureAction.getZipFile(SecureAction.java:305)
+	at org.eclipse.osgi.storage.bundlefile.ZipBundleFile.basicOpen(ZipBundleFile.java:85)
+	at org.eclipse.osgi.storage.bundlefile.ZipBundleFile.getZipFile(ZipBundleFile.java:98)
+	at org.eclipse.osgi.storage.bundlefile.ZipBundleFile.checkedOpen(ZipBundleFile.java:65)
+	at org.eclipse.osgi.storage.bundlefile.ZipBundleFile.getEntry(ZipBundleFile.java:232)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findClassImpl(ClasspathManager.java:562)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClassImpl(ClasspathManager.java:540)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:527)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:324)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:327)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:402)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:352)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:344)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:160)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.jst.jsp.core.internal.taglib.TaglibHelperManager$1.run(TaglibHelperManager.java:117)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.FileNotFoundException: D:\eclipse\plugins\org.eclipse.jst.jsp.core_1.2.800.v201505130300.jar (지정된 파일을 찾을 수 없습니다)
+	at java.util.zip.ZipFile.open(Native Method)
+	at java.util.zip.ZipFile.<init>(Unknown Source)
+	at java.util.zip.ZipFile.<init>(Unknown Source)
+	at java.util.zip.ZipFile.<init>(Unknown Source)
+	at org.eclipse.osgi.framework.util.SecureAction.getZipFile(SecureAction.java:288)
+	... 16 more
+
+!ENTRY org.eclipse.core.jobs 4 2 2016-01-29 14:30:47.818
+!MESSAGE An internal error occurred during: "Processing Build Path changes".
+!STACK 0
+java.lang.NoClassDefFoundError: org/eclipse/jst/jsp/core/internal/taglib/TaglibHelperManager$2
+	at org.eclipse.jst.jsp.core.internal.taglib.TaglibHelperManager$1.run(TaglibHelperManager.java:117)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.lang.ClassNotFoundException: org.eclipse.jst.jsp.core.internal.taglib.TaglibHelperManager$2 cannot be found by org.eclipse.jst.jsp.core_1.2.800.v201505130300
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:439)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:352)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:344)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:160)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	... 2 more
+
+!ENTRY org.eclipse.jdt.core 4 4 2016-01-29 14:30:48.045
+!MESSAGE JavaBuilder handling ImageBuilderInternalException while building: TestWeb
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while copying resources.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.copy(FileSystemResourceManager.java:316)
+	at org.eclipse.core.internal.resources.Resource.copy(Resource.java:551)
+	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.copyResource(AbstractImageBuilder.java:382)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder$3.visit(BatchImageBuilder.java:223)
+	at org.eclipse.core.internal.resources.Resource$1.visitElement(Resource.java:83)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.doIteration(ElementTreeIterator.java:82)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.doIteration(ElementTreeIterator.java:87)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.doIteration(ElementTreeIterator.java:87)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.doIteration(ElementTreeIterator.java:87)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.doIteration(ElementTreeIterator.java:87)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.doIteration(ElementTreeIterator.java:87)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.iterate(ElementTreeIterator.java:129)
+	at org.eclipse.core.internal.resources.Resource.accept(Resource.java:93)
+	at org.eclipse.core.internal.resources.Resource.accept(Resource.java:51)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.copyExtraResourcesBack(BatchImageBuilder.java:192)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:120)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.build(BatchImageBuilder.java:47)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildAll(JavaBuilder.java:256)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:186)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:734)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:205)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:245)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:300)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:303)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:359)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:382)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:144)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:235)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Contains: Could not read from source when writing file: D:\eclipse\configuration\org.eclipse.core.runtime\.manager\.tmp3505576107070920742.instance
+java.io.IOException: 다른 프로세스가 파일의 한 부분을 잠갔으므로, 프로세스가 해당 파일을 액세스할 수 없습니다
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(Unknown Source)
+	at org.eclipse.core.filesystem.provider.FileStore.transferStreams(FileStore.java:75)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:223)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:144)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:120)
+	at org.eclipse.core.internal.localstore.CopyVisitor.copyContents(CopyVisitor.java:100)
+	at org.eclipse.core.internal.localstore.CopyVisitor.copy(CopyVisitor.java:71)
+	at org.eclipse.core.internal.localstore.CopyVisitor.visit(CopyVisitor.java:205)
+	at org.eclipse.core.internal.localstore.UnifiedTree.accept(UnifiedTree.java:109)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.copy(FileSystemResourceManager.java:313)
+	at org.eclipse.core.internal.resources.Resource.copy(Resource.java:551)
+	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.copyResource(AbstractImageBuilder.java:382)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder$3.visit(BatchImageBuilder.java:223)
+	at org.eclipse.core.internal.resources.Resource$1.visitElement(Resource.java:83)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.doIteration(ElementTreeIterator.java:82)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.doIteration(ElementTreeIterator.java:87)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.doIteration(ElementTreeIterator.java:87)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.doIteration(ElementTreeIterator.java:87)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.doIteration(ElementTreeIterator.java:87)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.doIteration(ElementTreeIterator.java:87)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.iterate(ElementTreeIterator.java:129)
+	at org.eclipse.core.internal.resources.Resource.accept(Resource.java:93)
+	at org.eclipse.core.internal.resources.Resource.accept(Resource.java:51)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.copyExtraResourcesBack(BatchImageBuilder.java:192)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:120)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.build(BatchImageBuilder.java:47)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildAll(JavaBuilder.java:256)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:186)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:734)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:205)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:245)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:300)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:303)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:359)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:382)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:144)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:235)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.core.resources 4 1 2016-01-29 14:30:48.046
+!MESSAGE Problems encountered while copying resources.
+!SUBENTRY 2 org.eclipse.core.filesystem 4 271 2016-01-29 14:30:48.046
+!MESSAGE Could not read from source when writing file: D:\eclipse\configuration\org.eclipse.core.runtime\.manager\.tmp3505576107070920742.instance
+!STACK 0
+java.io.IOException: 다른 프로세스가 파일의 한 부분을 잠갔으므로, 프로세스가 해당 파일을 액세스할 수 없습니다
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(Unknown Source)
+	at org.eclipse.core.filesystem.provider.FileStore.transferStreams(FileStore.java:75)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:223)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:144)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:120)
+	at org.eclipse.core.internal.localstore.CopyVisitor.copyContents(CopyVisitor.java:100)
+	at org.eclipse.core.internal.localstore.CopyVisitor.copy(CopyVisitor.java:71)
+	at org.eclipse.core.internal.localstore.CopyVisitor.visit(CopyVisitor.java:205)
+	at org.eclipse.core.internal.localstore.UnifiedTree.accept(UnifiedTree.java:109)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.copy(FileSystemResourceManager.java:313)
+	at org.eclipse.core.internal.resources.Resource.copy(Resource.java:551)
+	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.copyResource(AbstractImageBuilder.java:382)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder$3.visit(BatchImageBuilder.java:223)
+	at org.eclipse.core.internal.resources.Resource$1.visitElement(Resource.java:83)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.doIteration(ElementTreeIterator.java:82)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.doIteration(ElementTreeIterator.java:87)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.doIteration(ElementTreeIterator.java:87)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.doIteration(ElementTreeIterator.java:87)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.doIteration(ElementTreeIterator.java:87)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.doIteration(ElementTreeIterator.java:87)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.iterate(ElementTreeIterator.java:129)
+	at org.eclipse.core.internal.resources.Resource.accept(Resource.java:93)
+	at org.eclipse.core.internal.resources.Resource.accept(Resource.java:51)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.copyExtraResourcesBack(BatchImageBuilder.java:192)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:120)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.build(BatchImageBuilder.java:47)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildAll(JavaBuilder.java:256)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:186)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:734)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:205)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:245)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:300)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:303)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:359)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:382)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:144)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:235)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jst.jsp.core 4 0 2016-01-29 14:31:08.024
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+java.io.IOException: Exception in opening zip file: D:\eclipse\plugins\org.eclipse.jst.jsp.core_1.2.800.v201505130300.jar
+	at org.eclipse.osgi.framework.util.SecureAction.getZipFile(SecureAction.java:305)
+	at org.eclipse.osgi.storage.bundlefile.ZipBundleFile.basicOpen(ZipBundleFile.java:85)
+	at org.eclipse.osgi.storage.bundlefile.ZipBundleFile.getZipFile(ZipBundleFile.java:98)
+	at org.eclipse.osgi.storage.bundlefile.ZipBundleFile.checkedOpen(ZipBundleFile.java:65)
+	at org.eclipse.osgi.storage.bundlefile.ZipBundleFile.getEntry(ZipBundleFile.java:232)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findClassImpl(ClasspathManager.java:562)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClassImpl(ClasspathManager.java:540)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:527)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:324)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:327)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:402)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:352)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:344)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:160)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.jst.jsp.core.taglib.TaglibIndex$ClasspathChangeListener.elementChanged(TaglibIndex.java:111)
+	at org.eclipse.jst.jsp.core.taglib.TaglibIndex$ClasspathChangeListener.elementChanged(TaglibIndex.java:90)
+	at org.eclipse.jst.jsp.core.taglib.TaglibIndex$ClasspathChangeListener.elementChanged(TaglibIndex.java:79)
+	at org.eclipse.jdt.internal.core.DeltaProcessor$3.run(DeltaProcessor.java:1662)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.notifyListeners(DeltaProcessor.java:1652)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.firePostChangeDelta(DeltaProcessor.java:1486)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.fire(DeltaProcessor.java:1462)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.resourceChanged(DeltaProcessor.java:2074)
+	at org.eclipse.jdt.internal.core.DeltaProcessingState.resourceChanged(DeltaProcessingState.java:477)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:289)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:152)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:373)
+	at org.eclipse.core.internal.resources.Workspace.checkpoint(Workspace.java:528)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:263)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:92)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:218)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+Caused by: java.io.FileNotFoundException: D:\eclipse\plugins\org.eclipse.jst.jsp.core_1.2.800.v201505130300.jar (지정된 파일을 찾을 수 없습니다)
+	at java.util.zip.ZipFile.open(Native Method)
+	at java.util.zip.ZipFile.<init>(Unknown Source)
+	at java.util.zip.ZipFile.<init>(Unknown Source)
+	at java.util.zip.ZipFile.<init>(Unknown Source)
+	at org.eclipse.osgi.framework.util.SecureAction.getZipFile(SecureAction.java:288)
+	... 38 more
+
+!ENTRY org.eclipse.jdt.core 4 2 2016-01-29 14:31:08.025
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.core".
+!STACK 0
+java.lang.NoClassDefFoundError: org/eclipse/jst/jsp/core/taglib/TaglibIndex$2
+	at org.eclipse.jst.jsp.core.taglib.TaglibIndex$ClasspathChangeListener.elementChanged(TaglibIndex.java:111)
+	at org.eclipse.jst.jsp.core.taglib.TaglibIndex$ClasspathChangeListener.elementChanged(TaglibIndex.java:90)
+	at org.eclipse.jst.jsp.core.taglib.TaglibIndex$ClasspathChangeListener.elementChanged(TaglibIndex.java:79)
+	at org.eclipse.jdt.internal.core.DeltaProcessor$3.run(DeltaProcessor.java:1662)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.notifyListeners(DeltaProcessor.java:1652)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.firePostChangeDelta(DeltaProcessor.java:1486)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.fire(DeltaProcessor.java:1462)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.resourceChanged(DeltaProcessor.java:2074)
+	at org.eclipse.jdt.internal.core.DeltaProcessingState.resourceChanged(DeltaProcessingState.java:477)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:289)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:152)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:373)
+	at org.eclipse.core.internal.resources.Workspace.checkpoint(Workspace.java:528)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:263)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:92)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:218)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+Caused by: java.lang.ClassNotFoundException: org.eclipse.jst.jsp.core.taglib.TaglibIndex$2 cannot be found by org.eclipse.jst.jsp.core_1.2.800.v201505130300
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:439)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:352)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:344)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:160)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	... 24 more
+
+!ENTRY org.eclipse.jdt.core 4 4 2016-01-29 14:31:08.030
+!MESSAGE Exception occurred in listener of Java element change notification
+!STACK 0
+java.lang.NoClassDefFoundError: org/eclipse/jst/jsp/core/taglib/TaglibIndex$2
+	at org.eclipse.jst.jsp.core.taglib.TaglibIndex$ClasspathChangeListener.elementChanged(TaglibIndex.java:111)
+	at org.eclipse.jst.jsp.core.taglib.TaglibIndex$ClasspathChangeListener.elementChanged(TaglibIndex.java:90)
+	at org.eclipse.jst.jsp.core.taglib.TaglibIndex$ClasspathChangeListener.elementChanged(TaglibIndex.java:79)
+	at org.eclipse.jdt.internal.core.DeltaProcessor$3.run(DeltaProcessor.java:1662)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.notifyListeners(DeltaProcessor.java:1652)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.firePostChangeDelta(DeltaProcessor.java:1486)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.fire(DeltaProcessor.java:1462)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.resourceChanged(DeltaProcessor.java:2074)
+	at org.eclipse.jdt.internal.core.DeltaProcessingState.resourceChanged(DeltaProcessingState.java:477)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:289)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:152)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:373)
+	at org.eclipse.core.internal.resources.Workspace.checkpoint(Workspace.java:528)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:263)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:92)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:218)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+Caused by: java.lang.ClassNotFoundException: org.eclipse.jst.jsp.core.taglib.TaglibIndex$2 cannot be found by org.eclipse.jst.jsp.core_1.2.800.v201505130300
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:439)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:352)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:344)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:160)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	... 24 more
+
+!ENTRY com.google.guava 4 0 2016-01-29 14:31:12.618
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+java.io.IOException: Exception in opening zip file: D:\eclipse\plugins\com.google.guava_15.0.0.v201403281430.jar
+	at org.eclipse.osgi.framework.util.SecureAction.getZipFile(SecureAction.java:305)
+	at org.eclipse.osgi.storage.bundlefile.ZipBundleFile.basicOpen(ZipBundleFile.java:85)
+	at org.eclipse.osgi.storage.bundlefile.ZipBundleFile.getZipFile(ZipBundleFile.java:98)
+	at org.eclipse.osgi.storage.bundlefile.ZipBundleFile.checkedOpen(ZipBundleFile.java:65)
+	at org.eclipse.osgi.storage.bundlefile.ZipBundleFile.getEntry(ZipBundleFile.java:232)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findClassImpl(ClasspathManager.java:562)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClassImpl(ClasspathManager.java:540)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:527)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:324)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:327)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:402)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:352)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:344)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:160)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at com.google.common.util.concurrent.AbstractService.stop(AbstractService.java:228)
+	at com.google.common.util.concurrent.AbstractService.stopAsync(AbstractService.java:218)
+	at com.google.common.util.concurrent.AbstractIdleService.stopAsync(AbstractIdleService.java:169)
+	at org.eclipse.epp.internal.logging.aeri.ui.Startup$2.preShutdown(Startup.java:115)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:949)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.JFaceUtil$1.run(JFaceUtil.java:50)
+	at org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:173)
+	at org.eclipse.ui.internal.Workbench.firePreShutdown(Workbench.java:946)
+	at org.eclipse.ui.internal.Workbench.busyClose(Workbench.java:1085)
+	at org.eclipse.ui.internal.Workbench.access$21(Workbench.java:1073)
+	at org.eclipse.ui.internal.Workbench$19.run(Workbench.java:1414)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.Workbench.close(Workbench.java:1411)
+	at org.eclipse.ui.internal.Workbench.close(Workbench.java:1384)
+	at org.eclipse.ui.internal.WorkbenchWindow.busyClose(WorkbenchWindow.java:1571)
+	at org.eclipse.ui.internal.WorkbenchWindow.access$16(WorkbenchWindow.java:1542)
+	at org.eclipse.ui.internal.WorkbenchWindow$11.run(WorkbenchWindow.java:1603)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1600)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1614)
+	at org.eclipse.ui.internal.WorkbenchWindow$6.close(WorkbenchWindow.java:523)
+	at org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer$7.shellClosed(WBWRenderer.java:518)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:98)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4362)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1113)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1137)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1122)
+	at org.eclipse.swt.widgets.Decorations.closeWidget(Decorations.java:308)
+	at org.eclipse.swt.widgets.Decorations.WM_CLOSE(Decorations.java:1703)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4664)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:339)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1633)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2117)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5050)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProcW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProc(OS.java:2544)
+	at org.eclipse.swt.widgets.Shell.callWindowProc(Shell.java:498)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4760)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:339)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1633)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2117)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5050)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProcW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProc(OS.java:2544)
+	at org.eclipse.swt.widgets.Shell.callWindowProc(Shell.java:498)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4760)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:339)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1633)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2117)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5050)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2549)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3767)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1127)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1018)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:156)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:654)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:598)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:139)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:380)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:235)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:669)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:608)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1515)
+Caused by: java.io.FileNotFoundException: D:\eclipse\plugins\com.google.guava_15.0.0.v201403281430.jar (지정된 파일을 찾을 수 없습니다)
+	at java.util.zip.ZipFile.open(Native Method)
+	at java.util.zip.ZipFile.<init>(Unknown Source)
+	at java.util.zip.ZipFile.<init>(Unknown Source)
+	at java.util.zip.ZipFile.<init>(Unknown Source)
+	at org.eclipse.osgi.framework.util.SecureAction.getZipFile(SecureAction.java:288)
+	... 90 more
+
+!ENTRY org.eclipse.ui.workbench 4 2 2016-01-29 14:31:12.620
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
+!STACK 0
+java.lang.NoClassDefFoundError: com/google/common/util/concurrent/AbstractService$11
+	at com.google.common.util.concurrent.AbstractService.notifyFailed(AbstractService.java:413)
+	at com.google.common.util.concurrent.AbstractService.stop(AbstractService.java:253)
+	at com.google.common.util.concurrent.AbstractService.stopAsync(AbstractService.java:218)
+	at com.google.common.util.concurrent.AbstractIdleService.stopAsync(AbstractIdleService.java:169)
+	at org.eclipse.epp.internal.logging.aeri.ui.Startup$2.preShutdown(Startup.java:115)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:949)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.JFaceUtil$1.run(JFaceUtil.java:50)
+	at org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:173)
+	at org.eclipse.ui.internal.Workbench.firePreShutdown(Workbench.java:946)
+	at org.eclipse.ui.internal.Workbench.busyClose(Workbench.java:1085)
+	at org.eclipse.ui.internal.Workbench.access$21(Workbench.java:1073)
+	at org.eclipse.ui.internal.Workbench$19.run(Workbench.java:1414)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.Workbench.close(Workbench.java:1411)
+	at org.eclipse.ui.internal.Workbench.close(Workbench.java:1384)
+	at org.eclipse.ui.internal.WorkbenchWindow.busyClose(WorkbenchWindow.java:1571)
+	at org.eclipse.ui.internal.WorkbenchWindow.access$16(WorkbenchWindow.java:1542)
+	at org.eclipse.ui.internal.WorkbenchWindow$11.run(WorkbenchWindow.java:1603)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1600)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1614)
+	at org.eclipse.ui.internal.WorkbenchWindow$6.close(WorkbenchWindow.java:523)
+	at org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer$7.shellClosed(WBWRenderer.java:518)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:98)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4362)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1113)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1137)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1122)
+	at org.eclipse.swt.widgets.Decorations.closeWidget(Decorations.java:308)
+	at org.eclipse.swt.widgets.Decorations.WM_CLOSE(Decorations.java:1703)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4664)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:339)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1633)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2117)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5050)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProcW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProc(OS.java:2544)
+	at org.eclipse.swt.widgets.Shell.callWindowProc(Shell.java:498)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4760)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:339)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1633)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2117)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5050)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProcW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProc(OS.java:2544)
+	at org.eclipse.swt.widgets.Shell.callWindowProc(Shell.java:498)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4760)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:339)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1633)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2117)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5050)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2549)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3767)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1127)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1018)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:156)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:654)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:598)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:139)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:380)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:235)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:669)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:608)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1515)
+
+!ENTRY org.eclipse.ui.workbench 4 2 2016-01-29 14:31:17.437
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
+!STACK 0
+java.lang.NoClassDefFoundError: com/google/common/util/concurrent/AbstractService$11
+	at com.google.common.util.concurrent.AbstractService.notifyFailed(AbstractService.java:413)
+	at com.google.common.util.concurrent.AbstractService.stop(AbstractService.java:253)
+	at com.google.common.util.concurrent.AbstractService.stopAsync(AbstractService.java:218)
+	at com.google.common.util.concurrent.AbstractIdleService.stopAsync(AbstractIdleService.java:169)
+	at org.eclipse.epp.internal.logging.aeri.ui.Startup$2.preShutdown(Startup.java:115)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:949)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.JFaceUtil$1.run(JFaceUtil.java:50)
+	at org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:173)
+	at org.eclipse.ui.internal.Workbench.firePreShutdown(Workbench.java:946)
+	at org.eclipse.ui.internal.Workbench.busyClose(Workbench.java:1085)
+	at org.eclipse.ui.internal.Workbench.access$21(Workbench.java:1073)
+	at org.eclipse.ui.internal.Workbench$19.run(Workbench.java:1414)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.Workbench.close(Workbench.java:1411)
+	at org.eclipse.ui.internal.Workbench.close(Workbench.java:1384)
+	at org.eclipse.ui.internal.WorkbenchWindow.busyClose(WorkbenchWindow.java:1571)
+	at org.eclipse.ui.internal.WorkbenchWindow.access$16(WorkbenchWindow.java:1542)
+	at org.eclipse.ui.internal.WorkbenchWindow$11.run(WorkbenchWindow.java:1603)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1600)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1614)
+	at org.eclipse.ui.internal.WorkbenchWindow$6.close(WorkbenchWindow.java:523)
+	at org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer$7.shellClosed(WBWRenderer.java:518)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:98)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4362)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1113)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1137)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1122)
+	at org.eclipse.swt.widgets.Decorations.closeWidget(Decorations.java:308)
+	at org.eclipse.swt.widgets.Decorations.WM_CLOSE(Decorations.java:1703)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4664)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:339)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1633)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2117)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5050)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProcW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProc(OS.java:2544)
+	at org.eclipse.swt.widgets.Shell.callWindowProc(Shell.java:498)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4760)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:339)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1633)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2117)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5050)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProcW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProc(OS.java:2544)
+	at org.eclipse.swt.widgets.Shell.callWindowProc(Shell.java:498)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4760)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:339)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1633)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2117)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5050)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2549)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3767)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1127)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1018)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:156)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:654)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:598)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:139)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:380)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:235)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:669)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:608)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1515)
+
+!ENTRY org.eclipse.ui.workbench 4 2 2016-01-29 14:31:25.227
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
+!STACK 0
+java.lang.NoClassDefFoundError: com/google/common/util/concurrent/AbstractService$11
+	at com.google.common.util.concurrent.AbstractService.notifyFailed(AbstractService.java:413)
+	at com.google.common.util.concurrent.AbstractService.stop(AbstractService.java:253)
+	at com.google.common.util.concurrent.AbstractService.stopAsync(AbstractService.java:218)
+	at com.google.common.util.concurrent.AbstractIdleService.stopAsync(AbstractIdleService.java:169)
+	at org.eclipse.epp.internal.logging.aeri.ui.Startup$2.preShutdown(Startup.java:115)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:949)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.JFaceUtil$1.run(JFaceUtil.java:50)
+	at org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:173)
+	at org.eclipse.ui.internal.Workbench.firePreShutdown(Workbench.java:946)
+	at org.eclipse.ui.internal.Workbench.busyClose(Workbench.java:1085)
+	at org.eclipse.ui.internal.Workbench.access$21(Workbench.java:1073)
+	at org.eclipse.ui.internal.Workbench$19.run(Workbench.java:1414)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.Workbench.close(Workbench.java:1411)
+	at org.eclipse.ui.internal.Workbench.close(Workbench.java:1384)
+	at org.eclipse.ui.internal.WorkbenchWindow.busyClose(WorkbenchWindow.java:1571)
+	at org.eclipse.ui.internal.WorkbenchWindow.access$16(WorkbenchWindow.java:1542)
+	at org.eclipse.ui.internal.WorkbenchWindow$11.run(WorkbenchWindow.java:1603)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1600)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1614)
+	at org.eclipse.ui.internal.WorkbenchWindow$6.close(WorkbenchWindow.java:523)
+	at org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer$7.shellClosed(WBWRenderer.java:518)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:98)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4362)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1113)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1137)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1122)
+	at org.eclipse.swt.widgets.Decorations.closeWidget(Decorations.java:308)
+	at org.eclipse.swt.widgets.Decorations.WM_CLOSE(Decorations.java:1703)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4664)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:339)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1633)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2117)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5050)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProcW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProc(OS.java:2544)
+	at org.eclipse.swt.widgets.Shell.callWindowProc(Shell.java:498)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4760)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:339)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1633)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2117)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5063)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2549)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3767)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1127)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1018)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:156)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:654)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:598)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:139)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:380)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:235)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:669)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:608)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1515)
+
+!ENTRY org.eclipse.ui.workbench 4 2 2016-01-29 14:31:43.252
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
+!STACK 0
+java.lang.NoClassDefFoundError: com/google/common/util/concurrent/AbstractService$11
+	at com.google.common.util.concurrent.AbstractService.notifyFailed(AbstractService.java:413)
+	at com.google.common.util.concurrent.AbstractService.stop(AbstractService.java:253)
+	at com.google.common.util.concurrent.AbstractService.stopAsync(AbstractService.java:218)
+	at com.google.common.util.concurrent.AbstractIdleService.stopAsync(AbstractIdleService.java:169)
+	at org.eclipse.epp.internal.logging.aeri.ui.Startup$2.preShutdown(Startup.java:115)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:949)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.JFaceUtil$1.run(JFaceUtil.java:50)
+	at org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:173)
+	at org.eclipse.ui.internal.Workbench.firePreShutdown(Workbench.java:946)
+	at org.eclipse.ui.internal.Workbench.busyClose(Workbench.java:1085)
+	at org.eclipse.ui.internal.Workbench.access$21(Workbench.java:1073)
+	at org.eclipse.ui.internal.Workbench$19.run(Workbench.java:1414)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.Workbench.close(Workbench.java:1411)
+	at org.eclipse.ui.internal.Workbench.close(Workbench.java:1384)
+	at org.eclipse.ui.internal.WorkbenchWindow.busyClose(WorkbenchWindow.java:1571)
+	at org.eclipse.ui.internal.WorkbenchWindow.access$16(WorkbenchWindow.java:1542)
+	at org.eclipse.ui.internal.WorkbenchWindow$11.run(WorkbenchWindow.java:1603)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1600)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1614)
+	at org.eclipse.ui.internal.WorkbenchWindow$6.close(WorkbenchWindow.java:523)
+	at org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer$7.shellClosed(WBWRenderer.java:518)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:98)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4362)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1113)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1137)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1122)
+	at org.eclipse.swt.widgets.Decorations.closeWidget(Decorations.java:308)
+	at org.eclipse.swt.widgets.Decorations.WM_CLOSE(Decorations.java:1703)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4664)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:339)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1633)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2117)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5050)
+	at org.eclipse.swt.internal.win32.OS.PeekMessageW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.PeekMessage(OS.java:3141)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3764)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1127)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1018)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:156)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:654)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:598)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:139)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:380)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:235)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:669)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:608)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1515)
+
+!ENTRY org.eclipse.ui.workbench 4 2 2016-01-29 14:31:43.782
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
+!STACK 0
+java.lang.NoClassDefFoundError: com/google/common/util/concurrent/AbstractService$11
+	at com.google.common.util.concurrent.AbstractService.notifyFailed(AbstractService.java:413)
+	at com.google.common.util.concurrent.AbstractService.stop(AbstractService.java:253)
+	at com.google.common.util.concurrent.AbstractService.stopAsync(AbstractService.java:218)
+	at com.google.common.util.concurrent.AbstractIdleService.stopAsync(AbstractIdleService.java:169)
+	at org.eclipse.epp.internal.logging.aeri.ui.Startup$2.preShutdown(Startup.java:115)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:949)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.JFaceUtil$1.run(JFaceUtil.java:50)
+	at org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:173)
+	at org.eclipse.ui.internal.Workbench.firePreShutdown(Workbench.java:946)
+	at org.eclipse.ui.internal.Workbench.busyClose(Workbench.java:1085)
+	at org.eclipse.ui.internal.Workbench.access$21(Workbench.java:1073)
+	at org.eclipse.ui.internal.Workbench$19.run(Workbench.java:1414)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.Workbench.close(Workbench.java:1411)
+	at org.eclipse.ui.internal.Workbench.close(Workbench.java:1384)
+	at org.eclipse.ui.internal.WorkbenchWindow.busyClose(WorkbenchWindow.java:1571)
+	at org.eclipse.ui.internal.WorkbenchWindow.access$16(WorkbenchWindow.java:1542)
+	at org.eclipse.ui.internal.WorkbenchWindow$11.run(WorkbenchWindow.java:1603)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1600)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1614)
+	at org.eclipse.ui.internal.WorkbenchWindow$6.close(WorkbenchWindow.java:523)
+	at org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer$7.shellClosed(WBWRenderer.java:518)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:98)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4362)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1113)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1137)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1122)
+	at org.eclipse.swt.widgets.Decorations.closeWidget(Decorations.java:308)
+	at org.eclipse.swt.widgets.Decorations.WM_CLOSE(Decorations.java:1703)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4664)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:339)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1633)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2117)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5063)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2549)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3767)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1127)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1018)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:156)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:654)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:598)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:139)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:380)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:235)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:669)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:608)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1515)
+
+!ENTRY org.eclipse.ui.workbench 4 2 2016-01-29 14:31:48.634
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
+!STACK 0
+java.lang.NoClassDefFoundError: com/google/common/util/concurrent/AbstractService$11
+	at com.google.common.util.concurrent.AbstractService.notifyFailed(AbstractService.java:413)
+	at com.google.common.util.concurrent.AbstractService.stop(AbstractService.java:253)
+	at com.google.common.util.concurrent.AbstractService.stopAsync(AbstractService.java:218)
+	at com.google.common.util.concurrent.AbstractIdleService.stopAsync(AbstractIdleService.java:169)
+	at org.eclipse.epp.internal.logging.aeri.ui.Startup$2.preShutdown(Startup.java:115)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:949)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.JFaceUtil$1.run(JFaceUtil.java:50)
+	at org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:173)
+	at org.eclipse.ui.internal.Workbench.firePreShutdown(Workbench.java:946)
+	at org.eclipse.ui.internal.Workbench.busyClose(Workbench.java:1085)
+	at org.eclipse.ui.internal.Workbench.access$21(Workbench.java:1073)
+	at org.eclipse.ui.internal.Workbench$19.run(Workbench.java:1414)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.Workbench.close(Workbench.java:1411)
+	at org.eclipse.ui.internal.Workbench.close(Workbench.java:1384)
+	at org.eclipse.ui.internal.WorkbenchWindow.busyClose(WorkbenchWindow.java:1571)
+	at org.eclipse.ui.internal.WorkbenchWindow.access$16(WorkbenchWindow.java:1542)
+	at org.eclipse.ui.internal.WorkbenchWindow$11.run(WorkbenchWindow.java:1603)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1600)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1614)
+	at org.eclipse.ui.internal.WorkbenchWindow$6.close(WorkbenchWindow.java:523)
+	at org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer$7.shellClosed(WBWRenderer.java:518)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:98)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4362)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1113)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1137)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1122)
+	at org.eclipse.swt.widgets.Decorations.closeWidget(Decorations.java:308)
+	at org.eclipse.swt.widgets.Decorations.WM_CLOSE(Decorations.java:1703)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4664)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:339)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1633)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2117)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5050)
+	at org.eclipse.swt.internal.win32.OS.PeekMessageW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.PeekMessage(OS.java:3141)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3764)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1127)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1018)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:156)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:654)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:598)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:139)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:380)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:235)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:669)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:608)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1515)
+
+!ENTRY org.eclipse.ui.workbench 4 2 2016-01-29 14:31:49.148
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
+!STACK 0
+java.lang.NoClassDefFoundError: com/google/common/util/concurrent/AbstractService$11
+	at com.google.common.util.concurrent.AbstractService.notifyFailed(AbstractService.java:413)
+	at com.google.common.util.concurrent.AbstractService.stop(AbstractService.java:253)
+	at com.google.common.util.concurrent.AbstractService.stopAsync(AbstractService.java:218)
+	at com.google.common.util.concurrent.AbstractIdleService.stopAsync(AbstractIdleService.java:169)
+	at org.eclipse.epp.internal.logging.aeri.ui.Startup$2.preShutdown(Startup.java:115)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:949)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.JFaceUtil$1.run(JFaceUtil.java:50)
+	at org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:173)
+	at org.eclipse.ui.internal.Workbench.firePreShutdown(Workbench.java:946)
+	at org.eclipse.ui.internal.Workbench.busyClose(Workbench.java:1085)
+	at org.eclipse.ui.internal.Workbench.access$21(Workbench.java:1073)
+	at org.eclipse.ui.internal.Workbench$19.run(Workbench.java:1414)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.Workbench.close(Workbench.java:1411)
+	at org.eclipse.ui.internal.Workbench.close(Workbench.java:1384)
+	at org.eclipse.ui.internal.WorkbenchWindow.busyClose(WorkbenchWindow.java:1571)
+	at org.eclipse.ui.internal.WorkbenchWindow.access$16(WorkbenchWindow.java:1542)
+	at org.eclipse.ui.internal.WorkbenchWindow$11.run(WorkbenchWindow.java:1603)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1600)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1614)
+	at org.eclipse.ui.internal.WorkbenchWindow$6.close(WorkbenchWindow.java:523)
+	at org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer$7.shellClosed(WBWRenderer.java:518)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:98)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4362)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1113)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1137)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1122)
+	at org.eclipse.swt.widgets.Decorations.closeWidget(Decorations.java:308)
+	at org.eclipse.swt.widgets.Decorations.WM_CLOSE(Decorations.java:1703)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4664)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:339)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1633)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2117)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5063)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2549)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3767)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1127)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1018)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:156)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:654)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:598)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:139)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:380)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:235)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:669)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:608)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1515)
