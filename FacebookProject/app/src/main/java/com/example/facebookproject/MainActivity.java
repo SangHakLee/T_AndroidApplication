@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        callbackManager = CallbackManager.Factory.create(); // 콜백 매니저 등록
 
         manager = LoginManager.getInstance(); // loginButton1
         manager.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
@@ -108,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        callbackManager = CallbackManager.Factory.create(); // 콜백 매니저 등록
 
         final LoginButton loginButton = (LoginButton)findViewById(R.id.view);
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() { // 버튼에 콜백 매니저 연결
