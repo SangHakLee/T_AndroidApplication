@@ -45,15 +45,17 @@ public class RegistrationIntentService extends IntentService {
         try {
             InstanceID instanceID = InstanceID.getInstance(this);
             String token = instanceID.getToken(getString(R.string.gcm_defaultSenderId), // 센더 아이디 널기
-                    GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
-            PropertyManager.getInstance().setRegistrationToken(token);
+                    GoogleCloudMessaging.INSTANCE_ID_SCOPE, null); // 이 부분이 가장 중요!!
+            Log.d(TAG, "token : " + token);
+
+            PropertyManager.getInstance().setRegistrationToken(token); // 쉐어드에 토큰 저장
             // Subscribe to topic channels
             subscribeTopics(token);
         } catch (Exception e) {
             Log.d(TAG, "Failed to complete token refresh", e);
         }
         // Notify UI that registration has completed, so the progress indicator can be hidden.
-        Intent registrationComplete = new Intent(REGISTRATION_COMPLETE);
+        Intent registrationComplete = new Intent(REGISTRATION_COMPLETE); // 방송 등록
         LocalBroadcastManager.getInstance(this).sendBroadcast(registrationComplete);
     }
 
