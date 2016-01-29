@@ -39,19 +39,33 @@ public class MainActivity extends AppCompatActivity {
 
     CallbackManager callbackManager; // 페북에서 제공하는 콜백 매니저
 
+    // 분기 시키기
+    int state;
+    private static final int LOGIN = 0;
+    private static final int POSTING = 1;
+    private static final int FEEDING = 2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        state = LOGIN;
+
         postButton = (Button)findViewById(R.id.button2);
         postButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                state = POSTING;
                 if(!isLogin()){ //로그인이 안된경우
-                    manager.logInWithPublishPermissions(MainActivity.this, Arrays.asList(""));
+                    manager.logInWithPublishPermissions(MainActivity.this, Arrays.asList("publish_actions"));
                 }else{ // 로그인 된 경우 로그 아웃
-                    postMessage();
+                    if(AccessToken.getCurrentAccessToken().getPermissions().contains("publish_actions")){ // publish_actions 퍼미션이 있는지 없는지
+                        // 글쓰기
+                        postMessage();
+                    }else{
+                        manager.logInWithPublishPermissions(MainActivity.this, Arrays.asList("publish_actions"));
+                    }
                 }
             }
         });
@@ -75,9 +89,16 @@ public class MainActivity extends AppCompatActivity {
         manager.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                String id = AccessToken.getCurrentAccessToken().getUserId(); //유저 아이디
-                Toast.makeText(MainActivity.this, "success id : " + id, Toast.LENGTH_SHORT).show();
-                loginButton.setText("로그아웃");
+                switch (state){ // 분기를 시킨다.로그인이냐, 글쓰기에서 들어온 로그인이냐
+                    case LOGIN :
+                        String id = AccessToken.getCurrentAccessToken().getUserId(); //유저 아이디
+                        Toast.makeText(MainActivity.this, "success id : " + id, Toast.LENGTH_SHORT).show();
+                        loginButton.setText("로그아웃");
+                        break;
+                    case POSTING :
+                        postMessage();
+                        break;
+                }
             }
             @Override
             public void onCancel() {
@@ -122,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
     private void postMessage() {
         String message = "facebook test message";
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
-        String graphPath = "/me/feed";
+        String graphPath = "/me/feed";  // 글 올리는 경로
         Bundle parameters = new Bundle();
         parameters.putString("message", message);
         parameters.putString("link", "http://developers.facebook.com/docs/android");
